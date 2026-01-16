@@ -6,10 +6,11 @@ matplotlib
 Pillow
 seaborn
 scikit-image
-pyparsing
+pyparsing==2.4.7
 nltk
 spacy
 scikit-learn
 cython
 pyeda
 torch
+OpenNMT-py
