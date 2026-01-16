@@ -1,0 +1,14 @@
+pandas
+tqdm
+imageio
+scipy
+matplotlib
+Pillow
+seaborn
+scikit-image
+pyparsing
+nltk
+spacy
+scikit-learn
+cython
+pyeda
