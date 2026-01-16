@@ -12,3 +12,4 @@ spacy
 scikit-learn
 cython
 pyeda
+torch
