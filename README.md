@@ -35,7 +35,21 @@ case, with some notable specifics:
 
 ## Dependencies
 
-Should be the same as those in the vision folder, along with:
+Install `requirements.txt`
 
-- `spacy==2.2.4`
-- `benepar` (optional; the [Berkeley neural parser](https://github.com/nikitakit/self-attentive-parser); used only to run `annotate.py` to annotate spacy corpus for dependency tags, though they aren't used in the paper analysis)
+**pip** install instructions:
+
+```pip install -r requirements.txt```
+
+**conda**:
+
+- activate pip in conda and then use pip
+
+- *alternative of less effort* perhaps will work: `conda install --file requirements.txt`
+
+
+~~Should be the same as those in the vision folder, along with:~~
+
+~~- `spacy==2.2.4`~~
+
+~~- `benepar` (optional; the [Berkeley neural parser](https://github.com/nikitakit/self-attentive-parser); used only to run `annotate.py` to annotate spacy corpus for dependency tags, though they aren't used in the paper analysis)~~
