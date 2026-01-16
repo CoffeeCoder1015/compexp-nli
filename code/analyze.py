@@ -41,7 +41,7 @@ def load_vecs(path):
     vecs = []
     vecs_stoi = {}
     vecs_itos = {}
-    with open(path, "r") as f:
+    with open(path, "r",encoding="utf-8") as f:
         for line in f:
             tok, *nums = line.split(" ")
             nums = np.array(list(map(float, nums)))
