@@ -26,7 +26,7 @@ SAVE_EVERY = 4
 # How many "maximally activating" open features to use, PER CATEGORY
 MAX_OPEN_FEATS = 5
 # Minimum number of activations to analyze a neuron
-MIN_ACTS = 500
+MIN_ACTS = 5
 
 MODEL = "models/bowman_snli/6.pth"
 MODEL_TYPE = "bowman"  # choices: bowman, minimal
