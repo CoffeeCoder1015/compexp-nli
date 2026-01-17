@@ -317,6 +317,7 @@ def compute_best_sentence_iou(args):
 
     if acts.sum() < settings.MIN_ACTS:
         null_f = (FM.Leaf(0), 0)
+        print("[WARNING] - threshold too low",null_f)
         return {"unit": unit, "best": null_f, "best_noncomp": null_f}
 
     feats_to_search = list(range(feats.shape[1]))
@@ -365,6 +366,7 @@ def compute_best_sentence_iou(args):
         formulas = dict(Counter(formulas).most_common(settings.BEAM_SIZE))
 
     best = Counter(formulas).most_common(1)[0]
+    print("[INSPECT: best]",best)
 
     return {
         "unit": unit,
@@ -519,6 +521,7 @@ def search_feats(acts, states, feats, weights, dataset):
             unit = res["unit"]
             best_lab, best_iou = res["best"]
             best_name = best_lab.to_str(namer, sort=True)
+            print("[INFO - feature]",best_name)
             best_cat = best_lab.to_str(cat_namer, sort=True)
             best_cat_fine = best_lab.to_str(cat_namer_fine, sort=True)
 
@@ -722,9 +725,11 @@ def main():
     tok_feats, tok_feats_vocab = to_sentence(toks, feats, dataset)
     print("Mask search")
     records = search_feats(acts, states, (tok_feats, tok_feats_vocab), weights, dataset)
+    print("[INFO]",records)
 
     print("Mask search")
     records = search_feats(acts, states, feats, weights, dataset)
+    print("[INFO]",records)
 
     print("Load predictions")
     mbase = os.path.splitext(os.path.basename(settings.MODEL))[0]
