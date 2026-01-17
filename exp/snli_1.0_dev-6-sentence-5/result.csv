@@ -1,107 +1,91 @@
 neuron,feature,category,category_fine,iou,feature_length,w_entail,w_neutral,w_contra
 1,pre:tok:in,pre,pre:tok,0.0,1,0.0047763498,0.0021374722,0.014035168
-2,pre:tok:in,pre,pre:tok,0.0,1,-0.028240746,-0.018325444,-0.01801046
 3,pre:tok:in,pre,pre:tok,0.0,1,0.0005738688,-0.0071000154,0.013591588
 4,pre:tok:in,pre,pre:tok,0.0,1,-0.03327432,0.009516349,0.005223358
 5,pre:tok:in,pre,pre:tok,0.0,1,-0.01811511,0.01101393,0.029370204
-7,pre:tok:in,pre,pre:tok,0.0,1,-0.017232083,-0.0118125025,0.0006597078
-9,pre:tok:in,pre,pre:tok,0.0,1,-0.015833614,0.0036869862,-0.023049906
 10,pre:tok:in,pre,pre:tok,0.0,1,0.026105339,0.008309716,-0.005927887
-11,pre:tok:in,pre,pre:tok,0.0,1,-0.039270308,0.0039053678,-0.08502867
 12,pre:tok:in,pre,pre:tok,0.0,1,-0.01652821,-0.014502258,-0.03231055
+9,pre:tok:in,pre,pre:tok,0.0,1,-0.015833614,0.0036869862,-0.023049906
+2,pre:tok:in,pre,pre:tok,0.0,1,-0.028240746,-0.018325444,-0.01801046
+11,pre:tok:in,pre,pre:tok,0.0,1,-0.039270308,0.0039053678,-0.08502867
+7,pre:tok:in,pre,pre:tok,0.0,1,-0.017232083,-0.0118125025,0.0006597078
 13,pre:tok:in,pre,pre:tok,0.0,1,0.00069109304,-0.022033479,-0.039120488
 14,pre:tok:in,pre,pre:tok,0.0,1,0.015123305,0.0017837533,-0.029876685
-17,((((hyp:tok:ladies OR hyp:tok:tv) OR hyp:tok:sing) AND (NOT hyp:tag:in)) OR hyp:tok:low),((((hyp OR hyp) OR hyp) AND (NOT hyp)) OR hyp),((((hyp:tok OR hyp:tok) OR hyp:tok) AND (NOT hyp:tag)) OR hyp:tok),0.11627906976744186,6,0.025361765,-0.016476376,0.056964096
 18,pre:tok:in,pre,pre:tok,0.0,1,-0.019470567,0.000523566,0.009931134
-20,pre:tok:in,pre,pre:tok,0.0,1,-0.047685917,0.014887502,-0.0166224
 21,pre:tok:in,pre,pre:tok,0.0,1,-0.1398688,-0.013232225,-0.01125585
+25,pre:tok:in,pre,pre:tok,0.0,1,-0.02679691,0.03867717,-0.004318475
 23,pre:tok:in,pre,pre:tok,0.0,1,-0.037423514,0.0160841,-0.034062244
 24,pre:tok:in,pre,pre:tok,0.0,1,-0.015223513,-0.0063256756,-0.005850327
-25,pre:tok:in,pre,pre:tok,0.0,1,-0.02679691,0.03867717,-0.004318475
-26,pre:tok:in,pre,pre:tok,0.0,1,-0.003588027,-0.0051038344,-0.02752106
+20,pre:tok:in,pre,pre:tok,0.0,1,-0.047685917,0.014887502,-0.0166224
 27,pre:tok:in,pre,pre:tok,0.0,1,-0.0054546325,0.0051495046,-0.0055750064
-22,(((((NOT pre:tok:men) AND hyp:tok:men) AND (NOT pre:tok:man)) AND (NOT pre:tag:prp)) OR hyp:tok:produce),(((((NOT pre) AND hyp) AND (NOT pre)) AND (NOT pre)) OR hyp),(((((NOT pre:tok) AND hyp:tok) AND (NOT pre:tok)) AND (NOT pre:tag)) OR hyp:tok),0.16470588235294117,8,-0.09668588,-0.05784706,0.07747554
 29,pre:tok:in,pre,pre:tok,0.0,1,-0.016837265,0.0015504936,-0.005478695
-30,pre:tok:in,pre,pre:tok,0.0,1,0.013579237,0.008185605,0.01947304
-31,pre:tok:in,pre,pre:tok,0.0,1,-0.16941042,0.03331916,0.019989252
 32,pre:tok:in,pre,pre:tok,0.0,1,-0.017161598,-0.017362177,0.014250665
-33,pre:tok:in,pre,pre:tok,0.0,1,-0.02569689,-0.020733181,-0.014042376
-34,pre:tok:in,pre,pre:tok,0.0,1,-0.04518038,0.027971389,-0.00947782
+30,pre:tok:in,pre,pre:tok,0.0,1,0.013579237,0.008185605,0.01947304
 35,pre:tok:in,pre,pre:tok,0.0,1,-0.062931135,-0.008127816,0.048144564
 36,pre:tok:in,pre,pre:tok,0.0,1,-0.08270176,0.0022155656,0.0072359904
 38,pre:tok:in,pre,pre:tok,0.0,1,-0.02389088,0.052460905,-0.03918897
-39,(((((NOT hyp:tag:nns) AND hyp:tok:nobody) AND (NOT pre:tok:hair)) AND (NOT pre:tag:rb)) AND (NOT pre:tok:boy)),(((((NOT hyp) AND hyp) AND (NOT pre)) AND (NOT pre)) AND (NOT pre)),(((((NOT hyp:tag) AND hyp:tok) AND (NOT pre:tok)) AND (NOT pre:tag)) AND (NOT pre:tok)),0.3953488372093023,9,-0.116729215,-0.05308179,0.046814848
-40,(((((NOT pre:tag:nns) AND hyp:tok:bathroom) OR hyp:tok:clock) AND (NOT pre:tok:in)) OR hyp:tok:rainy),(((((NOT pre) AND hyp) OR hyp) AND (NOT pre)) OR hyp),(((((NOT pre:tag) AND hyp:tok) OR hyp:tok) AND (NOT pre:tok)) OR hyp:tok),0.3076923076923077,7,0.01961592,0.07154612,-0.13169406
-19,(((((NOT pre:tok:man) AND hyp:tok:man) AND (NOT pre:tok:male)) OR hyp:tok:male) AND (NOT pre:tok:his)),(((((NOT pre) AND hyp) AND (NOT pre)) OR hyp) AND (NOT pre)),(((((NOT pre:tok) AND hyp:tok) AND (NOT pre:tok)) OR hyp:tok) AND (NOT pre:tok)),0.24128686327077747,8,-0.1768775,0.121300235,0.036597908
+33,pre:tok:in,pre,pre:tok,0.0,1,-0.02569689,-0.020733181,-0.014042376
+31,pre:tok:in,pre,pre:tok,0.0,1,-0.16941042,0.03331916,0.019989252
+34,pre:tok:in,pre,pre:tok,0.0,1,-0.04518038,0.027971389,-0.00947782
 42,pre:tok:in,pre,pre:tok,0.0,1,-0.0020226776,-0.065245084,0.0029773572
 43,pre:tok:in,pre,pre:tok,0.0,1,0.05056345,0.037032012,-0.08811786
 44,pre:tok:in,pre,pre:tok,0.0,1,0.006612241,-0.06660918,-0.064696595
-28,((((hyp:tok:human OR hyp:tok:outside) OR hyp:tok:tall) AND (NOT hyp:tag:vbz)) OR pre:tok:swimming),((((hyp OR hyp) OR hyp) AND (NOT hyp)) OR pre),((((hyp:tok OR hyp:tok) OR hyp:tok) AND (NOT hyp:tag)) OR pre:tok),0.11376146788990826,6,0.05356792,0.011551145,-0.110836655
 46,pre:tok:in,pre,pre:tok,0.0,1,-0.019136123,-0.0040056366,0.011697231
 47,pre:tok:in,pre,pre:tok,0.0,1,0.0138225835,0.018448532,0.0113480715
-48,pre:tok:in,pre,pre:tok,0.0,1,0.013414908,-0.04464621,-0.036819622
-49,pre:tok:in,pre,pre:tok,0.0,1,-0.052856423,-0.024655763,-0.02181511
 50,pre:tok:in,pre,pre:tok,0.0,1,-0.09473563,0.024855418,-0.04968543
+48,pre:tok:in,pre,pre:tok,0.0,1,0.013414908,-0.04464621,-0.036819622
 51,pre:tok:in,pre,pre:tok,0.0,1,0.01562371,0.026281003,0.013415666
-37,((((hyp:tok:human OR hyp:tok:sleeps) OR hyp:tok:humans) OR pre:tok:worker) OR pre:tok:soda),((((hyp OR hyp) OR hyp) OR pre) OR pre),((((hyp:tok OR hyp:tok) OR hyp:tok) OR pre:tok) OR pre:tok),0.088,5,-0.029064782,-0.0059582936,-0.057603292
+49,pre:tok:in,pre,pre:tok,0.0,1,-0.052856423,-0.024655763,-0.02181511
 53,pre:tok:in,pre,pre:tok,0.0,1,0.013514537,0.012803634,0.019345026
 54,pre:tok:in,pre,pre:tok,0.0,1,-0.08550019,0.017264206,-0.07033782
-55,pre:tok:in,pre,pre:tok,0.0,1,0.00833922,0.020001516,-0.030236812
 56,pre:tok:in,pre,pre:tok,0.0,1,0.0026214418,-0.0085015455,-0.008195789
 57,pre:tok:in,pre,pre:tok,0.0,1,-0.010113196,0.0026206197,-0.015361326
+55,pre:tok:in,pre,pre:tok,0.0,1,0.00833922,0.020001516,-0.030236812
 58,pre:tok:in,pre,pre:tok,0.0,1,0.025987085,-0.055569272,0.015964221
-41,(((((NOT pre:tok:in) AND hyp:tok:race) OR hyp:tok:daughters) AND (NOT pre:tok:blue)) AND (NOT pre:tok:man)),(((((NOT pre) AND hyp) OR hyp) AND (NOT pre)) AND (NOT pre)),(((((NOT pre:tok) AND hyp:tok) OR hyp:tok) AND (NOT pre:tok)) AND (NOT pre:tok)),0.12658227848101267,8,-0.043264575,0.06597239,-0.027513467
-60,pre:tok:in,pre,pre:tok,0.0,1,0.006267746,0.032048497,-0.010155706
-59,((((hyp:tok:guitar AND pre:tag:rb) OR hyp:tok:jersey) OR hyp:tok:onlookers) OR hyp:tok:surfboard),((((hyp AND pre) OR hyp) OR hyp) OR hyp),((((hyp:tok AND pre:tag) OR hyp:tok) OR hyp:tok) OR hyp:tok),0.16666666666666666,5,-0.035187453,-0.115547,0.11677183
+26,pre:tok:in,pre,pre:tok,0.0,1,-0.003588027,-0.0051038344,-0.02752106
 62,pre:tok:in,pre,pre:tok,0.0,1,0.03103753,-0.024496555,-0.025770273
-63,(((hyp:tok:for AND hyp:tok:walmart) OR pre:tok:kabobs) AND oth:overlap:overlap50),(((hyp AND hyp) OR pre) AND oth),(((hyp:tok AND hyp:tok) OR pre:tok) AND oth:overlap),0.2857142857142857,4,0.04573205,-0.003268018,-0.06788963
+60,pre:tok:in,pre,pre:tok,0.0,1,0.006267746,0.032048497,-0.010155706
 64,pre:tok:in,pre,pre:tok,0.0,1,0.00252681,0.00079259474,0.0026084005
-61,((((pre:tok:buildings AND pre:tok:woman) OR hyp:tok:hooded) OR hyp:tok:clock) OR hyp:tok:hate),((((pre AND pre) OR hyp) OR hyp) OR hyp),((((pre:tok AND pre:tok) OR hyp:tok) OR hyp:tok) OR hyp:tok),0.1388888888888889,5,0.032971706,-0.027068065,-0.16175447
 66,pre:tok:in,pre,pre:tok,0.0,1,0.033789285,-0.03808392,-0.018338058
-67,((NOT hyp:tag:in) AND (hyp:tok:tired AND pre:tok:on)),((NOT hyp) AND (hyp AND pre)),((NOT hyp:tag) AND (hyp:tok AND pre:tok)),0.6666666666666666,4,-0.12804317,0.06296108,0.00078801997
+67,(hyp:tok:tired AND pre:tok:on),(hyp AND pre),(hyp:tok AND pre:tok),0.6666666666666666,2,-0.12804317,0.06296108,0.00078801997
 68,pre:tok:in,pre,pre:tok,0.0,1,-0.007609634,-0.0042655533,0.025001679
 69,pre:tok:in,pre,pre:tok,0.0,1,-0.007861247,0.0061739935,0.0059137563
-52,(((((NOT hyp:tag:in) AND hyp:tok:white) OR hyp:tok:brunette) OR pre:tok:weather) OR pre:tok:slam),(((((NOT hyp) AND hyp) OR hyp) OR pre) OR pre),(((((NOT hyp:tag) AND hyp:tok) OR hyp:tok) OR pre:tok) OR pre:tok),0.12142857142857143,6,-0.031588376,-0.06022113,0.10149266
-45,((((NOT hyp:tok:sitting) AND (hyp:tag:in AND pre:tok:sitting)) OR hyp:tok:football) OR hyp:tok:ocean),((((NOT hyp) AND (hyp AND pre)) OR hyp) OR hyp),((((NOT hyp:tok) AND (hyp:tag AND pre:tok)) OR hyp:tok) OR hyp:tok),0.07370184254606366,6,-0.14389612,-0.014048776,0.017890418
 72,pre:tok:in,pre,pre:tok,0.0,1,-0.14490566,0.08328431,-0.022965817
 73,pre:tok:in,pre,pre:tok,0.0,1,-0.0050824634,-0.0013629452,-0.12974527
 74,pre:tok:in,pre,pre:tok,0.0,1,-0.011482277,0.0011194352,0.0120803835
 75,pre:tok:in,pre,pre:tok,0.0,1,-0.0262356,0.0064998884,-0.0030897802
-76,(((((NOT pre:tag:dt) AND hyp:tok:swimming) OR hyp:tok:polo) AND (NOT hyp:tok:group)) AND hyp:tag:dt),(((((NOT pre) AND hyp) OR hyp) AND (NOT hyp)) AND hyp),(((((NOT pre:tag) AND hyp:tok) OR hyp:tok) AND (NOT hyp:tok)) AND hyp:tag),0.2777777777777778,7,-0.04563948,0.03152975,0.026896266
+63,((((hyp:tok:walmart OR pre:tok:tea) AND oth:overlap:overlap50) OR hyp:tok:rink) AND (NOT pre:tok:and)),((((hyp OR pre) AND oth) OR hyp) AND (NOT pre)),((((hyp:tok OR pre:tok) AND oth:overlap) OR hyp:tok) AND (NOT pre:tok)),0.23076923076923078,6,0.04573205,-0.003268018,-0.06788963
 78,pre:tok:in,pre,pre:tok,0.0,1,0.01182707,0.01418951,-0.07326577
 79,pre:tok:in,pre,pre:tok,0.0,1,-0.042171866,0.029642066,0.0040113684
 80,pre:tok:in,pre,pre:tok,0.0,1,-0.104470074,-0.0015485637,0.024704978
 81,pre:tok:in,pre,pre:tok,0.0,1,-0.0004845808,-0.0026556302,-0.06320808
 82,pre:tok:in,pre,pre:tok,0.0,1,-0.0006962838,0.037043694,-0.0047402196
-77,((((hyp:tok:outdoors AND pre:tok:girls) OR pre:tok:strike) AND (NOT hyp:tag:vbg)) OR pre:tok:washes),((((hyp AND pre) OR pre) AND (NOT hyp)) OR pre),((((hyp:tok AND pre:tok) OR pre:tok) AND (NOT hyp:tag)) OR pre:tok),0.14285714285714285,6,-0.032825645,0.0010794705,-0.056606244
+40,(((((NOT pre:tag:nns) AND hyp:tok:bathroom) OR hyp:tok:clock) AND hyp:tok:woman) AND (NOT pre:tok:wearing)),(((((NOT pre) AND hyp) OR hyp) AND hyp) AND (NOT pre)),(((((NOT pre:tag) AND hyp:tok) OR hyp:tok) AND hyp:tok) AND (NOT pre:tok)),0.375,7,0.01961592,0.07154612,-0.13169406
 84,pre:tok:in,pre,pre:tok,0.0,1,-0.046179634,0.024165891,-0.031279296
-85,(((hyp:tok:restaurant AND pre:tok:table) AND oth:overlap:overlap25) AND (NOT pre:tok:in)),(((hyp AND pre) AND oth) AND (NOT pre)),(((hyp:tok AND pre:tok) AND oth:overlap) AND (NOT pre:tok)),0.5,5,0.023714222,-0.008861668,-0.07464618
-86,((((NOT oth:overlap:overlap25) AND (hyp:tok:international OR hyp:tok:tables)) OR hyp:tok:east) AND (NOT pre:tok:and)),((((NOT oth) AND (hyp OR hyp)) OR hyp) AND (NOT pre)),((((NOT oth:overlap) AND (hyp:tok OR hyp:tok)) OR hyp:tok) AND (NOT pre:tok)),0.42857142857142855,7,0.048801105,-0.011612206,-0.046751846
+86,pre:tok:in,pre,pre:tok,0.0,1,0.048801105,-0.011612206,-0.046751846
 88,pre:tok:in,pre,pre:tok,0.0,1,-0.039959464,0.011520041,0.006039225
-65,((((hyp:tok:bicycle OR hyp:tok:bike) OR pre:tok:checkered) OR hyp:tok:cliff) AND (NOT hyp:tok:to)),((((hyp OR hyp) OR pre) OR hyp) AND (NOT hyp)),((((hyp:tok OR hyp:tok) OR pre:tok) OR hyp:tok) AND (NOT hyp:tok)),0.14201183431952663,6,-0.12863564,-0.067493185,0.110098556
 90,pre:tok:in,pre,pre:tok,0.0,1,-0.007987969,-0.02412905,0.026392274
-91,pre:tok:in,pre,pre:tok,0.0,1,-0.056765195,0.048301887,-0.035669833
-83,(((((NOT hyp:tag:in) AND hyp:tok:inside) OR pre:tok:atv) AND pre:tag:nns) OR hyp:tok:wrestlers),(((((NOT hyp) AND hyp) OR pre) AND pre) OR hyp),(((((NOT hyp:tag) AND hyp:tok) OR pre:tok) AND pre:tag) OR hyp:tok),0.18571428571428572,6,0.015798438,-0.027097842,-0.026725514
 93,pre:tok:in,pre,pre:tok,0.0,1,-0.01883569,-0.017991973,-0.0017997269
 94,pre:tok:in,pre,pre:tok,0.0,1,-0.06706084,-0.015701026,-0.002899843
 95,pre:tok:in,pre,pre:tok,0.0,1,0.0010621102,-0.022456413,0.015506575
 96,pre:tok:in,pre,pre:tok,0.0,1,0.0034709915,-0.0325567,-0.008448587
 97,pre:tok:in,pre,pre:tok,0.0,1,0.026501311,0.01666225,-0.0069059217
-92,(hyp:tok:soccer AND pre:tag:-lrb-),(hyp AND pre),(hyp:tok AND pre:tag),0.2,2,0.07264218,0.024391834,-0.0867493
-87,((((hyp:tok:desks OR hyp:tok:scarves) OR hyp:tok:points) AND hyp:tag:vbg) OR hyp:tok:sweatshirt),((((hyp OR hyp) OR hyp) AND hyp) OR hyp),((((hyp:tok OR hyp:tok) OR hyp:tok) AND hyp:tag) OR hyp:tok),0.11428571428571428,5,-0.08595089,0.06993344,-0.03883311
+59,((((hyp:tok:jersey OR hyp:tok:steering) OR hyp:tok:onlookers) OR hyp:tok:surfboard) OR hyp:tok:throw),((((hyp OR hyp) OR hyp) OR hyp) OR hyp),((((hyp:tok OR hyp:tok) OR hyp:tok) OR hyp:tok) OR hyp:tok),0.15625,5,-0.035187453,-0.115547,0.11677183
+85,((((NOT pre:tag:nns) AND hyp:tok:restaurant) AND (NOT hyp:tag:vbd)) AND (NOT hyp:tok:around)),((((NOT pre) AND hyp) AND (NOT hyp)) AND (NOT hyp)),((((NOT pre:tag) AND hyp:tok) AND (NOT hyp:tag)) AND (NOT hyp:tok)),0.5555555555555556,7,0.023714222,-0.008861668,-0.07464618
 100,pre:tok:in,pre,pre:tok,0.0,1,-0.088273406,-0.0052091433,-0.0047181933
 101,pre:tok:in,pre,pre:tok,0.0,1,0.029992595,-0.07621401,-0.083021775
 102,pre:tok:in,pre,pre:tok,0.0,1,-0.012499663,-0.02526332,-0.0016857684
 103,pre:tok:in,pre,pre:tok,0.0,1,0.016138189,0.00962268,0.02160543
 104,pre:tok:in,pre,pre:tok,0.0,1,0.023347884,0.048116654,-0.09151149
 105,pre:tok:in,pre,pre:tok,0.0,1,0.016222455,0.012033734,0.013546592
+76,((((NOT pre:tag:dt) AND hyp:tok:swimming) AND (NOT pre:tok:with)) AND (NOT pre:tok:through)),((((NOT pre) AND hyp) AND (NOT pre)) AND (NOT pre)),((((NOT pre:tag) AND hyp:tok) AND (NOT pre:tok)) AND (NOT pre:tok)),0.23076923076923078,7,-0.04563948,0.03152975,0.026896266
 107,pre:tok:in,pre,pre:tok,0.0,1,0.010845746,0.05377577,-0.01788012
 108,pre:tok:in,pre,pre:tok,0.0,1,0.031940717,-0.025490396,-0.050881114
 109,pre:tok:in,pre,pre:tok,0.0,1,-0.0125272535,-0.045895323,-0.084206924
 110,pre:tok:in,pre,pre:tok,0.0,1,-0.05829175,0.00046831323,-0.020443004
 111,pre:tok:in,pre,pre:tok,0.0,1,0.0016251587,-0.027635096,-0.030513028
 112,pre:tok:in,pre,pre:tok,0.0,1,0.009923251,0.010234154,0.030070646
-106,((((hyp:tok:nobody OR hyp:tok:not) OR hyp:tok:eats) OR hyp:tok:fish) OR hyp:tok:no),((((hyp OR hyp) OR hyp) OR hyp) OR hyp),((((hyp:tok OR hyp:tok) OR hyp:tok) OR hyp:tok) OR hyp:tok),0.10817307692307693,5,-0.031491347,-0.029547928,-0.016781854
+61,(((((NOT pre:tag:vbg) AND hyp:tok:swimming) AND hyp:tok:in) OR hyp:tok:hooded) OR hyp:tok:clock),(((((NOT pre) AND hyp) AND hyp) OR hyp) OR hyp),(((((NOT pre:tag) AND hyp:tok) AND hyp:tok) OR hyp:tok) OR hyp:tok),0.16216216216216217,6,0.032971706,-0.027068065,-0.16175447
 114,pre:tok:in,pre,pre:tok,0.0,1,-0.03208998,-0.021575475,0.015153893
 115,pre:tok:in,pre,pre:tok,0.0,1,-0.025477335,-0.048394438,-0.07235463
 116,pre:tok:in,pre,pre:tok,0.0,1,-0.017637454,0.0016426755,-0.05439897
@@ -116,10 +100,718 @@ neuron,feature,category,category_fine,iou,feature_length,w_entail,w_neutral,w_co
 125,pre:tok:in,pre,pre:tok,0.0,1,0.011726397,-0.10328192,-0.049509082
 126,pre:tok:in,pre,pre:tok,0.0,1,0.007641409,0.0072017685,0.0040696347
 127,pre:tok:in,pre,pre:tok,0.0,1,0.008601519,-0.023871878,0.029000605
-113,((((pre:tok:rainy OR pre:tok:third) OR pre:tok:landscape) OR hyp:tok:claus) OR pre:tok:raining),((((pre OR pre) OR pre) OR hyp) OR pre),((((pre:tok OR pre:tok) OR pre:tok) OR hyp:tok) OR pre:tok),0.10112359550561797,5,-0.039625775,0.01247841,0.0041836877
+39,(((((NOT pre:tok:-) AND hyp:tok:nobody) AND pre:tag:dt) AND (NOT pre:tok:at)) AND (NOT pre:tok:from)),(((((NOT pre) AND hyp) AND pre) AND (NOT pre)) AND (NOT pre)),(((((NOT pre:tok) AND hyp:tok) AND pre:tag) AND (NOT pre:tok)) AND (NOT pre:tok)),0.46511627906976744,8,-0.116729215,-0.05308179,0.046814848
 130,pre:tok:in,pre,pre:tok,0.0,1,0.03766189,-0.019099733,-0.031676907
 131,pre:tok:in,pre,pre:tok,0.0,1,-0.008187658,-0.003069799,-0.0018015172
-132,((((hyp:tok:magazine OR hyp:tok:speed) AND pre:tok:is) OR hyp:tok:ballet) AND hyp:tag:in),((((hyp OR hyp) AND pre) OR hyp) AND hyp),((((hyp:tok OR hyp:tok) AND pre:tok) OR hyp:tok) AND hyp:tag),0.23076923076923078,5,-0.0046232697,0.044788186,0.00519702
-129,((((NOT pre:tok:sitting) AND (hyp:tok:eating OR hyp:tok:sitting)) OR hyp:tok:lying) AND (NOT pre:tok:sit)),((((NOT pre) AND (hyp OR hyp)) OR hyp) AND (NOT pre)),((((NOT pre:tok) AND (hyp:tok OR hyp:tok)) OR hyp:tok) AND (NOT pre:tok)),0.28007889546351084,7,-0.07976441,-0.017908039,0.073012434
+91,((hyp:tok:crafts OR hyp:tok:harness) AND hyp:tag:rb),((hyp OR hyp) AND hyp),((hyp:tok OR hyp:tok) AND hyp:tag),0.4,3,-0.056765195,0.048301887,-0.035669833
+92,(((hyp:tok:tourists AND pre:tok:in) OR pre:tag:-lrb-) AND (NOT hyp:tag:in)),(((hyp AND pre) OR pre) AND (NOT hyp)),(((hyp:tok AND pre:tok) OR pre:tag) AND (NOT hyp:tag)),0.25,5,0.07264218,0.024391834,-0.0867493
 135,pre:tok:in,pre,pre:tok,0.0,1,0.0030202875,-0.014142611,0.0250807
 136,pre:tok:in,pre,pre:tok,0.0,1,-0.013081909,0.034544777,-0.09757626
+138,pre:tok:in,pre,pre:tok,0.0,1,-0.0056663803,-0.03728293,0.036637243
+141,pre:tok:in,pre,pre:tok,0.0,1,0.005810221,-0.026972951,-0.011278573
+142,pre:tok:in,pre,pre:tok,0.0,1,-0.07931034,0.0017371047,-0.17360741
+143,pre:tok:in,pre,pre:tok,0.0,1,-0.008734531,0.037634708,0.022897309
+144,pre:tok:in,pre,pre:tok,0.0,1,-0.0057619945,-0.021495854,-0.049787506
+145,pre:tok:in,pre,pre:tok,0.0,1,-0.024638766,-0.0031922143,-0.00596339
+146,pre:tok:in,pre,pre:tok,0.0,1,-0.024519496,-0.0051470543,0.04366446
+147,pre:tok:in,pre,pre:tok,0.0,1,0.010566733,0.015339571,0.032468084
+148,pre:tok:in,pre,pre:tok,0.0,1,-0.02957438,-0.020992396,-0.0046174335
+149,pre:tok:in,pre,pre:tok,0.0,1,-0.020838039,0.016317807,0.0065414477
+132,(((NOT pre:tok:in) AND (hyp:tok:books OR hyp:tok:flight)) AND (NOT pre:tok:to)),(((NOT pre) AND (hyp OR hyp)) AND (NOT pre)),(((NOT pre:tok) AND (hyp:tok OR hyp:tok)) AND (NOT pre:tok)),0.2857142857142857,6,-0.0046232697,0.044788186,0.00519702
+152,pre:tok:in,pre,pre:tok,0.0,1,0.010014768,0.0019077694,-0.014095967
+153,pre:tok:in,pre,pre:tok,0.0,1,0.05763245,-0.032161765,-0.037244726
+154,pre:tok:in,pre,pre:tok,0.0,1,0.05640232,-0.030009817,-0.04099507
+155,pre:tok:in,pre,pre:tok,0.0,1,-0.016818479,0.021958226,0.0063853175
+158,pre:tok:in,pre,pre:tok,0.0,1,-0.0044874987,0.0547712,-0.03767643
+159,pre:tok:in,pre,pre:tok,0.0,1,0.00021119398,0.010514237,-0.017077342
+160,pre:tok:in,pre,pre:tok,0.0,1,0.016960602,0.04256296,-0.016251069
+161,pre:tok:in,pre,pre:tok,0.0,1,0.005571336,-0.010668675,-0.02457532
+162,pre:tok:in,pre,pre:tok,0.0,1,0.017939711,0.026868239,0.00055423524
+163,pre:tok:in,pre,pre:tok,0.0,1,-0.2531126,0.116198055,-0.09132861
+164,pre:tok:in,pre,pre:tok,0.0,1,-0.0015966669,-0.023462098,-0.004886586
+165,pre:tok:in,pre,pre:tok,0.0,1,-0.051729437,-0.05801203,0.08128264
+166,pre:tok:in,pre,pre:tok,0.0,1,0.013000044,-0.028395733,-0.06987498
+167,pre:tok:in,pre,pre:tok,0.0,1,0.036970306,0.015462908,-0.022495331
+168,pre:tok:in,pre,pre:tok,0.0,1,-0.024423728,0.0023050075,0.03357357
+169,pre:tok:in,pre,pre:tok,0.0,1,-0.013789192,-0.005527775,-0.019280791
+170,pre:tok:in,pre,pre:tok,0.0,1,0.10527749,-0.07499032,-0.13033234
+87,((((hyp:tok:scarves OR pre:tok:boats) OR hyp:tok:pier) AND (NOT pre:tok:with)) OR hyp:tok:desks),((((hyp OR pre) OR hyp) AND (NOT pre)) OR hyp),((((hyp:tok OR pre:tok) OR hyp:tok) AND (NOT pre:tok)) OR hyp:tok),0.125,6,-0.08595089,0.06993344,-0.03883311
+172,pre:tok:in,pre,pre:tok,0.0,1,-0.074928164,0.015890753,0.018604869
+174,pre:tok:in,pre,pre:tok,0.0,1,0.045036357,-0.022107106,-0.016550107
+175,pre:tok:in,pre,pre:tok,0.0,1,0.007010473,-0.0333985,0.0011862116
+177,pre:tok:in,pre,pre:tok,0.0,1,-0.035102468,0.029758822,-0.026929472
+178,pre:tok:in,pre,pre:tok,0.0,1,-0.005720577,0.030373879,-0.029933859
+180,pre:tok:in,pre,pre:tok,0.0,1,0.023711625,0.024367345,0.013461646
+156,((((hyp:tok:at AND pre:tok:repair) OR hyp:tok:shelter) AND (NOT pre:tok:two)) AND pre:tag:vbg),((((hyp AND pre) OR hyp) AND (NOT pre)) AND pre),((((hyp:tok AND pre:tok) OR hyp:tok) AND (NOT pre:tok)) AND pre:tag),0.2727272727272727,6,-0.05646153,-0.014640552,0.001927924
+182,pre:tok:in,pre,pre:tok,0.0,1,0.022902442,0.019054422,-0.02082715
+150,(((hyp:tok:creating AND pre:tok:and) OR pre:tok:mural) AND hyp:tag:vbg),(((hyp AND pre) OR pre) AND hyp),(((hyp:tok AND pre:tok) OR pre:tok) AND hyp:tag),0.3333333333333333,4,-0.19717628,0.03932933,0.078936905
+184,pre:tok:in,pre,pre:tok,0.0,1,0.042383034,-0.010578892,0.01582296
+186,pre:tok:in,pre,pre:tok,0.0,1,-0.0052255737,-0.021783398,0.032608166
+187,pre:tok:in,pre,pre:tok,0.0,1,0.04688325,-0.006550069,-0.0069883284
+189,pre:tok:in,pre,pre:tok,0.0,1,-0.025256582,0.042192712,-0.021719601
+188,pre:tok:in,pre,pre:tok,0.0,1,-0.002543531,0.010231753,0.01605837
+190,pre:tok:in,pre,pre:tok,0.0,1,0.008693362,0.026624294,0.0061495597
+171,(((((NOT hyp:tag:.) AND hyp:tok:human) AND (NOT hyp:tag:jj)) AND (NOT pre:tag:rp)) AND (NOT hyp:tag:nns)),(((((NOT hyp) AND hyp) AND (NOT hyp)) AND (NOT pre)) AND (NOT hyp)),(((((NOT hyp:tag) AND hyp:tok) AND (NOT hyp:tag)) AND (NOT pre:tag)) AND (NOT hyp:tag)),0.45454545454545453,9,0.050320663,0.011822704,-0.19689855
+193,pre:tok:in,pre,pre:tok,0.0,1,-0.023645775,-0.0053736,0.022892535
+194,pre:tok:in,pre,pre:tok,0.0,1,-0.19795032,-0.0823614,0.0116554815
+195,pre:tok:in,pre,pre:tok,0.0,1,-0.07860946,0.03830187,-0.01763841
+196,pre:tok:in,pre,pre:tok,0.0,1,0.013898657,-0.0036877377,0.014237707
+183,(hyp:tag:nnps AND pre:tok:relaxing),(hyp AND pre),(hyp:tag AND pre:tok),0.2,2,-0.04230685,-0.04376197,-0.008674221
+199,pre:tok:in,pre,pre:tok,0.0,1,-0.024082795,0.018115602,-0.10912989
+200,pre:tok:in,pre,pre:tok,0.0,1,-0.033764776,-0.0050887647,-0.02600243
+201,pre:tok:in,pre,pre:tok,0.0,1,0.013784866,0.016872317,0.01369216
+202,pre:tok:in,pre,pre:tok,0.0,1,-0.03866473,-0.009189565,-0.044769812
+176,((((hyp:tok:young AND pre:tok:boardwalk) OR hyp:tok:boards) OR hyp:tok:2012) AND (NOT hyp:tag:prp)),((((hyp AND pre) OR hyp) OR hyp) AND (NOT hyp)),((((hyp:tok AND pre:tok) OR hyp:tok) OR hyp:tok) AND (NOT hyp:tag)),0.26666666666666666,6,-0.09351342,-0.07701217,0.024855796
+205,pre:tok:in,pre,pre:tok,0.0,1,0.023406269,0.008170713,0.008519941
+206,pre:tok:in,pre,pre:tok,0.0,1,-0.03466468,0.006258125,0.015352923
+207,pre:tok:in,pre,pre:tok,0.0,1,-0.037924863,0.0001400258,-0.0017536497
+208,pre:tok:in,pre,pre:tok,0.0,1,-0.01722014,-0.00075193564,-0.013821736
+185,((((hyp:tok:bottles OR hyp:tok:spinning) AND pre:tok:on) OR pre:tok:heels) AND (NOT pre:tok:at)),((((hyp OR hyp) AND pre) OR pre) AND (NOT pre)),((((hyp:tok OR hyp:tok) AND pre:tok) OR pre:tok) AND (NOT pre:tok)),0.23076923076923078,6,-0.025977796,-0.009265048,-0.0006861341
+210,pre:tok:in,pre,pre:tok,0.0,1,0.016614368,0.027203389,0.0057107573
+211,pre:tok:in,pre,pre:tok,0.0,1,-0.0051469444,0.015383896,-0.0002964192
+212,pre:tok:in,pre,pre:tok,0.0,1,-0.02968788,0.015877381,0.018498002
+214,pre:tok:in,pre,pre:tok,0.0,1,-0.019919503,0.021164536,-0.046554483
+192,((((NOT hyp:tag:jj) AND (hyp:tok:competition AND pre:tok:on)) OR hyp:tok:lead) AND (NOT pre:tok:black)),((((NOT hyp) AND (hyp AND pre)) OR hyp) AND (NOT pre)),((((NOT hyp:tag) AND (hyp:tok AND pre:tok)) OR hyp:tok) AND (NOT pre:tok)),0.36363636363636365,7,-0.07119933,0.087515876,-0.08368619
+216,pre:tok:in,pre,pre:tok,0.0,1,-0.012621381,-4.6711353e-05,-0.014240419
+217,pre:tok:in,pre,pre:tok,0.0,1,0.007245933,-0.0012914647,-0.034622304
+218,pre:tok:in,pre,pre:tok,0.0,1,-0.0040521626,0.059201997,-0.0847842
+219,pre:tok:in,pre,pre:tok,0.0,1,-0.111452654,-0.07505512,0.031202538
+220,pre:tok:in,pre,pre:tok,0.0,1,0.022119725,0.027668612,0.02349514
+221,pre:tok:in,pre,pre:tok,0.0,1,-0.009180218,-0.011132682,0.004512205
+222,pre:tok:in,pre,pre:tok,0.0,1,0.0054146987,0.005306623,-0.0050698714
+223,pre:tok:in,pre,pre:tok,0.0,1,0.01812402,-0.030026175,-0.019088529
+224,pre:tok:in,pre,pre:tok,0.0,1,-0.029650997,-0.07142112,-0.058587357
+225,pre:tok:in,pre,pre:tok,0.0,1,-0.026616964,-0.10193819,-0.11623698
+226,pre:tok:in,pre,pre:tok,0.0,1,-0.07915883,0.033147518,0.0048398334
+227,pre:tok:in,pre,pre:tok,0.0,1,-0.016089026,0.026418678,-0.019831115
+228,pre:tok:in,pre,pre:tok,0.0,1,-0.030677142,-0.04719693,0.002839088
+229,pre:tok:in,pre,pre:tok,0.0,1,0.04651426,-0.070510276,-0.014886223
+230,pre:tok:in,pre,pre:tok,0.0,1,-0.062289454,0.072772026,-0.1255039
+83,((((hyp:tok:inside AND pre:tok:in) OR pre:tok:atv) AND (NOT pre:tok:and)) OR hyp:tok:tan),((((hyp AND pre) OR pre) AND (NOT pre)) OR hyp),((((hyp:tok AND pre:tok) OR pre:tok) AND (NOT pre:tok)) OR hyp:tok),0.1,6,0.015798438,-0.027097842,-0.026725514
+233,pre:tok:in,pre,pre:tok,0.0,1,-0.01909712,-0.012059377,0.012925515
+191,((((hyp:tok:books OR pre:tok:pipes) AND hyp:tok:reading) OR hyp:tok:trunks) AND (NOT oth:overlap:overlap25)),((((hyp OR pre) AND hyp) OR hyp) AND (NOT oth)),((((hyp:tok OR pre:tok) AND hyp:tok) OR hyp:tok) AND (NOT oth:overlap)),0.21428571428571427,6,-0.019932631,0.054277934,-0.024257569
+235,pre:tok:in,pre,pre:tok,0.0,1,-0.008386696,-0.02322001,-0.08857988
+236,pre:tok:in,pre,pre:tok,0.0,1,-0.018689448,-0.0009445437,-0.009989676
+237,pre:tok:in,pre,pre:tok,0.0,1,-0.021622432,-0.008415392,0.015073408
+240,pre:tok:in,pre,pre:tok,0.0,1,0.046278898,0.0745689,-0.09906145
+242,pre:tok:in,pre,pre:tok,0.0,1,0.0060063954,0.011467705,0.008768289
+243,pre:tok:in,pre,pre:tok,0.0,1,-0.16098133,0.06321727,-0.051296152
+245,pre:tok:in,pre,pre:tok,0.0,1,-0.15542404,0.09704347,-0.10930284
+246,pre:tok:in,pre,pre:tok,0.0,1,-0.016798373,-0.02805847,0.03840971
+198,((((hyp:tok:couch AND hyp:tok:two) OR hyp:tok:pocket) AND (NOT hyp:tag:vbg)) OR hyp:tok:racetrack),((((hyp AND hyp) OR hyp) AND (NOT hyp)) OR hyp),((((hyp:tok AND hyp:tok) OR hyp:tok) AND (NOT hyp:tag)) OR hyp:tok),0.4444444444444444,6,0.055856068,-0.008882037,-0.05513268
+215,((((hyp:tok:chasing AND pre:tok:horned) OR pre:tok:attempting) AND hyp:tag:nns) AND (NOT hyp:tag:jj)),((((hyp AND pre) OR pre) AND hyp) AND (NOT hyp)),((((hyp:tok AND pre:tok) OR pre:tok) AND hyp:tag) AND (NOT hyp:tag)),0.25,6,0.04139869,-0.0023901896,-0.06716644
+249,pre:tok:in,pre,pre:tok,0.0,1,0.0137644,0.034958817,0.007087059
+250,pre:tok:in,pre,pre:tok,0.0,1,-0.011110642,0.0068920623,0.015077724
+252,pre:tok:in,pre,pre:tok,0.0,1,0.00084912934,0.01526511,-0.030949142
+255,pre:tok:in,pre,pre:tok,0.0,1,-0.100662425,-0.05091947,-0.0069142473
+256,pre:tok:in,pre,pre:tok,0.0,1,-0.018201523,-0.012200626,-0.0055663744
+258,pre:tok:in,pre,pre:tok,0.0,1,0.0049470486,0.02776395,-0.02464375
+259,pre:tok:in,pre,pre:tok,0.0,1,-0.03007103,0.021653527,-0.038569827
+251,(((NOT hyp:tag:nn) AND hyp:tok:smiling) AND pre:tok:smiling),(((NOT hyp) AND hyp) AND pre),(((NOT hyp:tag) AND hyp:tok) AND pre:tok),0.4,4,-0.07021427,0.103977896,-0.17705114
+263,pre:tok:in,pre,pre:tok,0.0,1,0.0055371686,0.017919458,0.013577985
+264,pre:tok:in,pre,pre:tok,0.0,1,0.018345287,0.030594246,0.01505377
+113,((((pre:tok:computer OR pre:tok:signs) AND pre:tag:vbn) OR hyp:tok:tired) OR hyp:tok:youngster),((((pre OR pre) AND pre) OR hyp) OR hyp),((((pre:tok OR pre:tok) AND pre:tag) OR hyp:tok) OR hyp:tok),0.1095890410958904,5,-0.039625775,0.01247841,0.0041836877
+266,pre:tok:in,pre,pre:tok,0.0,1,-0.008454966,0.024465099,-0.030837314
+268,pre:tok:in,pre,pre:tok,0.0,1,-0.007078306,-0.036788832,0.02979326
+269,pre:tok:in,pre,pre:tok,0.0,1,-0.032027118,-0.02202564,-8.9144574e-05
+271,pre:tok:in,pre,pre:tok,0.0,1,-0.07063037,-0.044692654,-0.007765836
+272,pre:tok:in,pre,pre:tok,0.0,1,0.008859993,-0.032383133,0.024345938
+273,pre:tok:in,pre,pre:tok,0.0,1,0.0412596,0.008739188,-0.021415036
+274,pre:tok:in,pre,pre:tok,0.0,1,-0.010766891,-0.046837896,0.005158592
+276,pre:tok:in,pre,pre:tok,0.0,1,-0.020075347,-0.019441754,-0.015172385
+277,pre:tok:in,pre,pre:tok,0.0,1,0.0113594765,9.817706e-05,-0.0034953442
+278,pre:tok:in,pre,pre:tok,0.0,1,0.017460749,-0.06361183,-0.026882976
+279,pre:tok:in,pre,pre:tok,0.0,1,-0.03907658,0.0060771233,-0.06031292
+281,pre:tok:in,pre,pre:tok,0.0,1,-0.009757218,-0.021517513,-0.0017034727
+282,pre:tok:in,pre,pre:tok,0.0,1,-0.020869039,-0.03439933,0.039400123
+244,((((NOT pre:tag:prp$) AND (hyp:tok:home AND pre:tok:wearing)) OR hyp:tok:pillow) AND (NOT pre:tok:are)),((((NOT pre) AND (hyp AND pre)) OR hyp) AND (NOT pre)),((((NOT pre:tag) AND (hyp:tok AND pre:tok)) OR hyp:tok) AND (NOT pre:tok)),0.21052631578947367,7,-0.02373876,-0.011094227,-0.0046262923
+286,pre:tok:in,pre,pre:tok,0.0,1,0.057356223,-0.0052547236,-0.112932794
+260,(((hyp:tok:blanket AND pre:tok:through) OR hyp:tok:desks) AND pre:tag:vbg),(((hyp AND pre) OR hyp) AND pre),(((hyp:tok AND pre:tok) OR hyp:tok) AND pre:tag),0.2,4,-0.26146156,0.024047742,-0.03168717
+289,pre:tok:in,pre,pre:tok,0.0,1,-0.019099105,-0.017004687,-0.022361914
+291,pre:tok:in,pre,pre:tok,0.0,1,0.017681258,-0.01667235,0.0063416855
+275,((((hyp:tok:bent OR hyp:tok:shade) OR pre:tok:motorcyclists) AND (NOT pre:tok:and)) AND hyp:tag:in),((((hyp OR hyp) OR pre) AND (NOT pre)) AND hyp),((((hyp:tok OR hyp:tok) OR pre:tok) AND (NOT pre:tok)) AND hyp:tag),0.17647058823529413,6,-0.14556639,-0.1201038,0.13598733
+295,pre:tok:in,pre,pre:tok,0.0,1,0.020303907,-0.042713914,-0.04208761
+267,(hyp:tok:conversation AND pre:tok:table),(hyp AND pre),(hyp:tok AND pre:tok),0.25,2,-0.09986722,0.02453234,-0.037792765
+299,pre:tok:in,pre,pre:tok,0.0,1,0.01104053,0.00084995653,-5.5537857e-05
+300,pre:tok:in,pre,pre:tok,0.0,1,-0.022364594,-0.0016705373,-0.024519714
+301,pre:tok:in,pre,pre:tok,0.0,1,0.03804945,0.02473932,-0.039984506
+52,((((hyp:tok:cat OR pre:tok:matching) OR hyp:tok:brunette) OR pre:tok:weather) AND pre:tag:in),((((hyp OR pre) OR hyp) OR pre) AND pre),((((hyp:tok OR pre:tok) OR hyp:tok) OR pre:tok) AND pre:tag),0.1310344827586207,5,-0.031588376,-0.06022113,0.10149266
+303,pre:tok:in,pre,pre:tok,0.0,1,0.013864807,-0.033972554,0.018810619
+305,pre:tok:in,pre,pre:tok,0.0,1,0.04907726,0.0051228795,0.0013278788
+306,pre:tok:in,pre,pre:tok,0.0,1,-0.014996671,-0.0023088118,-0.006956312
+293,((((NOT pre:tok:into) AND (hyp:tok:water AND pre:tok:pool)) AND (NOT pre:tok:on)) AND hyp:tag:vbz),((((NOT pre) AND (hyp AND pre)) AND (NOT pre)) AND hyp),((((NOT pre:tok) AND (hyp:tok AND pre:tok)) AND (NOT pre:tok)) AND hyp:tag),0.15384615384615385,7,0.047177356,0.0018140158,-0.04264136
+287,((((hyp:tok:runs AND pre:tok:and) OR pre:tok:heading) AND hyp:tag:jj) OR hyp:tok:tables),((((hyp AND pre) OR pre) AND hyp) OR hyp),((((hyp:tok AND pre:tok) OR pre:tok) AND hyp:tag) OR hyp:tok),0.2,5,-0.23020631,-0.09304557,0.072995104
+310,pre:tok:in,pre,pre:tok,0.0,1,0.0073004626,-0.0024335417,-0.015450407
+311,pre:tok:in,pre,pre:tok,0.0,1,-0.0787494,0.060296282,-0.071298346
+313,pre:tok:in,pre,pre:tok,0.0,1,-0.0061516073,0.00945233,-0.0017304624
+314,pre:tok:in,pre,pre:tok,0.0,1,0.042991437,-0.035998553,-0.0065247905
+315,pre:tok:in,pre,pre:tok,0.0,1,-0.027715879,0.015308687,-0.012647242
+296,(((hyp:tok:car AND pre:tok:pepper) OR pre:tok:native) AND hyp:tok:man),(((hyp AND pre) OR pre) AND hyp),(((hyp:tok AND pre:tok) OR pre:tok) AND hyp:tok),0.2222222222222222,4,-0.0041026035,-0.03239704,-0.11696973
+317,pre:tok:in,pre,pre:tok,0.0,1,0.010468309,-0.022590471,-0.050444048
+318,pre:tok:in,pre,pre:tok,0.0,1,-0.00568402,0.012416318,-0.008331999
+319,pre:tok:in,pre,pre:tok,0.0,1,0.013206493,0.028963985,-0.020110214
+37,((((hyp:tok:human OR hyp:tok:humans) OR hyp:tok:drives) OR hyp:tok:stroll) OR pre:tok:n't),((((hyp OR hyp) OR hyp) OR hyp) OR pre),((((hyp:tok OR hyp:tok) OR hyp:tok) OR hyp:tok) OR pre:tok),0.09259259259259259,5,-0.029064782,-0.0059582936,-0.057603292
+321,pre:tok:in,pre,pre:tok,0.0,1,-0.0056631984,-0.0043634097,0.043296974
+322,pre:tok:in,pre,pre:tok,0.0,1,0.0057144384,-0.046056107,-0.056925062
+323,pre:tok:in,pre,pre:tok,0.0,1,-0.05739789,-0.036080167,0.0004599119
+324,pre:tok:in,pre,pre:tok,0.0,1,-0.03402482,-0.001879017,-0.06093988
+325,pre:tok:in,pre,pre:tok,0.0,1,-0.005043803,-0.022443816,0.028051108
+298,((((hyp:tok:motorized OR hyp:tok:skateboards) AND oth:overlap:overlap50) OR pre:tok:lunch) AND (NOT pre:tok:in)),((((hyp OR hyp) AND oth) OR pre) AND (NOT pre)),((((hyp:tok OR hyp:tok) AND oth:overlap) OR pre:tok) AND (NOT pre:tok)),0.13636363636363635,6,0.043330688,-0.10983226,-0.028986886
+327,pre:tok:in,pre,pre:tok,0.0,1,0.01988744,0.009893733,0.02276527
+329,pre:tok:in,pre,pre:tok,0.0,1,-0.00022844963,-0.019345606,0.017444149
+330,pre:tok:in,pre,pre:tok,0.0,1,-0.0018906741,-0.01591578,-0.003031399
+331,pre:tok:in,pre,pre:tok,0.0,1,-0.018313082,0.0071274177,-0.006923942
+333,pre:tok:in,pre,pre:tok,0.0,1,0.0023203567,-0.06773969,-0.14236686
+334,pre:tok:in,pre,pre:tok,0.0,1,-0.008057741,-0.011678593,-0.06332471
+335,pre:tok:in,pre,pre:tok,0.0,1,-0.0062360135,0.021964548,-0.005529698
+337,pre:tok:in,pre,pre:tok,0.0,1,0.07844269,-0.124823645,-0.116053134
+338,pre:tok:in,pre,pre:tok,0.0,1,0.00221908,-0.021992985,0.017488014
+339,pre:tok:in,pre,pre:tok,0.0,1,-0.09825043,0.0878593,-0.04942506
+340,pre:tok:in,pre,pre:tok,0.0,1,-0.0015237121,0.03579257,-0.0043053837
+332,((((NOT pre:tok:is) AND (hyp:tok:diving AND pre:tok:in)) OR pre:tok:heading) AND hyp:tag:jj),((((NOT pre) AND (hyp AND pre)) OR pre) AND hyp),((((NOT pre:tok) AND (hyp:tok AND pre:tok)) OR pre:tok) AND hyp:tag),0.5,6,0.0008637327,-0.08397317,0.03804259
+342,pre:tok:in,pre,pre:tok,0.0,1,0.017501026,-0.008187532,0.0073144427
+343,pre:tok:in,pre,pre:tok,0.0,1,-0.012721769,0.013577793,0.011555942
+344,pre:tok:in,pre,pre:tok,0.0,1,0.00088156614,0.025899991,-0.008138531
+345,pre:tok:in,pre,pre:tok,0.0,1,-0.008646859,-0.014297067,0.01212266
+347,pre:tok:in,pre,pre:tok,0.0,1,-0.060792044,-0.08991794,-0.01653681
+241,((((hyp:tok:bone OR hyp:tok:naked) AND hyp:tag:in) OR hyp:tok:low) OR hyp:tok:bank),((((hyp OR hyp) AND hyp) OR hyp) OR hyp),((((hyp:tok OR hyp:tok) AND hyp:tag) OR hyp:tok) OR hyp:tok),0.16326530612244897,5,-0.13333753,-0.07363972,0.089811035
+349,pre:tok:in,pre,pre:tok,0.0,1,-0.07420015,0.021658357,0.026834212
+350,pre:tok:in,pre,pre:tok,0.0,1,-0.0012521191,0.02548543,-0.020040466
+351,pre:tok:in,pre,pre:tok,0.0,1,-0.03497493,-0.011718889,0.009512682
+352,pre:tok:in,pre,pre:tok,0.0,1,-0.018293308,-0.027592087,0.0049971123
+353,pre:tok:in,pre,pre:tok,0.0,1,-0.012360932,0.0012933163,-0.095680736
+354,pre:tok:in,pre,pre:tok,0.0,1,0.007606058,-0.0005479575,0.00052117324
+355,pre:tok:in,pre,pre:tok,0.0,1,-0.020384546,-0.005223178,0.04574676
+356,pre:tok:in,pre,pre:tok,0.0,1,0.03869801,-0.054213103,-0.012896394
+357,pre:tok:in,pre,pre:tok,0.0,1,0.016425593,-0.057025213,-0.060165837
+358,pre:tok:in,pre,pre:tok,0.0,1,-0.014080335,0.013844736,0.006392464
+359,pre:tok:in,pre,pre:tok,0.0,1,-0.01851526,-0.08407825,-0.03425972
+360,pre:tok:in,pre,pre:tok,0.0,1,-0.019365422,0.03314586,-0.013951099
+361,pre:tok:in,pre,pre:tok,0.0,1,0.00494959,-0.0194865,-0.0027536212
+363,pre:tok:in,pre,pre:tok,0.0,1,-0.021557504,0.012257776,0.035564914
+364,pre:tok:in,pre,pre:tok,0.0,1,0.01345662,-0.026802478,-0.014091045
+365,pre:tok:in,pre,pre:tok,0.0,1,-0.036733825,-0.03978047,-0.0074016834
+366,pre:tok:in,pre,pre:tok,0.0,1,-0.0014739971,-0.0065523246,0.007329676
+370,pre:tok:in,pre,pre:tok,0.0,1,-0.015012102,-0.0013959471,-0.032510255
+371,pre:tok:in,pre,pre:tok,0.0,1,-0.0010417204,0.024827499,-0.056740496
+372,pre:tok:in,pre,pre:tok,0.0,1,-0.035080377,-0.02549487,0.021345621
+373,pre:tok:in,pre,pre:tok,0.0,1,0.08851954,-0.045302074,0.021751031
+374,pre:tok:in,pre,pre:tok,0.0,1,-0.017029732,-0.008752043,0.024259947
+348,((((hyp:tok:edge OR hyp:tok:tattoo) AND pre:tok:in) OR pre:tok:elder) AND hyp:tag:vbg),((((hyp OR hyp) AND pre) OR pre) AND hyp),((((hyp:tok OR hyp:tok) AND pre:tok) OR pre:tok) AND hyp:tag),0.25,5,-0.075390175,0.019031063,0.020022808
+326,(((hyp:tok:beard OR hyp:tok:pajamas) AND pre:tok:in) AND (NOT pre:tok:are)),(((hyp OR hyp) AND pre) AND (NOT pre)),(((hyp:tok OR hyp:tok) AND pre:tok) AND (NOT pre:tok)),0.2857142857142857,5,-0.016112812,-0.061893824,0.034877796
+379,pre:tok:in,pre,pre:tok,0.0,1,-0.024195539,-0.0034718902,-0.032489195
+381,pre:tok:in,pre,pre:tok,0.0,1,-0.028680257,0.09751536,-0.06368353
+307,((((hyp:tok:friends AND pre:tok:group) OR hyp:tok:apartment) OR hyp:tok:level) OR pre:tok:pick),((((hyp AND pre) OR hyp) OR hyp) OR pre),((((hyp:tok AND pre:tok) OR hyp:tok) OR hyp:tok) OR pre:tok),0.125,5,-0.07955517,0.029367004,-0.05080707
+383,pre:tok:in,pre,pre:tok,0.0,1,0.045275014,-0.018186895,-0.0130546875
+384,pre:tok:in,pre,pre:tok,0.0,1,-0.027211204,0.021792147,-0.016088169
+309,((((hyp:tok:item OR pre:tok:garbage) AND pre:tok:and) OR hyp:tok:lead) OR hyp:tok:creating),((((hyp OR pre) AND pre) OR hyp) OR hyp),((((hyp:tok OR pre:tok) AND pre:tok) OR hyp:tok) OR hyp:tok),0.1388888888888889,5,0.02116709,-0.0076854653,0.00036000696
+341,((((pre:tok:cherry OR pre:tok:sandals) OR pre:tok:sister) OR pre:tok:picking) AND (NOT pre:tok:while)),((((pre OR pre) OR pre) OR pre) AND (NOT pre)),((((pre:tok OR pre:tok) OR pre:tok) OR pre:tok) AND (NOT pre:tok)),0.12727272727272726,6,-0.11531263,0.036885172,-0.030810071
+388,pre:tok:in,pre,pre:tok,0.0,1,0.015144471,0.009120949,0.035231017
+312,(((((NOT hyp:tag:nns) AND hyp:tok:park) AND (NOT hyp:tag:jj)) OR pre:tok:information) AND (NOT pre:tok:shirt)),(((((NOT hyp) AND hyp) AND (NOT hyp)) OR pre) AND (NOT pre)),(((((NOT hyp:tag) AND hyp:tok) AND (NOT hyp:tag)) OR pre:tok) AND (NOT pre:tok)),0.16129032258064516,8,-0.038438097,-0.0871035,0.020201841
+393,pre:tok:in,pre,pre:tok,0.0,1,-0.017710885,-0.06548913,0.03569102
+394,pre:tok:in,pre,pre:tok,0.0,1,0.0013322417,-0.042937588,-0.0033577196
+376,((((hyp:tok:there AND hyp:tok:this) OR hyp:tok:multiple) OR hyp:tok:podium) OR hyp:tok:complete),((((hyp AND hyp) OR hyp) OR hyp) OR hyp),((((hyp:tok AND hyp:tok) OR hyp:tok) OR hyp:tok) OR hyp:tok),0.15254237288135594,5,0.0007233795,-0.028777227,-0.044512797
+396,pre:tok:in,pre,pre:tok,0.0,1,0.028938977,-0.041258104,-0.0094520245
+397,pre:tok:in,pre,pre:tok,0.0,1,-0.009555401,0.0109179,-0.010679306
+398,pre:tok:in,pre,pre:tok,0.0,1,-0.0142030455,0.0010340697,-0.009112435
+401,pre:tok:in,pre,pre:tok,0.0,1,-0.027468929,-0.010657607,-0.045073006
+402,pre:tok:in,pre,pre:tok,0.0,1,0.032343805,0.014500729,0.0037118308
+405,pre:tok:in,pre,pre:tok,0.0,1,-0.015913194,0.0039136247,-0.04662489
+406,pre:tok:in,pre,pre:tok,0.0,1,-0.028658347,8.930748e-05,-0.009205667
+407,pre:tok:in,pre,pre:tok,0.0,1,-0.047923114,-0.1519285,0.012177964
+408,pre:tok:in,pre,pre:tok,0.0,1,-0.041346774,0.026654579,-0.05079388
+409,pre:tok:in,pre,pre:tok,0.0,1,-0.16100192,0.07044437,-0.0798337
+395,(((((NOT hyp:tag:in) AND hyp:tok:old) AND (NOT hyp:tag:vbg)) AND (NOT hyp:tag:nns)) AND hyp:tok:is),(((((NOT hyp) AND hyp) AND (NOT hyp)) AND (NOT hyp)) AND hyp),(((((NOT hyp:tag) AND hyp:tok) AND (NOT hyp:tag)) AND (NOT hyp:tag)) AND hyp:tok),0.4,8,-0.05726128,0.059899017,-0.077551864
+414,pre:tok:in,pre,pre:tok,0.0,1,-0.02372531,0.02944194,0.014424353
+415,pre:tok:in,pre,pre:tok,0.0,1,0.005377025,0.001135537,0.0043723066
+417,pre:tok:in,pre,pre:tok,0.0,1,-0.05286538,-0.14417113,0.052462887
+418,pre:tok:in,pre,pre:tok,0.0,1,0.0064510466,0.016215459,-0.013208728
+419,pre:tok:in,pre,pre:tok,0.0,1,0.14452167,-0.08351234,-0.15428664
+421,pre:tok:in,pre,pre:tok,0.0,1,-0.016919468,0.041221656,-0.03847667
+422,pre:tok:in,pre,pre:tok,0.0,1,-0.028515115,0.032681216,-0.085184686
+425,pre:tok:in,pre,pre:tok,0.0,1,0.0070390385,0.012154701,0.0061966553
+426,pre:tok:in,pre,pre:tok,0.0,1,-0.012762922,-0.018394154,-0.071953036
+427,pre:tok:in,pre,pre:tok,0.0,1,0.0042064344,-0.10321526,-0.02702625
+428,pre:tok:in,pre,pre:tok,0.0,1,-0.01941985,-0.027514078,0.028267128
+430,pre:tok:in,pre,pre:tok,0.0,1,-0.012718891,-0.005738064,0.033842638
+431,pre:tok:in,pre,pre:tok,0.0,1,-0.048573416,-0.007898083,-0.03899716
+432,pre:tok:in,pre,pre:tok,0.0,1,-0.0026208411,0.027573472,-0.01647897
+433,pre:tok:in,pre,pre:tok,0.0,1,0.035102163,0.0227082,-0.018572165
+434,pre:tok:in,pre,pre:tok,0.0,1,-0.03761788,-0.003768497,0.025853379
+411,(((((NOT hyp:tag:dt) AND pre:tok:singing) OR hyp:tok:beam) OR hyp:tok:gather) OR hyp:tok:casual),(((((NOT hyp) AND pre) OR hyp) OR hyp) OR hyp),(((((NOT hyp:tag) AND pre:tok) OR hyp:tok) OR hyp:tok) OR hyp:tok),0.17073170731707318,6,-0.07647673,0.051506314,-0.05976417
+438,pre:tok:in,pre,pre:tok,0.0,1,-0.05889153,0.025949528,-0.11943792
+439,pre:tok:in,pre,pre:tok,0.0,1,-0.0063127964,-0.00450375,-0.01103471
+440,pre:tok:in,pre,pre:tok,0.0,1,0.072139554,-0.012190605,-0.037723657
+441,pre:tok:in,pre,pre:tok,0.0,1,-0.013248076,0.015468294,-0.011625166
+442,pre:tok:in,pre,pre:tok,0.0,1,0.020690924,-0.06888793,-0.07939242
+443,pre:tok:in,pre,pre:tok,0.0,1,0.011893281,-0.016482996,-0.06130726
+444,pre:tok:in,pre,pre:tok,0.0,1,0.07642511,-0.17522152,-0.07244832
+446,pre:tok:in,pre,pre:tok,0.0,1,0.026761068,-0.015495057,-0.047093477
+447,pre:tok:in,pre,pre:tok,0.0,1,0.02419535,0.010940542,-0.007364323
+429,((NOT pre:tok:is) AND (hyp:tok:beach AND pre:tok:water)),((NOT pre) AND (hyp AND pre)),((NOT pre:tok) AND (hyp:tok AND pre:tok)),0.375,4,-0.12660566,0.0747706,-0.032753352
+449,pre:tok:in,pre,pre:tok,0.0,1,0.031188317,-0.025904024,-0.10597977
+423,((((hyp:tok:busy AND pre:tok:city) OR pre:tok:heading) OR hyp:tok:onlookers) AND (NOT pre:tok:on)),((((hyp AND pre) OR pre) OR hyp) AND (NOT pre)),((((hyp:tok AND pre:tok) OR pre:tok) OR hyp:tok) AND (NOT pre:tok)),0.18181818181818182,6,-0.011351287,-0.032893483,-0.005386788
+451,pre:tok:in,pre,pre:tok,0.0,1,-0.013603501,-0.018782156,0.0014957184
+452,pre:tok:in,pre,pre:tok,0.0,1,0.009020895,0.028072769,-0.0019063964
+453,pre:tok:in,pre,pre:tok,0.0,1,0.022045808,0.005210349,0.008979501
+455,pre:tok:in,pre,pre:tok,0.0,1,0.005280232,0.003639882,-0.009026748
+456,pre:tok:in,pre,pre:tok,0.0,1,-0.03245286,0.010651396,-0.048031293
+420,((((hyp:tok:football AND hyp:tok:playing) OR hyp:tok:covered) AND (NOT pre:tok:with)) AND (NOT pre:tok:are)),((((hyp AND hyp) OR hyp) AND (NOT pre)) AND (NOT pre)),((((hyp:tok AND hyp:tok) OR hyp:tok) AND (NOT pre:tok)) AND (NOT pre:tok)),0.21052631578947367,7,0.04555787,2.5705469e-05,-0.030242294
+459,pre:tok:in,pre,pre:tok,0.0,1,0.0003374226,-0.026376126,0.03414953
+460,pre:tok:in,pre,pre:tok,0.0,1,-0.036803387,0.029394168,0.020457497
+461,pre:tok:in,pre,pre:tok,0.0,1,0.022666315,-0.14271997,-0.03921308
+450,((((NOT pre:tok:people) AND hyp:tok:move) OR hyp:tok:sofa) AND pre:tok:on),((((NOT pre) AND hyp) OR hyp) AND pre),((((NOT pre:tok) AND hyp:tok) OR hyp:tok) AND pre:tok),0.2857142857142857,5,0.06277868,-0.13387111,-0.06728411
+399,((((pre:tok:blocking OR pre:tok:playground) AND pre:tok:in) OR pre:tok:plate) AND (NOT pre:tag:vbp)),((((pre OR pre) AND pre) OR pre) AND (NOT pre)),((((pre:tok OR pre:tok) AND pre:tok) OR pre:tok) AND (NOT pre:tag)),0.13559322033898305,6,-0.04566942,0.08255615,-0.08485591
+464,pre:tok:in,pre,pre:tok,0.0,1,0.009399297,-0.028949145,-0.02638831
+465,pre:tok:in,pre,pre:tok,0.0,1,-0.03195605,0.017210416,-0.037909262
+467,pre:tok:in,pre,pre:tok,0.0,1,0.0076166545,-0.06468429,-0.05373876
+468,pre:tok:in,pre,pre:tok,0.0,1,0.012908939,0.010198088,0.018696018
+469,pre:tok:in,pre,pre:tok,0.0,1,0.0022173251,0.01678643,-0.07188071
+470,pre:tok:in,pre,pre:tok,0.0,1,-0.13446712,-0.079247825,-0.018142512
+471,pre:tok:in,pre,pre:tok,0.0,1,-0.0030821406,-0.00075639616,0.008314441
+472,pre:tok:in,pre,pre:tok,0.0,1,-0.045198657,-0.004266012,-0.030905806
+445,(((hyp:tok:i AND pre:tok:and) OR pre:tok:supermarket) AND (NOT hyp:tag:dt)),(((hyp AND pre) OR pre) AND (NOT hyp)),(((hyp:tok AND pre:tok) OR pre:tok) AND (NOT hyp:tag)),0.2222222222222222,5,-0.09259478,-0.039882805,0.020772837
+474,pre:tok:in,pre,pre:tok,0.0,1,0.013455741,-0.008225674,-0.03789388
+475,pre:tok:in,pre,pre:tok,0.0,1,-0.013084827,-0.020380849,0.009550325
+476,pre:tok:in,pre,pre:tok,0.0,1,-0.1347382,-0.06304772,0.104676165
+477,pre:tok:in,pre,pre:tok,0.0,1,0.030931845,-0.027889634,0.027836634
+437,((((NOT pre:tok:is) AND (hyp:tok:chases OR hyp:tok:pushes)) AND pre:tag:jj) AND (NOT pre:tok:and)),((((NOT pre) AND (hyp OR hyp)) AND pre) AND (NOT pre)),((((NOT pre:tok) AND (hyp:tok OR hyp:tok)) AND pre:tag) AND (NOT pre:tok)),0.18181818181818182,7,-0.064132765,0.029891819,-0.034829702
+479,pre:tok:in,pre,pre:tok,0.0,1,0.033353142,-0.020595908,-0.027099513
+481,pre:tok:in,pre,pre:tok,0.0,1,0.036039237,0.023725076,-0.007577211
+482,pre:tok:in,pre,pre:tok,0.0,1,-0.010004879,-0.016780576,-0.03414295
+403,(((((NOT hyp:tag:in) AND hyp:tok:working) OR hyp:tok:approaching) AND hyp:tag:dt) OR pre:tok:picking),(((((NOT hyp) AND hyp) OR hyp) AND hyp) OR pre),(((((NOT hyp:tag) AND hyp:tok) OR hyp:tok) AND hyp:tag) OR pre:tok),0.13725490196078433,6,-0.04561362,-0.0033849536,-0.04311837
+484,pre:tok:in,pre,pre:tok,0.0,1,0.0032208008,-0.026272452,-0.034783877
+485,pre:tok:in,pre,pre:tok,0.0,1,-0.16592585,-0.034080263,-0.009695896
+486,pre:tok:in,pre,pre:tok,0.0,1,-0.057672426,0.030597117,-0.048010398
+488,pre:tok:in,pre,pre:tok,0.0,1,0.003258952,0.0045695547,0.0018253267
+489,pre:tok:in,pre,pre:tok,0.0,1,0.02813701,-0.044243626,-0.01012774
+490,pre:tok:in,pre,pre:tok,0.0,1,0.048346765,-0.0027766584,-0.028373398
+462,(((hyp:tok:are AND pre:tag:rbr) OR pre:tok:electronics) AND (NOT hyp:tag:dt)),(((hyp AND pre) OR pre) AND (NOT hyp)),(((hyp:tok AND pre:tag) OR pre:tok) AND (NOT hyp:tag)),0.3333333333333333,5,-0.027237158,-0.06862503,-0.05062005
+492,pre:tok:in,pre,pre:tok,0.0,1,-0.05658046,-0.046108823,0.0100123575
+493,pre:tok:in,pre,pre:tok,0.0,1,-0.02164233,0.013882127,-0.019545617
+494,pre:tok:in,pre,pre:tok,0.0,1,0.064761944,-0.055719487,0.00042966197
+496,pre:tok:in,pre,pre:tok,0.0,1,0.0047143395,-0.0019455871,-0.06736127
+503,pre:tok:in,pre,pre:tok,0.0,1,-0.042291507,0.01745496,-0.012966067
+504,pre:tok:in,pre,pre:tok,0.0,1,0.020268582,0.029149417,0.012657582
+505,pre:tok:in,pre,pre:tok,0.0,1,0.06604929,-0.023106698,-0.043895885
+507,pre:tok:in,pre,pre:tok,0.0,1,-0.05200492,0.002468604,0.009874206
+508,pre:tok:in,pre,pre:tok,0.0,1,0.011873196,0.00800653,0.02184116
+509,pre:tok:in,pre,pre:tok,0.0,1,-0.009491831,0.016301647,-0.014467513
+511,pre:tok:in,pre,pre:tok,0.0,1,0.02123941,-0.047448725,0.06185051
+513,pre:tok:in,pre,pre:tok,0.0,1,-0.0092774695,-0.01765693,-0.01545591
+518,pre:tok:in,pre,pre:tok,0.0,1,0.06270335,-0.06254285,-0.090652645
+519,pre:tok:in,pre,pre:tok,0.0,1,0.007186493,0.008744803,0.0122723365
+520,pre:tok:in,pre,pre:tok,0.0,1,-0.057010077,-0.013417695,-0.038007166
+521,pre:tok:in,pre,pre:tok,0.0,1,-0.013219853,0.041483436,0.0004046854
+498,(((((NOT hyp:tag:jj) AND hyp:tok:human) AND (NOT hyp:tag:nns)) AND (NOT hyp:tag:rb)) AND (NOT pre:tok:while)),(((((NOT hyp) AND hyp) AND (NOT hyp)) AND (NOT hyp)) AND (NOT pre)),(((((NOT hyp:tag) AND hyp:tok) AND (NOT hyp:tag)) AND (NOT hyp:tag)) AND (NOT pre:tok)),0.4444444444444444,9,0.0820666,-0.07150898,-0.16988885
+367,((((hyp:tok:sleeps OR pre:tok:swimming) OR pre:tok:surf) OR hyp:tok:pets) AND (NOT oth:overlap:overlap75)),((((hyp OR pre) OR pre) OR hyp) AND (NOT oth)),((((hyp:tok OR pre:tok) OR pre:tok) OR hyp:tok) AND (NOT oth:overlap)),0.125,6,-0.05194816,-0.0740042,0.07500559
+526,pre:tok:in,pre,pre:tok,0.0,1,-0.0010391942,-0.02001949,0.0075743324
+378,((((hyp:tok:white AND pre:tok:black) OR hyp:tok:heels) OR hyp:tok:lighting) OR pre:tok:present),((((hyp AND pre) OR hyp) OR hyp) OR pre),((((hyp:tok AND pre:tok) OR hyp:tok) OR hyp:tok) OR pre:tok),0.14150943396226415,5,-0.04267779,-0.071643114,0.047284134
+529,pre:tok:in,pre,pre:tok,0.0,1,-0.06826282,-0.11161031,0.037366617
+530,pre:tok:in,pre,pre:tok,0.0,1,0.00019631817,-0.038150918,-0.023291847
+531,pre:tok:in,pre,pre:tok,0.0,1,0.0054627894,0.013325423,0.0048430823
+532,pre:tok:in,pre,pre:tok,0.0,1,-0.026361406,0.004992048,-0.018724289
+535,pre:tok:in,pre,pre:tok,0.0,1,-0.006117771,0.005550909,-0.011341975
+538,pre:tok:in,pre,pre:tok,0.0,1,-0.08109433,0.0017365393,-0.0056015914
+539,pre:tok:in,pre,pre:tok,0.0,1,-0.0060185124,0.022766933,0.0054011303
+517,((hyp:tok:pedaling OR hyp:tok:tents) AND pre:tok:in),((hyp OR hyp) AND pre),((hyp:tok OR hyp:tok) AND pre:tok),0.25,3,-0.1063263,-0.059424825,0.11308474
+541,pre:tok:in,pre,pre:tok,0.0,1,-0.02684842,0.035823047,-0.013002016
+542,pre:tok:in,pre,pre:tok,0.0,1,-0.020812014,0.02901306,0.0053166873
+544,pre:tok:in,pre,pre:tok,0.0,1,-0.00028379768,0.0070864065,0.000915459
+545,pre:tok:in,pre,pre:tok,0.0,1,0.0032199444,0.018194528,0.012795572
+546,pre:tok:in,pre,pre:tok,0.0,1,-0.011474944,-0.0009249676,0.0028297098
+547,pre:tok:in,pre,pre:tok,0.0,1,-0.0012526946,-0.035460178,-0.0050551044
+548,pre:tok:in,pre,pre:tok,0.0,1,0.0018214498,-0.052785862,0.024013873
+550,pre:tok:in,pre,pre:tok,0.0,1,0.1099067,-0.114987254,-0.1524262
+551,pre:tok:in,pre,pre:tok,0.0,1,0.0199483,-0.034405597,-0.03864943
+552,pre:tok:in,pre,pre:tok,0.0,1,-0.0028354505,-0.0063859173,-0.0127837695
+554,pre:tok:in,pre,pre:tok,0.0,1,-0.046496354,0.020604378,-0.012823682
+555,pre:tok:in,pre,pre:tok,0.0,1,-0.10783447,-0.025594,0.0010929689
+556,pre:tok:in,pre,pre:tok,0.0,1,-0.024814244,-0.021264955,-0.020532224
+558,pre:tok:in,pre,pre:tok,0.0,1,0.0065510212,0.04267326,-0.015050945
+559,pre:tok:in,pre,pre:tok,0.0,1,-0.00661124,-0.030081537,0.0035361343
+560,pre:tok:in,pre,pre:tok,0.0,1,0.0413004,-0.016180905,-0.017703848
+561,pre:tok:in,pre,pre:tok,0.0,1,0.025443103,0.007499952,-0.042138755
+562,pre:tok:in,pre,pre:tok,0.0,1,0.0007934586,-0.011763024,0.040995922
+563,pre:tok:in,pre,pre:tok,0.0,1,-0.07238969,0.061714973,-0.021024562
+564,pre:tok:in,pre,pre:tok,0.0,1,0.0019268281,-0.007483446,-0.01071483
+525,(((((NOT pre:tok:is) AND pre:tok:cardboard) OR hyp:tok:competitors) OR hyp:tok:clock) OR pre:tok:yelling),(((((NOT pre) AND pre) OR hyp) OR hyp) OR pre),(((((NOT pre:tok) AND pre:tok) OR hyp:tok) OR hyp:tok) OR pre:tok),0.23809523809523808,6,-0.10667291,0.040873095,-0.028488968
+567,pre:tok:in,pre,pre:tok,0.0,1,-0.014813275,-0.030069351,-0.027470894
+568,pre:tok:in,pre,pre:tok,0.0,1,-0.070288174,-0.017207317,0.02523562
+569,pre:tok:in,pre,pre:tok,0.0,1,0.000743525,-0.00018530528,-0.03240671
+570,pre:tok:in,pre,pre:tok,0.0,1,-0.02993203,0.00040330464,0.0023307095
+571,pre:tok:in,pre,pre:tok,0.0,1,-0.002756117,-0.02739296,-0.056232553
+573,pre:tok:in,pre,pre:tok,0.0,1,0.021428566,0.018522875,0.0015512445
+574,pre:tok:in,pre,pre:tok,0.0,1,-0.038108204,-0.10881959,0.097407155
+576,pre:tok:in,pre,pre:tok,0.0,1,-0.02206876,0.004094051,-0.024491057
+543,(((((NOT hyp:tag:jj) AND hyp:tok:guitar) OR hyp:tok:youngster) AND (NOT hyp:tag:prp$)) AND (NOT oth:overlap:overlap75)),(((((NOT hyp) AND hyp) OR hyp) AND (NOT hyp)) AND (NOT oth)),(((((NOT hyp:tag) AND hyp:tok) OR hyp:tok) AND (NOT hyp:tag)) AND (NOT oth:overlap)),0.1875,8,-0.024913099,0.08899319,-0.10747377
+580,pre:tok:in,pre,pre:tok,0.0,1,-0.013474222,0.012941778,-0.03642145
+581,pre:tok:in,pre,pre:tok,0.0,1,0.01680615,0.03740965,-0.047416285
+582,pre:tok:in,pre,pre:tok,0.0,1,-0.08574189,0.09211114,-0.09829062
+583,pre:tok:in,pre,pre:tok,0.0,1,0.023621177,-0.068055406,-0.07602131
+585,pre:tok:in,pre,pre:tok,0.0,1,0.0005292677,0.031332754,-0.0015022251
+586,pre:tok:in,pre,pre:tok,0.0,1,-0.062412426,-0.10112887,0.011825185
+587,pre:tok:in,pre,pre:tok,0.0,1,0.010913935,-0.003451402,0.027498644
+589,pre:tok:in,pre,pre:tok,0.0,1,-0.006125075,-0.0030577078,-0.01806913
+591,pre:tok:in,pre,pre:tok,0.0,1,0.024198275,0.032514352,-0.028255526
+592,pre:tok:in,pre,pre:tok,0.0,1,0.025465868,-0.010433731,-0.028669845
+594,pre:tok:in,pre,pre:tok,0.0,1,0.023305506,-0.028222168,0.0023110907
+595,pre:tok:in,pre,pre:tok,0.0,1,-0.036304656,0.006943179,-0.013500393
+596,pre:tok:in,pre,pre:tok,0.0,1,-0.003656169,-0.009489848,0.00087568583
+597,pre:tok:in,pre,pre:tok,0.0,1,-0.04501326,-0.020774323,0.03502249
+598,pre:tok:in,pre,pre:tok,0.0,1,-0.079522945,-0.023907695,0.020823352
+599,pre:tok:in,pre,pre:tok,0.0,1,-0.0557207,0.041747555,0.00727916
+600,pre:tok:in,pre,pre:tok,0.0,1,-0.041071188,0.004700885,0.0026348946
+603,pre:tok:in,pre,pre:tok,0.0,1,-0.026045427,0.037341908,-0.020957783
+499,((((hyp:tok:tall OR hyp:tok:way) AND pre:tag:nns) OR hyp:tok:professional) OR hyp:tok:drive),((((hyp OR hyp) AND pre) OR hyp) OR hyp),((((hyp:tok OR hyp:tok) AND pre:tag) OR hyp:tok) OR hyp:tok),0.16129032258064516,5,-0.08045735,0.033884373,-0.016199246
+607,pre:tok:in,pre,pre:tok,0.0,1,-0.024023855,0.009238716,0.015630635
+608,pre:tok:in,pre,pre:tok,0.0,1,0.031131066,-0.052180383,0.0037931034
+610,pre:tok:in,pre,pre:tok,0.0,1,-0.006609903,-0.0074076457,-0.0037693463
+611,pre:tok:in,pre,pre:tok,0.0,1,-0.043851234,-0.035083517,0.06597775
+612,pre:tok:in,pre,pre:tok,0.0,1,0.0066826004,0.0163577,-0.020310108
+613,pre:tok:in,pre,pre:tok,0.0,1,-0.02232539,0.0029138261,-0.008718355
+602,((NOT pre:tag:vbp) AND (hyp:tok:bowls OR hyp:tok:cheerleading)),((NOT pre) AND (hyp OR hyp)),((NOT pre:tag) AND (hyp:tok OR hyp:tok)),0.2,4,-0.21456668,0.072715305,-0.068748794
+601,((NOT hyp:tag:.) AND hyp:tok:chases),((NOT hyp) AND hyp),((NOT hyp:tag) AND hyp:tok),0.2727272727272727,3,-0.18483868,0.16686302,-0.12984528
+616,pre:tok:in,pre,pre:tok,0.0,1,0.01164793,-0.016097274,-0.027150666
+617,pre:tok:in,pre,pre:tok,0.0,1,-0.017006608,0.010823929,-0.0046599596
+579,((((NOT hyp:tag:in) AND (hyp:tok:surfing OR pre:tok:country)) AND (NOT pre:tag:prp$)) OR hyp:tok:rollerblading),((((NOT hyp) AND (hyp OR pre)) AND (NOT pre)) OR hyp),((((NOT hyp:tag) AND (hyp:tok OR pre:tok)) AND (NOT pre:tag)) OR hyp:tok),0.23684210526315788,7,0.05143734,-0.010410514,-0.002687614
+621,pre:tok:in,pre,pre:tok,0.0,1,-0.002128914,-0.017202219,0.032516915
+622,pre:tok:in,pre,pre:tok,0.0,1,0.0198874,0.014639995,-0.037672352
+624,pre:tok:in,pre,pre:tok,0.0,1,-0.0069293543,-0.015901515,-0.030442545
+625,pre:tok:in,pre,pre:tok,0.0,1,0.035027966,-0.0137349805,-0.0038427382
+626,pre:tok:in,pre,pre:tok,0.0,1,0.007859596,-0.011878374,-0.003884206
+627,pre:tok:in,pre,pre:tok,0.0,1,0.010007854,-0.036305767,-0.013695034
+628,pre:tok:in,pre,pre:tok,0.0,1,-0.0032103162,0.029214542,-0.021273322
+629,pre:tok:in,pre,pre:tok,0.0,1,0.08712518,-0.06361701,-0.10181713
+630,pre:tok:in,pre,pre:tok,0.0,1,0.005708542,0.020325186,0.003565641
+605,((((hyp:tok:herself OR pre:tok:neighborhood) OR hyp:tok:gloves) AND (NOT oth:overlap:overlap50)) OR hyp:tok:marching),((((hyp OR pre) OR hyp) AND (NOT oth)) OR hyp),((((hyp:tok OR pre:tok) OR hyp:tok) AND (NOT oth:overlap)) OR hyp:tok),0.16666666666666666,6,0.08931292,-0.04352213,-0.03725116
+632,pre:tok:in,pre,pre:tok,0.0,1,-0.08336436,-0.025730778,0.024194844
+633,pre:tok:in,pre,pre:tok,0.0,1,-0.03340663,-0.009351394,-0.06377046
+634,pre:tok:in,pre,pre:tok,0.0,1,0.03287941,-0.008992802,-0.004779531
+635,pre:tok:in,pre,pre:tok,0.0,1,0.012060503,-0.020689378,-0.11897991
+590,((((hyp:tok:world OR pre:tok:parents) OR hyp:tok:protective) AND (NOT hyp:tok:in)) OR hyp:tok:item),((((hyp OR pre) OR hyp) AND (NOT hyp)) OR hyp),((((hyp:tok OR pre:tok) OR hyp:tok) AND (NOT hyp:tok)) OR hyp:tok),0.18181818181818182,6,-0.013661542,0.03415597,-0.16081591
+637,pre:tok:in,pre,pre:tok,0.0,1,-0.021171004,-0.010642389,0.035357308
+638,pre:tok:in,pre,pre:tok,0.0,1,-0.035456307,0.009088697,-0.016976058
+639,pre:tok:in,pre,pre:tok,0.0,1,0.006802284,-0.0021243948,0.00021706126
+641,pre:tok:in,pre,pre:tok,0.0,1,-0.15902235,-0.063137226,0.027893748
+642,pre:tok:in,pre,pre:tok,0.0,1,-0.05973712,0.012250948,0.02976145
+644,pre:tok:in,pre,pre:tok,0.0,1,-0.026294071,-0.047899436,0.0029498092
+645,pre:tok:in,pre,pre:tok,0.0,1,0.005843551,0.0061894455,0.03078088
+646,pre:tok:in,pre,pre:tok,0.0,1,0.010693581,-0.048858594,-0.026019173
+648,pre:tok:in,pre,pre:tok,0.0,1,0.02226601,-0.015196396,0.022855973
+649,pre:tok:in,pre,pre:tok,0.0,1,-0.017740257,0.01245928,0.0026718793
+650,pre:tok:in,pre,pre:tok,0.0,1,-0.0039973115,0.021220779,-0.040899057
+651,pre:tok:in,pre,pre:tok,0.0,1,0.015136484,-0.035751007,-0.04060978
+653,pre:tok:in,pre,pre:tok,0.0,1,0.03684958,0.018618193,-0.01594983
+654,pre:tok:in,pre,pre:tok,0.0,1,-0.04955771,-0.052065954,0.008979204
+655,pre:tok:in,pre,pre:tok,0.0,1,-0.055023097,0.0021169723,-0.0513378
+657,pre:tok:in,pre,pre:tok,0.0,1,-0.029868068,-0.0041899434,0.047001623
+659,pre:tok:in,pre,pre:tok,0.0,1,0.0038433224,0.0077304095,-0.022835683
+660,pre:tok:in,pre,pre:tok,0.0,1,-0.005669754,-0.0022523606,-0.010865819
+661,pre:tok:in,pre,pre:tok,0.0,1,0.043682043,0.026035096,-0.12328941
+631,((((NOT pre:tok:to) AND (hyp:tok:tennis AND pre:tok:is)) AND (NOT pre:tok:young)) AND hyp:tag:.),((((NOT pre) AND (hyp AND pre)) AND (NOT pre)) AND hyp),((((NOT pre:tok) AND (hyp:tok AND pre:tok)) AND (NOT pre:tok)) AND hyp:tag),0.3333333333333333,7,-0.093442954,-0.09237987,0.024409292
+663,pre:tok:in,pre,pre:tok,0.0,1,0.01808847,-0.0069304933,-0.019432593
+664,pre:tok:in,pre,pre:tok,0.0,1,0.0038565344,-0.021547299,0.028950881
+665,pre:tok:in,pre,pre:tok,0.0,1,-0.02719196,0.020023765,-0.08469021
+666,pre:tok:in,pre,pre:tok,0.0,1,-0.040651575,-0.0535205,0.038340963
+667,pre:tok:in,pre,pre:tok,0.0,1,0.0032412803,-0.01405294,0.0002770802
+668,pre:tok:in,pre,pre:tok,0.0,1,-0.038489252,-0.04873,0.0032313298
+670,pre:tok:in,pre,pre:tok,0.0,1,-0.030748362,0.0008436032,0.019602818
+671,pre:tok:in,pre,pre:tok,0.0,1,-0.039247267,-0.012731461,-0.0012792943
+522,((((hyp:tok:lead OR hyp:tok:tall) OR hyp:tok:rival) OR pre:tok:quickly) AND (NOT hyp:tok:is)),((((hyp OR hyp) OR hyp) OR pre) AND (NOT hyp)),((((hyp:tok OR hyp:tok) OR hyp:tok) OR pre:tok) AND (NOT hyp:tok)),0.21929824561403508,6,-0.018796071,0.0058999914,-0.037361216
+673,pre:tok:in,pre,pre:tok,0.0,1,0.009858887,-0.009602543,0.038433637
+669,((((hyp:tok:farmer AND pre:tok:in) OR pre:tok:handed) AND hyp:tok:is) AND (NOT hyp:tag:in)),((((hyp AND pre) OR pre) AND hyp) AND (NOT hyp)),((((hyp:tok AND pre:tok) OR pre:tok) AND hyp:tok) AND (NOT hyp:tag)),0.25,6,-0.033210374,-0.014226808,-0.15142205
+652,((((NOT pre:tok:man) AND hyp:tok:suv) OR hyp:tok:mask) AND hyp:tok:to),((((NOT pre) AND hyp) OR hyp) AND hyp),((((NOT pre:tok) AND hyp:tok) OR hyp:tok) AND hyp:tok),0.2857142857142857,5,-0.04575124,0.026982073,-0.021791767
+677,pre:tok:in,pre,pre:tok,0.0,1,0.005850505,-0.018966807,0.024010308
+678,pre:tok:in,pre,pre:tok,0.0,1,-0.009110013,-0.014597143,0.017208835
+680,pre:tok:in,pre,pre:tok,0.0,1,-0.020556819,0.011782144,-0.015770487
+681,pre:tok:in,pre,pre:tok,0.0,1,-0.0819507,0.024793789,-0.0314043
+682,pre:tok:in,pre,pre:tok,0.0,1,-0.08172607,-0.05399468,0.03631081
+683,pre:tok:in,pre,pre:tok,0.0,1,0.013201486,0.005193819,-0.004603604
+684,pre:tok:in,pre,pre:tok,0.0,1,-0.0283009,-0.01859634,-0.015368049
+647,((((NOT pre:tok:man) AND (hyp:tag:nnp AND hyp:tok:human)) AND (NOT pre:tok:two)) AND (NOT pre:tok:older)),((((NOT pre) AND (hyp AND hyp)) AND (NOT pre)) AND (NOT pre)),((((NOT pre:tok) AND (hyp:tag AND hyp:tok)) AND (NOT pre:tok)) AND (NOT pre:tok)),0.5,8,-0.023844039,-0.037377868,0.0018739261
+686,pre:tok:in,pre,pre:tok,0.0,1,0.017450865,0.0009827731,-0.017062163
+687,pre:tok:in,pre,pre:tok,0.0,1,-0.016547346,-0.005393583,-0.021911377
+688,pre:tok:in,pre,pre:tok,0.0,1,-0.006851228,0.0058319075,-0.0023698318
+658,((((NOT pre:tok:shirt) AND (hyp:tok:at AND hyp:tok:home)) OR hyp:tok:brass) AND (NOT pre:tok:wearing)),((((NOT pre) AND (hyp AND hyp)) OR hyp) AND (NOT pre)),((((NOT pre:tok) AND (hyp:tok AND hyp:tok)) OR hyp:tok) AND (NOT pre:tok)),0.26666666666666666,7,-0.1110775,-0.09786779,0.07804991
+690,pre:tok:in,pre,pre:tok,0.0,1,0.025334291,-0.035537228,0.0069403523
+572,((((pre:tok:parents OR pre:tok:shot) OR hyp:tok:night) OR pre:tok:protest) OR hyp:tok:hoops),((((pre OR pre) OR hyp) OR pre) OR hyp),((((pre:tok OR pre:tok) OR hyp:tok) OR pre:tok) OR hyp:tok),0.09090909090909091,5,-0.07584796,0.06706534,-0.066203214
+692,pre:tok:in,pre,pre:tok,0.0,1,0.03999628,-0.014923523,-0.08148684
+693,pre:tok:in,pre,pre:tok,0.0,1,-0.04290709,-0.023773197,-0.00387137
+694,pre:tok:in,pre,pre:tok,0.0,1,0.01117591,-0.029132146,0.028665097
+695,pre:tok:in,pre,pre:tok,0.0,1,-0.07959098,0.13324237,-0.13085629
+696,pre:tok:in,pre,pre:tok,0.0,1,-0.011522725,0.0065101353,-0.007423606
+697,pre:tok:in,pre,pre:tok,0.0,1,0.02908337,0.021063454,-0.037446074
+698,pre:tok:in,pre,pre:tok,0.0,1,-0.07984399,0.08296815,-0.07255803
+674,((((pre:tok:and AND pre:tok:performance) OR hyp:tok:wig) OR hyp:tok:rainy) AND pre:tok:three),((((pre AND pre) OR hyp) OR hyp) AND pre),((((pre:tok AND pre:tok) OR hyp:tok) OR hyp:tok) AND pre:tok),0.4,5,-0.07665058,-0.05550064,0.026535464
+701,pre:tok:in,pre,pre:tok,0.0,1,-0.0024736754,-0.05278066,-0.013390179
+702,pre:tok:in,pre,pre:tok,0.0,1,0.024507266,-0.044269703,0.0060075475
+656,(((((NOT hyp:tag:.) AND hyp:tok:reading) OR pre:tok:pick) OR hyp:tok:surfing) AND (NOT pre:tok:large)),(((((NOT hyp) AND hyp) OR pre) OR hyp) AND (NOT pre)),(((((NOT hyp:tag) AND hyp:tok) OR pre:tok) OR hyp:tok) AND (NOT pre:tok)),0.2,7,-0.013464626,-0.059196398,-0.011711788
+704,pre:tok:in,pre,pre:tok,0.0,1,-0.02034503,-0.015357155,-0.02298534
+706,pre:tok:in,pre,pre:tok,0.0,1,-0.10265618,-0.011409396,-0.0057237637
+707,pre:tok:in,pre,pre:tok,0.0,1,0.05527325,-0.033958703,-0.02820579
+708,pre:tok:in,pre,pre:tok,0.0,1,-0.05340689,-0.017778387,0.04294241
+709,pre:tok:in,pre,pre:tok,0.0,1,0.020207731,-0.0008826069,-0.08010618
+711,pre:tok:in,pre,pre:tok,0.0,1,-0.013996358,-0.017527506,-0.004971681
+712,pre:tok:in,pre,pre:tok,0.0,1,0.034286413,-0.03071326,-0.01234651
+713,pre:tok:in,pre,pre:tok,0.0,1,0.007563006,0.017766822,0.0021690251
+714,pre:tok:in,pre,pre:tok,0.0,1,0.013077092,0.0069740918,0.011089034
+717,pre:tok:in,pre,pre:tok,0.0,1,-0.004048148,0.024880663,0.039875887
+718,pre:tok:in,pre,pre:tok,0.0,1,0.03320865,0.036150984,0.01410564
+679,((((hyp:tok:bench AND pre:tok:white) OR hyp:tok:pets) OR pre:tok:pet) OR pre:tok:starts),((((hyp AND pre) OR hyp) OR pre) OR pre),((((hyp:tok AND pre:tok) OR hyp:tok) OR pre:tok) OR pre:tok),0.14634146341463414,5,-0.09093528,-0.06913015,0.05112834
+720,pre:tok:in,pre,pre:tok,0.0,1,0.014213666,0.0056636273,-0.019246537
+721,pre:tok:in,pre,pre:tok,0.0,1,-0.047949567,-0.007800043,0.028149268
+722,pre:tok:in,pre,pre:tok,0.0,1,-0.059480082,0.009835911,-0.0065606735
+723,pre:tok:in,pre,pre:tok,0.0,1,-0.14299263,-0.09313669,0.08676891
+724,pre:tok:in,pre,pre:tok,0.0,1,-0.17864649,0.092338644,-0.13041349
+726,pre:tok:in,pre,pre:tok,0.0,1,-0.034567483,-0.006970406,-0.012427511
+727,pre:tok:in,pre,pre:tok,0.0,1,-0.020323757,-0.005757431,0.027465427
+728,pre:tok:in,pre,pre:tok,0.0,1,-0.000659744,0.023830973,0.017038273
+730,pre:tok:in,pre,pre:tok,0.0,1,-0.0064879768,-0.013170923,-0.0114488425
+731,pre:tok:in,pre,pre:tok,0.0,1,0.015011999,0.008315356,0.016705984
+643,((((NOT hyp:tag:jj) AND (hyp:tok:humans OR hyp:tok:least)) OR hyp:tok:wheeled) AND (NOT pre:tag:prp$)),((((NOT hyp) AND (hyp OR hyp)) OR hyp) AND (NOT pre)),((((NOT hyp:tag) AND (hyp:tok OR hyp:tok)) OR hyp:tok) AND (NOT pre:tag)),0.28205128205128205,7,-0.0056605176,-0.05705829,0.00863685
+734,pre:tok:in,pre,pre:tok,0.0,1,-0.05816942,-0.010793441,-0.03945102
+735,pre:tok:in,pre,pre:tok,0.0,1,-0.020381251,-0.030655697,0.017917749
+736,pre:tok:in,pre,pre:tok,0.0,1,-0.013333826,0.01922594,-0.030947477
+737,pre:tok:in,pre,pre:tok,0.0,1,-0.0039853426,-0.001378188,-0.04486622
+716,((NOT pre:tok:are) AND (hyp:tok:are AND hyp:tok:picnic)),((NOT pre) AND (hyp AND hyp)),((NOT pre:tok) AND (hyp:tok AND hyp:tok)),0.3,4,0.04493921,-0.0014695576,-0.12334583
+739,pre:tok:in,pre,pre:tok,0.0,1,0.005853029,-0.01015415,0.008197032
+740,pre:tok:in,pre,pre:tok,0.0,1,-0.034062147,-0.015732273,-0.034964863
+710,(((NOT pre:tag:jj) AND (hyp:tok:displaying OR hyp:tok:firefighter)) AND pre:tok:in),(((NOT pre) AND (hyp OR hyp)) AND pre),(((NOT pre:tag) AND (hyp:tok OR hyp:tok)) AND pre:tok),0.25,5,-0.057838455,-0.03495913,-0.10804906
+719,((((hyp:tok:skateboarding AND pre:tok:at) OR hyp:tok:image) AND (NOT hyp:tag:in)) AND (NOT hyp:tag:vbn)),((((hyp AND pre) OR hyp) AND (NOT hyp)) AND (NOT hyp)),((((hyp:tok AND pre:tok) OR hyp:tok) AND (NOT hyp:tag)) AND (NOT hyp:tag)),0.3333333333333333,7,0.056007404,-0.08311471,-0.21111852
+746,pre:tok:in,pre,pre:tok,0.0,1,-0.0075508226,-0.015426596,-0.00094630127
+747,pre:tok:in,pre,pre:tok,0.0,1,-0.016761819,-0.0063884286,-0.009043682
+748,pre:tok:in,pre,pre:tok,0.0,1,0.03400831,0.016557816,-0.11638116
+749,pre:tok:in,pre,pre:tok,0.0,1,-0.07154097,-0.038073592,0.056817487
+732,((((hyp:tok:friends AND pre:tok:little) OR hyp:tok:participating) AND pre:tag:jj) AND (NOT pre:tag:vbn)),((((hyp AND pre) OR hyp) AND pre) AND (NOT pre)),((((hyp:tok AND pre:tok) OR hyp:tok) AND pre:tag) AND (NOT pre:tag)),0.26666666666666666,6,-0.09619552,-0.012844551,0.09020831
+751,pre:tok:in,pre,pre:tok,0.0,1,-0.020372828,0.027307656,-0.0012664332
+753,pre:tok:in,pre,pre:tok,0.0,1,0.018850643,-0.004493542,-0.046327
+754,pre:tok:in,pre,pre:tok,0.0,1,-0.043019824,-0.023617782,-0.0108361095
+755,pre:tok:in,pre,pre:tok,0.0,1,0.044220623,0.010572109,-0.023769516
+756,pre:tok:in,pre,pre:tok,0.0,1,-0.060916074,0.0040337583,0.016994344
+757,pre:tok:in,pre,pre:tok,0.0,1,0.0118964985,0.013639559,-0.021103725
+758,pre:tok:in,pre,pre:tok,0.0,1,-0.072627224,0.01112511,0.03644637
+759,pre:tok:in,pre,pre:tok,0.0,1,-0.0048880843,-0.023032526,-0.004679273
+760,pre:tok:in,pre,pre:tok,0.0,1,-0.0079277055,-0.0063012587,-0.0218057
+761,pre:tok:in,pre,pre:tok,0.0,1,-0.020288529,0.02288422,-0.0015338247
+762,pre:tok:in,pre,pre:tok,0.0,1,0.004211873,-0.01130745,0.010486055
+763,pre:tok:in,pre,pre:tok,0.0,1,0.015725644,-0.10624167,0.03703161
+764,pre:tok:in,pre,pre:tok,0.0,1,0.02491829,-0.0011842146,-0.018240305
+675,((((hyp:tok:outer OR pre:tok:doctors) OR pre:tok:numbered) OR pre:tok:prepare) OR hyp:tok:beam),((((hyp OR pre) OR pre) OR pre) OR hyp),((((hyp:tok OR pre:tok) OR pre:tok) OR pre:tok) OR hyp:tok),0.1111111111111111,5,-0.096818805,-0.06859049,0.04415503
+766,pre:tok:in,pre,pre:tok,0.0,1,-0.057011332,-0.020476399,0.02533518
+767,pre:tok:in,pre,pre:tok,0.0,1,-0.033370465,-0.0019064364,0.012438614
+768,pre:tok:in,pre,pre:tok,0.0,1,-0.030775541,-0.028217765,-0.021726752
+769,pre:tok:in,pre,pre:tok,0.0,1,0.07488825,-0.05220058,-0.07660679
+770,pre:tok:in,pre,pre:tok,0.0,1,-0.060736876,0.025860097,-0.011594458
+772,pre:tok:in,pre,pre:tok,0.0,1,-0.031486165,-0.023695746,-0.027898384
+745,(hyp:tok:vehicles AND pre:tok:racing),(hyp AND pre),(hyp:tok AND pre:tok),0.2,2,-0.02774647,-0.03777008,-0.080677904
+774,pre:tok:in,pre,pre:tok,0.0,1,-0.001310949,-0.0049308925,0.0057207146
+777,pre:tok:in,pre,pre:tok,0.0,1,-0.06904467,-0.015173236,0.023816498
+778,pre:tok:in,pre,pre:tok,0.0,1,-0.057326034,0.0836638,-0.06784486
+779,pre:tok:in,pre,pre:tok,0.0,1,0.036132403,-0.050747205,-0.0052379523
+780,pre:tok:in,pre,pre:tok,0.0,1,-0.008895686,0.024212552,0.0154787125
+781,pre:tok:in,pre,pre:tok,0.0,1,0.04213959,-0.030088264,0.0061113657
+783,pre:tok:in,pre,pre:tok,0.0,1,-0.07849241,-0.017510802,0.0063259467
+784,pre:tok:in,pre,pre:tok,0.0,1,0.006511882,-0.04577495,0.019317904
+785,pre:tok:in,pre,pre:tok,0.0,1,-0.026227107,-0.040827557,-0.077250436
+786,pre:tok:in,pre,pre:tok,0.0,1,0.020628966,0.042676136,-0.015168832
+788,pre:tok:in,pre,pre:tok,0.0,1,-0.015541491,-0.0094561055,-0.010181836
+789,pre:tok:in,pre,pre:tok,0.0,1,-0.022175338,0.016977042,-0.03553668
+790,pre:tok:in,pre,pre:tok,0.0,1,-0.08854164,-0.013409244,0.059100393
+791,pre:tok:in,pre,pre:tok,0.0,1,-0.033741258,0.05201013,-0.10588554
+792,pre:tok:in,pre,pre:tok,0.0,1,0.0626333,0.009242952,-0.13782857
+750,((((hyp:tok:cigarettes OR hyp:tok:kneeling) OR hyp:tok:engine) AND (NOT pre:tag:.)) OR hyp:tok:newspapers),((((hyp OR hyp) OR hyp) AND (NOT pre)) OR hyp),((((hyp:tok OR hyp:tok) OR hyp:tok) AND (NOT pre:tag)) OR hyp:tok),0.2222222222222222,6,0.029477775,-0.07790731,-0.07903202
+794,pre:tok:in,pre,pre:tok,0.0,1,-0.07716975,0.012927398,0.005588948
+795,pre:tok:in,pre,pre:tok,0.0,1,0.10595365,-0.14317356,-0.10592203
+700,(((((NOT pre:tag:dt) AND pre:tok:basketball) OR hyp:tok:skateboarding) AND (NOT pre:tok:with)) OR hyp:tok:observe),(((((NOT pre) AND pre) OR hyp) AND (NOT pre)) OR hyp),(((((NOT pre:tag) AND pre:tok) OR hyp:tok) AND (NOT pre:tok)) OR hyp:tok),0.15384615384615385,7,0.033539146,-0.089527294,-0.0638582
+797,pre:tok:in,pre,pre:tok,0.0,1,-0.0111118015,0.0131745795,-0.0011463964
+799,pre:tok:in,pre,pre:tok,0.0,1,0.01770729,0.004456618,0.0028370619
+801,pre:tok:in,pre,pre:tok,0.0,1,-0.03673796,0.01960898,-0.008613937
+802,pre:tok:in,pre,pre:tok,0.0,1,0.06363969,-0.040765192,-0.05866032
+803,pre:tok:in,pre,pre:tok,0.0,1,0.03143318,0.033815973,-0.021659948
+804,pre:tok:in,pre,pre:tok,0.0,1,-0.17383566,0.07594533,-0.05623225
+806,pre:tok:in,pre,pre:tok,0.0,1,-0.017837873,0.02675163,-0.024923509
+807,pre:tok:in,pre,pre:tok,0.0,1,0.06627206,-0.029633762,-0.022601573
+808,pre:tok:in,pre,pre:tok,0.0,1,-0.014400814,0.0338888,-0.0072049093
+809,pre:tok:in,pre,pre:tok,0.0,1,-0.0008424627,0.0072524115,-0.009303894
+810,pre:tok:in,pre,pre:tok,0.0,1,-0.049917538,-0.036133185,0.07042075
+811,pre:tok:in,pre,pre:tok,0.0,1,0.049828198,-0.010860656,0.018544996
+812,pre:tok:in,pre,pre:tok,0.0,1,-0.03242424,0.06231704,0.0005102366
+814,pre:tok:in,pre,pre:tok,0.0,1,0.017555635,0.0018933914,0.040990833
+815,pre:tok:in,pre,pre:tok,0.0,1,-0.051645108,0.034919426,-0.045261987
+816,pre:tok:in,pre,pre:tok,0.0,1,-0.046678063,0.050160125,-0.03611402
+817,pre:tok:in,pre,pre:tok,0.0,1,-0.06700022,-0.001533847,0.005071254
+818,pre:tok:in,pre,pre:tok,0.0,1,0.021436028,-0.005212413,0.038150877
+819,pre:tok:in,pre,pre:tok,0.0,1,0.0076836264,-0.013701035,-0.018587802
+822,pre:tok:in,pre,pre:tok,0.0,1,-0.027345771,-0.020081006,0.022135695
+823,pre:tok:in,pre,pre:tok,0.0,1,0.02588675,0.013030838,-0.003964383
+824,pre:tok:in,pre,pre:tok,0.0,1,0.0014232141,0.019526409,0.009483495
+825,pre:tok:in,pre,pre:tok,0.0,1,-0.0025068694,-0.013676217,0.019131614
+826,pre:tok:in,pre,pre:tok,0.0,1,0.00683391,0.013763782,0.007790217
+827,pre:tok:in,pre,pre:tok,0.0,1,-0.011812819,0.02260951,-0.019978402
+828,pre:tok:in,pre,pre:tok,0.0,1,0.00025244858,-0.00771923,0.013957895
+829,pre:tok:in,pre,pre:tok,0.0,1,-0.0044428078,0.0029476401,-0.0013442092
+830,pre:tok:in,pre,pre:tok,0.0,1,0.0110364575,0.0016840581,-0.026873171
+831,pre:tok:in,pre,pre:tok,0.0,1,-0.017805306,-0.006869775,-0.019699302
+832,pre:tok:in,pre,pre:tok,0.0,1,-0.00030858026,-0.054669634,0.004654782
+834,pre:tok:in,pre,pre:tok,0.0,1,-0.021049552,-0.0046330295,-0.007633139
+835,pre:tok:in,pre,pre:tok,0.0,1,-0.05814749,-0.006284206,-0.0071548675
+836,pre:tok:in,pre,pre:tok,0.0,1,-0.026601426,0.0044592605,-0.0037892
+837,pre:tok:in,pre,pre:tok,0.0,1,-0.08989148,-0.07292605,0.08532659
+838,pre:tok:in,pre,pre:tok,0.0,1,0.007116358,0.031375583,-0.017237952
+839,pre:tok:in,pre,pre:tok,0.0,1,0.021406151,-0.0096513545,-0.018244607
+840,pre:tok:in,pre,pre:tok,0.0,1,-0.023742273,-0.09465378,-0.020466179
+841,pre:tok:in,pre,pre:tok,0.0,1,0.009907642,0.0012547625,0.002577641
+800,(hyp:tok:sleeping AND pre:tok:wheelbarrow),(hyp AND pre),(hyp:tok AND pre:tok),0.2,2,-0.28860164,0.1577375,-0.12925121
+843,pre:tok:in,pre,pre:tok,0.0,1,-0.0070691463,0.02239673,-0.013321445
+844,pre:tok:in,pre,pre:tok,0.0,1,-0.13042338,0.08196947,-0.05678852
+845,pre:tok:in,pre,pre:tok,0.0,1,0.008090835,-0.00201965,-0.0017666687
+846,pre:tok:in,pre,pre:tok,0.0,1,-0.07224902,-0.022456758,0.054269828
+847,pre:tok:in,pre,pre:tok,0.0,1,-0.11796944,-0.02774356,0.02186375
+848,pre:tok:in,pre,pre:tok,0.0,1,-0.012373359,0.026973138,0.03746568
+849,pre:tok:in,pre,pre:tok,0.0,1,0.03531381,-0.06352702,-0.030137012
+820,(hyp:tok:out AND hyp:tok:trumpet),(hyp AND hyp),(hyp:tok AND hyp:tok),0.2,2,0.001661625,-0.025225788,-0.07500884
+851,pre:tok:in,pre,pre:tok,0.0,1,-0.014963262,0.040295463,-0.014398505
+852,pre:tok:in,pre,pre:tok,0.0,1,0.019020736,0.009604092,0.015415222
+853,pre:tok:in,pre,pre:tok,0.0,1,0.009187045,-0.04248724,-0.006430901
+771,((((hyp:tok:brushes OR hyp:tok:finished) OR hyp:tok:you) AND (NOT pre:tok:with)) AND pre:tok:man),((((hyp OR hyp) OR hyp) AND (NOT pre)) AND pre),((((hyp:tok OR hyp:tok) OR hyp:tok) AND (NOT pre:tok)) AND pre:tok),0.15789473684210525,6,-0.10618371,-0.009746773,0.012897694
+855,pre:tok:in,pre,pre:tok,0.0,1,0.0053575165,-0.02558275,0.023416001
+856,pre:tok:in,pre,pre:tok,0.0,1,-0.004312551,-0.08857729,0.045389462
+857,pre:tok:in,pre,pre:tok,0.0,1,-0.006766145,-0.020794153,0.012970951
+860,pre:tok:in,pre,pre:tok,0.0,1,0.016519696,-0.03699425,0.026053384
+862,pre:tok:in,pre,pre:tok,0.0,1,-0.0891546,0.0052133184,-0.028505681
+863,pre:tok:in,pre,pre:tok,0.0,1,0.061086237,-0.010012451,-0.020988291
+866,pre:tok:in,pre,pre:tok,0.0,1,0.0043340586,-0.013984607,-0.010220903
+867,pre:tok:in,pre,pre:tok,0.0,1,-0.014265267,-0.014326014,-0.01228094
+868,pre:tok:in,pre,pre:tok,0.0,1,0.024583858,0.017118268,0.02704544
+869,pre:tok:in,pre,pre:tok,0.0,1,0.013531404,0.018444648,0.0071765822
+805,((((NOT hyp:tag:vbg) AND (hyp:tok:outdoors AND pre:tok:in)) AND (NOT pre:tag:rb)) AND (NOT pre:tag:prp$)),((((NOT hyp) AND (hyp AND pre)) AND (NOT pre)) AND (NOT pre)),((((NOT hyp:tag) AND (hyp:tok AND pre:tok)) AND (NOT pre:tag)) AND (NOT pre:tag)),0.1956521739130435,8,-0.026962997,-0.057860326,-0.022524105
+871,pre:tok:in,pre,pre:tok,0.0,1,-0.011867196,-0.014253148,-0.0063364515
+872,pre:tok:in,pre,pre:tok,0.0,1,0.013690666,-0.012567881,0.039055843
+873,pre:tok:in,pre,pre:tok,0.0,1,-0.0072885947,-0.08890773,-0.12424396
+875,pre:tok:in,pre,pre:tok,0.0,1,-0.03048752,0.027765887,-0.002243859
+876,pre:tok:in,pre,pre:tok,0.0,1,0.009256194,-0.021197658,0.063409664
+877,pre:tok:in,pre,pre:tok,0.0,1,0.043393694,-0.013983625,-0.012760641
+878,pre:tok:in,pre,pre:tok,0.0,1,0.022135133,0.032979306,-0.011326401
+879,pre:tok:in,pre,pre:tok,0.0,1,-0.017137451,-0.021152778,0.02848635
+880,pre:tok:in,pre,pre:tok,0.0,1,0.019559337,0.02070382,0.02120472
+881,pre:tok:in,pre,pre:tok,0.0,1,0.018465698,-0.023047093,-0.002184168
+883,pre:tok:in,pre,pre:tok,0.0,1,-0.08250522,0.004369773,-0.0077634174
+884,pre:tok:in,pre,pre:tok,0.0,1,-0.036158644,-0.03538868,-0.06721972
+887,pre:tok:in,pre,pre:tok,0.0,1,-0.017445175,-0.0032695795,-0.020445643
+888,pre:tok:in,pre,pre:tok,0.0,1,-0.014471293,-0.027498078,0.0009872882
+889,pre:tok:in,pre,pre:tok,0.0,1,-0.033599325,-0.02284634,0.0071678422
+890,pre:tok:in,pre,pre:tok,0.0,1,-0.018408906,-0.034510173,-0.01944606
+891,pre:tok:in,pre,pre:tok,0.0,1,0.012107283,-0.009416803,0.03536548
+893,pre:tok:in,pre,pre:tok,0.0,1,0.007031496,0.0144762,0.026735365
+894,pre:tok:in,pre,pre:tok,0.0,1,0.011940155,-0.0032096233,-0.016891327
+729,((((pre:tok:passing OR pre:tok:shade) OR pre:tok:tools) AND hyp:tok:man) OR hyp:tok:tired),((((pre OR pre) OR pre) AND hyp) OR hyp),((((pre:tok OR pre:tok) OR pre:tok) AND hyp:tok) OR hyp:tok),0.10714285714285714,5,-0.0504287,-0.04379353,0.042234633
+896,pre:tok:in,pre,pre:tok,0.0,1,-0.0047571706,-0.005729024,-0.0005312378
+897,pre:tok:in,pre,pre:tok,0.0,1,0.011979854,-0.0021126822,0.028880801
+898,pre:tok:in,pre,pre:tok,0.0,1,-0.006954774,0.0054916795,0.017716361
+899,pre:tok:in,pre,pre:tok,0.0,1,0.0029217931,0.0013462174,-0.004949252
+900,pre:tok:in,pre,pre:tok,0.0,1,-0.0056118234,0.0035851437,-0.004306907
+901,pre:tok:in,pre,pre:tok,0.0,1,0.002668863,0.0032452003,0.017841538
+902,pre:tok:in,pre,pre:tok,0.0,1,-0.03774188,-0.016035756,0.0075134696
+903,pre:tok:in,pre,pre:tok,0.0,1,-0.036496416,-0.044655606,0.067167275
+904,pre:tok:in,pre,pre:tok,0.0,1,-0.0020874208,0.0013897113,0.004637845
+906,pre:tok:in,pre,pre:tok,0.0,1,-0.0203257,-0.042445596,0.019872595
+892,(hyp:tok:large AND hyp:tok:snowball),(hyp AND hyp),(hyp:tok AND hyp:tok),0.2,2,0.01965751,-0.029166205,-0.10767299
+909,pre:tok:in,pre,pre:tok,0.0,1,0.03117406,-0.017819876,-0.0053877807
+910,pre:tok:in,pre,pre:tok,0.0,1,-0.03141093,0.030009119,0.011477419
+911,pre:tok:in,pre,pre:tok,0.0,1,0.030402727,-0.0047562616,-0.004227909
+912,pre:tok:in,pre,pre:tok,0.0,1,0.04008084,-0.013002093,-0.007559936
+914,pre:tok:in,pre,pre:tok,0.0,1,-0.018186381,0.013376903,-0.05056548
+915,pre:tok:in,pre,pre:tok,0.0,1,0.0029517903,-0.04225828,0.03856853
+916,pre:tok:in,pre,pre:tok,0.0,1,-0.0033979416,0.020023651,-0.0025455512
+861,((((pre:tok:- AND pre:tok:clown) OR hyp:tok:addressing) OR hyp:tok:riders) AND (NOT pre:tok:behind)),((((pre AND pre) OR hyp) OR hyp) AND (NOT pre)),((((pre:tok AND pre:tok) OR hyp:tok) OR hyp:tok) AND (NOT pre:tok)),0.2,6,0.046716176,-0.10684278,-0.021509798
+918,pre:tok:in,pre,pre:tok,0.0,1,-0.016080135,0.0043881503,-0.014686661
+895,(((hyp:tok:bar AND hyp:tok:woman) OR hyp:tok:you) AND hyp:tag:vbz),(((hyp AND hyp) OR hyp) AND hyp),(((hyp:tok AND hyp:tok) OR hyp:tok) AND hyp:tag),0.3,4,-0.083163805,0.0056079444,0.0040767724
+920,pre:tok:in,pre,pre:tok,0.0,1,0.016626716,-0.026102973,-0.00059654115
+921,pre:tok:in,pre,pre:tok,0.0,1,0.0049052965,0.008939474,-0.009289072
+923,pre:tok:in,pre,pre:tok,0.0,1,0.024282174,-0.05747291,-0.025858713
+925,pre:tok:in,pre,pre:tok,0.0,1,0.1595286,-0.22824395,-0.18421885
+886,(((((NOT hyp:tag:in) AND hyp:tok:not) AND pre:tag:jj) AND pre:tag:nns) AND (NOT pre:tok:are)),(((((NOT hyp) AND hyp) AND pre) AND pre) AND (NOT pre)),(((((NOT hyp:tag) AND hyp:tok) AND pre:tag) AND pre:tag) AND (NOT pre:tok)),0.2727272727272727,7,0.07201783,-0.0766055,-0.09532229
+927,pre:tok:in,pre,pre:tok,0.0,1,-0.0031967096,-0.048010457,-0.074809134
+928,pre:tok:in,pre,pre:tok,0.0,1,-0.02307145,0.012777889,-0.006201597
+929,pre:tok:in,pre,pre:tok,0.0,1,9.8134486e-05,0.013827699,0.0071953004
+930,pre:tok:in,pre,pre:tok,0.0,1,0.028298838,0.009981678,-0.088148825
+931,pre:tok:in,pre,pre:tok,0.0,1,0.04160274,-0.029127866,-0.028660497
+933,pre:tok:in,pre,pre:tok,0.0,1,-0.021989645,-0.026058227,0.011948287
+919,((((hyp:tok:beer AND hyp:tok:in) OR hyp:tok:sofa) AND pre:tag:nns) AND (NOT pre:tag:prp$)),((((hyp AND hyp) OR hyp) AND pre) AND (NOT pre)),((((hyp:tok AND hyp:tok) OR hyp:tok) AND pre:tag) AND (NOT pre:tag)),0.36363636363636365,6,-0.17250912,-0.106557086,0.10291152
+935,pre:tok:in,pre,pre:tok,0.0,1,-0.07798482,-0.07352833,0.006826815
+937,pre:tok:in,pre,pre:tok,0.0,1,0.020229425,-0.025328426,-0.038708054
+938,pre:tok:in,pre,pre:tok,0.0,1,-0.03464031,-0.0027132118,-0.01716617
+926,(hyp:tok:and AND pre:tok:touching),(hyp AND pre),(hyp:tok AND pre:tok),0.16666666666666666,2,-0.043238357,-0.017068671,0.0037114678
+940,pre:tok:in,pre,pre:tok,0.0,1,-0.044780247,0.034955606,0.0050901906
+942,pre:tok:in,pre,pre:tok,0.0,1,0.023784863,-0.0019849667,-0.024708016
+943,pre:tok:in,pre,pre:tok,0.0,1,-0.06633303,-0.037216946,0.12124476
+944,pre:tok:in,pre,pre:tok,0.0,1,-0.027050931,0.023863478,-0.018337335
+945,pre:tok:in,pre,pre:tok,0.0,1,-0.13270062,0.015549186,-0.05029162
+946,pre:tok:in,pre,pre:tok,0.0,1,-0.07120278,0.030005734,-0.044290032
+947,pre:tok:in,pre,pre:tok,0.0,1,-0.053118393,-0.052751906,0.01671842
+948,pre:tok:in,pre,pre:tok,0.0,1,0.00048922043,0.0070871837,0.0005781525
+950,pre:tok:in,pre,pre:tok,0.0,1,0.018012987,0.02729435,0.032367956
+951,pre:tok:in,pre,pre:tok,0.0,1,0.02243296,-0.007864726,0.02141243
+952,pre:tok:in,pre,pre:tok,0.0,1,-0.022511894,0.018422656,-0.005039444
+953,pre:tok:in,pre,pre:tok,0.0,1,0.0082545625,-0.022917243,-0.057545472
+954,pre:tok:in,pre,pre:tok,0.0,1,-0.0062260805,-0.008562932,-0.0015907736
+955,pre:tok:in,pre,pre:tok,0.0,1,0.015817637,0.018932147,0.014812623
+956,pre:tok:in,pre,pre:tok,0.0,1,-0.013111482,-0.015026503,-0.0052693095
+958,pre:tok:in,pre,pre:tok,0.0,1,0.020173023,0.012942708,0.023520209
+960,pre:tok:in,pre,pre:tok,0.0,1,-0.030435652,-0.0111181345,-0.0061659208
+961,pre:tok:in,pre,pre:tok,0.0,1,-0.061636165,0.038227223,-0.032089796
+962,pre:tok:in,pre,pre:tok,0.0,1,-0.079363585,0.047525097,-0.018958665
+882,(((((NOT oth:overlap:overlap25) AND hyp:tok:outside) AND (NOT pre:tok:in)) AND (NOT pre:tok:on)) AND (NOT hyp:tok:man)),(((((NOT oth) AND hyp) AND (NOT pre)) AND (NOT pre)) AND (NOT hyp)),(((((NOT oth:overlap) AND hyp:tok) AND (NOT pre:tok)) AND (NOT pre:tok)) AND (NOT hyp:tok)),0.20833333333333334,9,-0.11815573,-0.14016853,0.19878663
+964,pre:tok:in,pre,pre:tok,0.0,1,0.035029314,-0.0040111085,-0.049987566
+965,pre:tok:in,pre,pre:tok,0.0,1,0.007431034,-0.006267135,-0.012925488
+966,pre:tok:in,pre,pre:tok,0.0,1,-0.009607948,-0.036692593,-0.026055656
+967,pre:tok:in,pre,pre:tok,0.0,1,0.099351615,-0.04579555,-0.08554884
+968,pre:tok:in,pre,pre:tok,0.0,1,-0.014556403,0.028597755,0.062302962
+969,pre:tok:in,pre,pre:tok,0.0,1,-0.012210624,-0.005515552,-0.028638724
+971,pre:tok:in,pre,pre:tok,0.0,1,-0.06976429,-0.026562681,0.017852204
+973,pre:tok:in,pre,pre:tok,0.0,1,-0.007149391,-0.004985463,0.01289878
+974,pre:tok:in,pre,pre:tok,0.0,1,-0.011149081,0.014196042,0.030475738
+975,pre:tok:in,pre,pre:tok,0.0,1,0.045478947,-0.0075629954,-0.033979148
+976,pre:tok:in,pre,pre:tok,0.0,1,-0.019511836,0.0014908836,-0.046082348
+949,(hyp:tok:members AND pre:tok:are),(hyp AND pre),(hyp:tok AND pre:tok),0.2,2,0.034032475,-0.09616791,-0.08682323
+978,pre:tok:in,pre,pre:tok,0.0,1,0.052013095,0.009538243,-0.038768437
+885,((((hyp:tok:walks AND pre:tag:prp$) OR hyp:tok:inflatable) OR pre:tok:sleeps) OR hyp:tok:relax),((((hyp AND pre) OR hyp) OR pre) OR hyp),((((hyp:tok AND pre:tag) OR hyp:tok) OR pre:tok) OR hyp:tok),0.13846153846153847,5,-0.0065116026,0.050807606,-0.09435787
+981,pre:tok:in,pre,pre:tok,0.0,1,0.016225403,0.012337659,0.015103177
+984,pre:tok:in,pre,pre:tok,0.0,1,-0.012407386,-0.033270366,-0.00075256807
+985,pre:tok:in,pre,pre:tok,0.0,1,-0.028127475,-0.033239525,-0.019724695
+987,pre:tok:in,pre,pre:tok,0.0,1,0.047089648,-0.08057747,0.013233676
+988,pre:tok:in,pre,pre:tok,0.0,1,0.040756952,-0.015648799,-0.010843503
+989,pre:tok:in,pre,pre:tok,0.0,1,-0.0054364935,0.0034248102,0.009160587
+913,((((hyp:tok:lake OR pre:tok:swimming) AND hyp:tok:in) OR pre:tok:london) AND (NOT pre:tok:water)),((((hyp OR pre) AND hyp) OR pre) AND (NOT pre)),((((hyp:tok OR pre:tok) AND hyp:tok) OR pre:tok) AND (NOT pre:tok)),0.15217391304347827,6,-0.29755378,-0.08853386,0.0920103
+991,pre:tok:in,pre,pre:tok,0.0,1,0.030958308,-0.059088323,0.026119497
+992,pre:tok:in,pre,pre:tok,0.0,1,0.057447776,-0.09254347,-0.19412956
+993,pre:tok:in,pre,pre:tok,0.0,1,0.0032266588,-0.016455255,-0.011617068
+994,pre:tok:in,pre,pre:tok,0.0,1,-0.0006450929,-0.007908929,0.039674237
+995,pre:tok:in,pre,pre:tok,0.0,1,-0.02554483,0.015029094,-0.017507572
+996,pre:tok:in,pre,pre:tok,0.0,1,0.05660901,-0.06749531,-0.0028616567
+997,pre:tok:in,pre,pre:tok,0.0,1,-0.034599002,-0.005995221,-0.016432809
+907,((((hyp:tok:couch OR hyp:tok:lunch) AND pre:tag:rb) OR pre:tok:goes) OR hyp:tok:low),((((hyp OR hyp) AND pre) OR pre) OR hyp),((((hyp:tok OR hyp:tok) AND pre:tag) OR pre:tok) OR hyp:tok),0.1125,5,-0.026583066,0.029493604,-0.01576241
+999,pre:tok:in,pre,pre:tok,0.0,1,-0.043344192,-0.042725492,-0.022377292
+1001,pre:tok:in,pre,pre:tok,0.0,1,-0.0025187058,0.018355865,-0.017997567
+1002,pre:tok:in,pre,pre:tok,0.0,1,-0.020438544,0.037015397,-0.007714415
+1003,pre:tok:in,pre,pre:tok,0.0,1,0.049388673,-0.00096958556,-0.003961011
+1004,pre:tok:in,pre,pre:tok,0.0,1,-0.15520607,0.05854881,-0.06574532
+1005,pre:tok:in,pre,pre:tok,0.0,1,-0.0031154174,-0.014348116,0.0020362223
+1006,pre:tok:in,pre,pre:tok,0.0,1,-0.030085687,-0.045268126,-0.013322242
+1009,pre:tok:in,pre,pre:tok,0.0,1,-0.01277647,-0.041724995,0.003599736
+1010,pre:tok:in,pre,pre:tok,0.0,1,0.0211683,-0.021871125,0.0039940416
+1011,pre:tok:in,pre,pre:tok,0.0,1,-0.16619107,0.021842523,-0.00527857
+1012,pre:tok:in,pre,pre:tok,0.0,1,-0.02095641,-0.004479716,0.03441273
+1013,pre:tok:in,pre,pre:tok,0.0,1,0.0004316667,-0.004580796,0.016526794
+1014,pre:tok:in,pre,pre:tok,0.0,1,-0.011569132,-0.029582832,-0.006145809
+1015,pre:tok:in,pre,pre:tok,0.0,1,-0.016380409,0.016874794,-0.051806565
+1016,pre:tok:in,pre,pre:tok,0.0,1,-0.0033951926,0.023432583,0.021783758
+1017,pre:tok:in,pre,pre:tok,0.0,1,-0.0060998807,0.1027605,-0.11662559
+1018,pre:tok:in,pre,pre:tok,0.0,1,-0.036031954,0.020831084,0.019810366
+1019,pre:tok:in,pre,pre:tok,0.0,1,-0.089855336,-0.010894321,-0.019584162
+972,((((NOT pre:tag:jj) AND (hyp:tok:barbecue OR hyp:tok:surfing)) OR pre:tok:wild) OR hyp:tok:skateboards),((((NOT pre) AND (hyp OR hyp)) OR pre) OR hyp),((((NOT pre:tag) AND (hyp:tok OR hyp:tok)) OR pre:tok) OR hyp:tok),0.15384615384615385,6,0.09443532,-0.02183905,-0.12350355
+1022,pre:tok:in,pre,pre:tok,0.0,1,-0.021318965,0.014534113,-0.0061503067
+1008,((((NOT oth:overlap:overlap25) AND (hyp:tok:unicycle OR pre:tok:meet)) OR hyp:tok:suv) AND (NOT pre:tok:man)),((((NOT oth) AND (hyp OR pre)) OR hyp) AND (NOT pre)),((((NOT oth:overlap) AND (hyp:tok OR pre:tok)) OR hyp:tok) AND (NOT pre:tok)),0.375,7,-0.103666954,0.031038567,0.019882444
+959,((((hyp:tok:there AND hyp:tok:this) OR pre:tok:individuals) OR hyp:tok:waters) AND (NOT pre:tok:are)),((((hyp AND hyp) OR pre) OR hyp) AND (NOT pre)),((((hyp:tok AND hyp:tok) OR pre:tok) OR hyp:tok) AND (NOT pre:tok)),0.11864406779661017,6,0.050252914,-0.10882391,-0.0980918
+986,((((NOT hyp:tok:are) AND (hyp:tok:girl AND pre:tok:boy)) OR hyp:tok:rollerblading) AND (NOT pre:tok:at)),((((NOT hyp) AND (hyp AND pre)) OR hyp) AND (NOT pre)),((((NOT hyp:tok) AND (hyp:tok AND pre:tok)) OR hyp:tok) AND (NOT pre:tok)),0.17647058823529413,7,-0.11930291,-0.060195975,0.07652626
