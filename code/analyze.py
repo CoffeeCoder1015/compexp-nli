@@ -315,9 +315,10 @@ def compute_best_sentence_iou(args):
     feats = GLOBALS["feats"]
     dataset = GLOBALS["dataset"]
 
-    if acts.sum() < settings.MIN_ACTS:
+    acts_sum = acts.sum()
+    if acts_sum < settings.MIN_ACTS:
         null_f = (FM.Leaf(0), 0)
-        print("[WARNING] - threshold too low",null_f)
+        print("[WARNING] - threshold too low",null_f,acts_sum)
         return {"unit": unit, "best": null_f, "best_noncomp": null_f}
 
     feats_to_search = list(range(feats.shape[1]))
