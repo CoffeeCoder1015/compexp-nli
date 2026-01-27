@@ -4,7 +4,7 @@ Settings
 
 import os
 
-CUDA = False
+CUDA = True
 ALPHA = None  # Use "None" to use ReLU threshold (i.e., > 0)
 BEAM_SIZE = 10
 MAX_FORMULA_LENGTH = 5
@@ -18,7 +18,7 @@ METRIC = "iou"
 EMBEDDING_NEIGHBORHOOD_SIZE = 5
 
 NEURONS = None
-PARALLEL = 10
+PARALLEL = 16
 
 SHUFFLE = False
 SAVE_EVERY = 4
