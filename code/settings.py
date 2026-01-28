@@ -4,7 +4,7 @@ Settings
 
 import os
 
-CUDA = False
+CUDA = True
 ALPHA = None  # Use "None" to use ReLU threshold (i.e., > 0)
 BEAM_SIZE = 10
 MAX_FORMULA_LENGTH = 5
@@ -18,7 +18,7 @@ METRIC = "iou"
 EMBEDDING_NEIGHBORHOOD_SIZE = 5
 
 NEURONS = None
-PARALLEL = 10
+PARALLEL = 20
 
 SHUFFLE = False
 SAVE_EVERY = 4
@@ -26,7 +26,7 @@ SAVE_EVERY = 4
 # How many "maximally activating" open features to use, PER CATEGORY
 MAX_OPEN_FEATS = 5
 # Minimum number of activations to analyze a neuron
-MIN_ACTS = 5
+MIN_ACTS = 500
 
 MODEL = "models/bowman_snli/6.pth"
 MODEL_TYPE = "bowman"  # choices: bowman, minimal
