@@ -21,4 +21,5 @@ dependencies = [
     "spacy>=3.8.11",
     "torch>=2.2.2",
     "tqdm>=4.67.1",
+    "transformers<5.0.0"
 ]
