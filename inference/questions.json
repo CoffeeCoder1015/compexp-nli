@@ -1,6 +1,6 @@
 {
     "open_ended":[
-        "What is the history of the Roman empire from the rise of Ceasar to the split creating the Eastern and Western Roman empire.",
+        "What is the history of the Roman empire from the rise of Caesar to the split creating the Eastern and Western Roman empire.",
         "Summarise everything someone using the A* algorithm should know.",
         "What is the interpretation of quantumn mechanics?"
     ],
@@ -10,7 +10,7 @@
         "It rained yesterday and Alice walked back from school in the rain without an umbrella and gotten a fever the next day the situation is she probably got a cold. Bob ate some shellfish and moments later he had shortness of breath, likely due to an allergy. Given these example situations, present the most plausible medical outcome for following: Ethan ran a marathon in extreme heat without drinking enough water, and afterward felt dizzy and nauseous."
     ],
     "reasoning_single_answer":[
-        "If p implies q then does not q imply not p. Provide final answer with only true or false.",
+        "If p implies q then does not q imply not p. Provide the final answer with only true or false.",
         "Write a single word describing a set of words.\n For example:\n Apple banana orange, the answer is fruit\n Novel poem essay, the answer is literature\n Triangle square circle, the answer is shape\n \n So, describe Keyboard smartphone tablet now please.",
         "If all that surrounds us are cats, dogs, and horses, and only birds are bipedal, are humans featherless bipeds? Provide your final answer with only True or False."
     ]
