@@ -5,6 +5,7 @@ description = "Add your description here"
 requires-python = "==3.12.*"
 dependencies = [
     "cython>=3.2.4",
+    "huggingface-hub[cli]>=0.36.2",
     "imageio>=2.37.2",
     "matplotlib>=3.10.6",
     "nltk>=3.9.2",
@@ -21,5 +22,5 @@ dependencies = [
     "spacy>=3.8.11",
     "torch>=2.2.2",
     "tqdm>=4.67.1",
-    "transformers<5.0.0"
+    "transformers<5.0.0",
 ]
