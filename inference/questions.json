@@ -1,0 +1,17 @@
+{
+    "open_ended":[
+        "What is the history of the Roman empire from the rise of Ceasar to the split creating the Eastern and Western Roman empire.",
+        "Summarise everything someone using the A* algorithm should know.",
+        "What is the interpretation of quantumn mechanics?"
+    ],
+    "reasoning":[
+        "Predict the mathematical function given a sequence. For example the answer for {1,4,9,16,25,36,49} is y=x^2. Another example: {0,-2,-6,-12,-20,-30,-42} which the answer is y=x-x^2. All provided values are based on integer x values from 1 to 7. What is the answer for the sequence {0,0,3,20,115,714,5033}",
+        "If a ball is falling to the ground from 20m high from the ground on Mars it would take 3.28s because g_mars=3.72m/s^2. If a cube were to fall from 3m high from the ground on mercury it would take 1.27s because g_mercury=3.7m/s^2. So, assuming no air resistance and only the force from the graviatational field of the planet in the question, how long would it take a feather to fall to the ground from 50m high on Earth.",
+        "It rained yesterday and Alice walked back from school in the rain without an umbrella and gotten a fever the next day the situation is she probably got a cold. Bob ate some shellfish and moments later he had shortness of breath, likely due to an allergy. Given these example situations, present the most plausible medical outcome for following: Ethan ran a marathon in extreme heat without drinking enough water, and afterward felt dizzy and nauseous."
+    ],
+    "reasoning_single_answer":[
+        "If p implies q then does not q imply not p. Provide final answer with only true or false.",
+        "Write a single word describing a set of words.\n For example:\n Apple banana orange, the answer is fruit\n Novel poem essay, the answer is literature\n Triangle square circle, the answer is shape\n \n So, describe Keyboard smartphone tablet now please.",
+        "If all that surrounds us are cats, dogs, and horses, and only birds are bipedal, are humans featherless bipeds? Provide your final answer with only True or False."
+    ]
+}
