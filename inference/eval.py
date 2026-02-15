@@ -69,3 +69,14 @@ total = sum(stats.values())
 accuracy = stats['success']/total
 print("\033[94mAccuracy:\033[0m", accuracy)
 
+# Label statistics
+label_stats = Counter(word_labels)
+total = sum(label_stats.values())
+ent = label_stats["entailment"]
+neu = label_stats["neutral"]
+con = label_stats["contradiction"]
+def print_stats(Name,Num,Percent):
+    print(f"\033[38;2;255;165;0m{Name}\033[0m: {Num}  {Percent*100}%")
+print_stats("Entailment",ent,ent/total)
+print_stats("Neutral",neu,neu/total)
+print_stats("Contradiction",con,con/total)
