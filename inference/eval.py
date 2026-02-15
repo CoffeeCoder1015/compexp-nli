@@ -1,74 +1,69 @@
-from transformers import pipeline
+from collections import Counter
+from transformers import pipeline, AutoTokenizer
 from datasets import load_dataset
 
-def extract_classification(response_text, prompt_len):
-    classifications = {
-        "entailment": 0, 
-        "neutral": 1, 
-        "contradiction": 2
-    }
-
-    response = response_text.lower()[prompt_len:]
-
+def extract_classification(response_text):
+    response = str(response_text.lower()[response_text.index("Answer:"):])
     # TEMPORARY
     print(f"Response after prompt: {response}")
 
+    classifications = [ "entailment", "neutral", "contradiction"]
+    classifications = {k: response.find(k) for k in classifications}
 
-    first_index = float("inf")
-    first_class = ""
+    return min(
+        filter(lambda x : x[1] >= 0, classifications.items()),
+        key=lambda kv : kv[1],
+        default=(None,None) 
+    )[0]
     
-    for c in classifications.keys():
-        index = response.find(c)
-        if index != -1 and index < first_index:
-            first_index = index
-            first_class = c
+def build_NLI_prompt(example):
+    example["prompt"] = f"""Premise: {example["premise"]}
+Hypothesis: {example["hypothesis"]}
 
-    if first_class:
-        return classifications[first_class]
+Answer with ONLY one word: "entailment" or "neutral" or "contradiction"
+Do not explain the reasoning.
+
+Answer:"""
+    return example
+
+model = "LiquidAI/LFM2.5-1.2B-Base"
+tokenizer = AutoTokenizer.from_pretrained(model)
+tokenizer.padding_side = "left" #for batched prompts so tokens are of the form [<pad> prompts] and not [prompt <pad>]
+
+pipe = pipeline("text-generation", model=model,tokenizer=tokenizer)
+
+dataset = load_dataset("snli", split="validation")
+SNLI_query = dataset.map(build_NLI_prompt)[:]
+
+# lables, Y
+classification_map = ["entailment","neutral","contradiction"]
+labels_raw = SNLI_query["label"]
+word_labels = [classification_map[i] for i in labels_raw]
+
+# prompts, X
+reduced_prompts = SNLI_query["prompt"]
+
+print("Starting inference.")
+responses_raw = pipe(reduced_prompts,max_new_tokens=30,batch_size=100)
+print("Inference finished!")
+
+responses = [resp[0]["generated_text"] for resp in responses_raw]
+predictions = [extract_classification(resp) for resp in responses]
+
+def NLI_statsitics(x,y):
+    if x == y:
+        return 1
+    elif x != y and x != None:
+        return 0
     else:
         return -1
 
-def main():
-    pipe = pipeline("text-generation", model="LiquidAI/LFM2.5-1.2B-Base")
-    dataset = load_dataset("snli", split="validation")
+results = list(map(NLI_statsitics , predictions,word_labels))
 
-    correct = 0
-    total = 0
+stats = Counter(results)
+print(stats)
 
-    for i in range(10):
-        example = dataset[i]
-        premise = example["premise"]
-        hypothesis = example["hypothesis"]
-        label = example["label"]
+accuracy_stats = Counter(map(lambda x: max(x,0), results))
 
-        prompt = f"""\
-        Premise: {premise}
-        Hypothesis: {hypothesis}
+print(accuracy_stats)
 
-        Answer with ONLY one word: "entailment" or "neutral" or "contradiction"
-        Do not explain the reasoning.
-
-        Answer: 
-        """
-
-        prompt_len = len(prompt)
-
-        response = pipe(prompt)
-        response_text = response[0]["generated_text"]
-
-        # TEMPORARY
-        print(f"Response text:\n\n{response_text}")
-
-        prediction = extract_classification(response_text, prompt_len)
-
-        # TEMPORARY
-        print(f"Example {i+1}\nPrediction = {prediction}, Label = {label}")
-
-        if prediction == label:
-            correct += 1
-        total +=1
-
-    print(f"Accuracy: {correct/total:.4f}")
-
-if __name__ == "__main__":
-    main()
