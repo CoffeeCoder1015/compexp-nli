@@ -5,7 +5,7 @@ from datasets import load_dataset
 def extract_classification(response_text):
     response = str(response_text.lower()[response_text.index("Answer:"):])
     # TEMPORARY
-    print(f"Response after prompt: {response}")
+    print(f"\033[32mAnswer\033[0m: {response}")
 
     classifications = [ "entailment", "neutral", "contradiction"]
     classifications = {k: response.find(k) for k in classifications}
@@ -44,7 +44,7 @@ word_labels = [classification_map[i] for i in labels_raw]
 reduced_prompts = SNLI_query["prompt"]
 
 print("Starting inference.")
-responses_raw = pipe(reduced_prompts,max_new_tokens=30,batch_size=100)
+responses_raw = pipe(reduced_prompts,max_new_tokens=10,batch_size=100)
 print("Inference finished!")
 
 responses = [resp[0]["generated_text"] for resp in responses_raw]
@@ -52,18 +52,20 @@ predictions = [extract_classification(resp) for resp in responses]
 
 def NLI_statsitics(x,y):
     if x == y:
-        return 1
+        return "success"
     elif x != y and x != None:
-        return 0
+        return "fail"
     else:
-        return -1
+        return "reject"
 
 results = list(map(NLI_statsitics , predictions,word_labels))
 
 stats = Counter(results)
-print(stats)
+print("\033[94mSuccess:\033[0m", stats['success'])
+print("\033[94mFail:\033[0m", stats['fail'])
+print("\033[94mReject:\033[0m", stats['reject'])
 
-accuracy_stats = Counter(map(lambda x: max(x,0), results))
-
-print(accuracy_stats)
+total = sum(stats.values())
+accuracy = stats['success']/total
+print("\033[94mAccuracy:\033[0m", accuracy)
 
