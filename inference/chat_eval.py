@@ -3,6 +3,7 @@ import json
 import re
 from transformers import pipeline, AutoTokenizer
 from datasets import load_dataset
+from tqdm import tqdm
 
 # system prompt directive for the NLI task
 system_prompt = {
@@ -57,7 +58,7 @@ tokenizer.padding_side = "left" #for batched prompts so tokens are of the form [
 
 pipe = pipeline("text-generation", model=model,tokenizer=tokenizer)
 dataset = load_dataset("snli", split="validation")
-SNLI_query = dataset.map(build_NLI_prompt)[:1024]
+SNLI_query = dataset.map(build_NLI_prompt)[:]
 
 
 # lables, Y
@@ -69,7 +70,20 @@ word_labels = [classification_map[i] for i in labels_raw]
 reduced_prompts = SNLI_query["prompt"]
 
 print("Starting inference.")
-responses_raw = pipe(reduced_prompts,max_new_tokens=10_000,batch_size=64,num_workers=8)
+
+responses_raw = []
+batch_size = 128
+
+for i in tqdm(range(0, len(reduced_prompts), batch_size), desc="Generating"):
+    batch = reduced_prompts[i:i+batch_size]
+    out = pipe(
+        batch,
+        max_new_tokens=400,
+        batch_size=batch_size,
+        num_workers=8
+    )
+    responses_raw.extend(out)
+
 print("Inference finished!")
 
 responses = [resp[0]["generated_text"] for resp in responses_raw]
