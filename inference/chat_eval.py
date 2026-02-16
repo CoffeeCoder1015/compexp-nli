@@ -46,13 +46,30 @@ def extract_first(response_chat):
         default=(None,None) 
     )[0]
 
+pipeline_qwen = {
+    "model":"Qwen/Qwen3-1.7B",
+    "eval":extract_classification,
+    "token_limit":1000,
+    "batching_size":64
+} 
+
+pipeline_liquid ={
+    "model":"LiquidAI/LFM2.5-1.2B-Base",
+    "eval":extract_first,
+    "token_limit":300,
+    "batching_size":128
+}
+
+# SELCT: model to run with its configs
+active_pipeline = pipeline_qwen
+
 def build_NLI_prompt(example):
     test_example = f"Premise: {example["premise"]}\nHypothesis: {example["hypothesis"]}"
     prompt = [system_prompt, {"role":"user","content":test_example} ]
     example["prompt"] = prompt
     return example
 
-model = "LiquidAI/LFM2.5-1.2B-Base"
+model = active_pipeline["model"]
 tokenizer = AutoTokenizer.from_pretrained(model)
 tokenizer.padding_side = "left" #for batched prompts so tokens are of the form [<pad> prompts] and not [prompt <pad>]
 
@@ -72,13 +89,13 @@ reduced_prompts = SNLI_query["prompt"]
 print("Starting inference.")
 
 responses_raw = []
-batch_size = 128
+batch_size = active_pipeline["batching_size"]
 
 for i in tqdm(range(0, len(reduced_prompts), batch_size), desc="Generating"):
     batch = reduced_prompts[i:i+batch_size]
     out = pipe(
         batch,
-        max_new_tokens=400,
+        max_new_tokens=active_pipeline["token_limit"],
         batch_size=batch_size,
         num_workers=8
     )
@@ -87,7 +104,7 @@ for i in tqdm(range(0, len(reduced_prompts), batch_size), desc="Generating"):
 print("Inference finished!")
 
 responses = [resp[0]["generated_text"] for resp in responses_raw]
-predictions = [extract_first(resp) for resp in responses]
+predictions = [active_pipeline["eval"](resp) for resp in responses]
 
 def NLI_statsitics(x,y):
     if x == y:
@@ -119,3 +136,4 @@ def print_stats(Name,Num,Percent):
 print_stats("Entailment",ent,ent/total)
 print_stats("Neutral",neu,neu/total)
 print_stats("Contradiction",con,con/total)
+
