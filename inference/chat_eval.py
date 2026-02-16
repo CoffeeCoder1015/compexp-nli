@@ -1,5 +1,4 @@
 from collections import Counter
-import json
 import re
 from transformers import pipeline, AutoTokenizer
 from datasets import load_dataset
