@@ -34,6 +34,6 @@ def get_batch_size(pipe, prompts, token_limit, local_rank, memory_buffer_ratio=0
     
     _, available = get_gpu_memory_info(local_rank)
     max_batch = available * memory_buffer_ratio / memory_per_prompt
-    optimal_batch = 2 ** round(math.log2(max_batch))
+    optimal_batch = 2 ** math.floor(math.log2(max_batch))
     
     return max(optimal_batch, 1)

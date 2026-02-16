@@ -135,8 +135,8 @@ def main():
         print(f"Autoscaling batch size, current size {local_rank}:",batch_size)
         batch_size = autoscale.get_batch_size(
             pipe, reduced_prompts, active_pipeline["token_limit"], local_rank,
-            memory_buffer_ratio=1,
-            test_rounds=3
+            memory_buffer_ratio=0.9,
+            test_rounds=4
         )
         print(f"New batch size {local_rank}:",batch_size)
 
@@ -213,5 +213,6 @@ def main():
 
 if __name__ == "__main__":
     main()
+
 
 
