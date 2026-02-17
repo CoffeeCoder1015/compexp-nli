@@ -50,21 +50,21 @@ pipeline_config = {
 }
 
 
-def worker(rank, prompts, labels, device, pipeline_name, result_queue):
+def worker(rank, prompts, labels, pipeline_name, result_queue):
     config = pipeline_config[pipeline_name]
     model_id = config["model"]
     eval_fn = config["eval"]
 
-    model = AutoModelForCausalLM.from_pretrained(model_id)
-    model.to(device)
+    device = torch.device(f"cuda:{rank}")
 
     tokenizer = AutoTokenizer.from_pretrained(model_id)
     tokenizer.padding_side = "left"
 
     pipe = pipeline(
         "text-generation",
-        model=model,
+        model=model_id,
         tokenizer=tokenizer,
+        device=device
     )
     print(f"Worker {rank} using device: {device}")
 
@@ -100,3 +100,4 @@ def worker(rank, prompts, labels, device, pipeline_name, result_queue):
 
     result_queue.put((rank, predictions, labels))
     print(f"Worker {rank} results queued.")
+

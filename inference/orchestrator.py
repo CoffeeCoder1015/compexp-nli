@@ -31,9 +31,9 @@ def shard_data(prompts, labels, num_shards, rank):
     return prompts[start:end], labels[start:end]
 
 
-def run_worker(rank, prompts, labels, device, pipeline_name, result_queue):
+def run_worker(rank, prompts, labels, pipeline_name, result_queue):
     from mp_chat_eval import worker
-    worker(rank, prompts, labels, device, pipeline_name, result_queue)
+    worker(rank, prompts, labels, pipeline_name, result_queue)
 
 
 def compute_statistics(all_preds, all_labels, model_name):
@@ -119,11 +119,10 @@ def main():
     print(f"Spawning {num_gpus} workers...")
     for rank in range(num_gpus):
         prompts_shard, labels_shard = shard_data(reduced_prompts, word_labels, num_gpus, rank)
-        device = f"cuda:{rank}"
 
         p = mp.Process(
             target=run_worker,
-            args=(rank, prompts_shard, labels_shard, device, args.model, result_queue)
+            args=(rank, prompts_shard, labels_shard, args.model, result_queue)
         )
         p.start()
         processes.append(p)
@@ -169,3 +168,4 @@ def main():
 
 if __name__ == "__main__":
     main()
+
