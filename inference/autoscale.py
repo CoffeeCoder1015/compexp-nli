@@ -9,7 +9,7 @@ def get_gpu_memory_info(local_rank):
     return total, total - allocated
 
 def get_batch_size(pipe, prompts, token_limit, local_rank, memory_buffer_ratio=0.95, test_rounds=4):
-    test_batch_size = 4
+    test_batch_size = 8
     total_samples = test_batch_size * test_rounds
     
     test_samples = random.sample(prompts, total_samples)

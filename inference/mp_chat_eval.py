@@ -75,7 +75,7 @@ def worker(rank, prompts, labels, pipeline_name):
         batch_size = autoscale.get_batch_size(
             pipe, prompts, config["token_limit"], rank,
             memory_buffer_ratio=0.7,
-            test_rounds=4
+            test_rounds=6
         )
         print(f"Worker {rank} new batch size: {batch_size}")
 
