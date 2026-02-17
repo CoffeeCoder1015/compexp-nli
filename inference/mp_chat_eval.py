@@ -82,6 +82,7 @@ def worker(rank, prompts, labels, pipeline_name, result_queue):
 
     responses_raw = []
 
+    torch.cuda.empty_cache()
     with torch.inference_mode():
         for i in tqdm(range(0, len(prompts), batch_size), desc=f"Worker {rank}", disable=(rank != 0)):
             batch = prompts[i:i+batch_size]
