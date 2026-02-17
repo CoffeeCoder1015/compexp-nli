@@ -73,7 +73,7 @@ def worker(rank, prompts, labels, pipeline_name, result_queue):
         print(f"Autoscaling batch size for worker {rank}, initial size: {batch_size}")
         batch_size = autoscale.get_batch_size(
             pipe, prompts, config["token_limit"], rank,
-            memory_buffer_ratio=0.85,
+            memory_buffer_ratio=0.7,
             test_rounds=4
         )
         print(f"Worker {rank} new batch size: {batch_size}")
@@ -82,7 +82,6 @@ def worker(rank, prompts, labels, pipeline_name, result_queue):
 
     responses_raw = []
 
-    torch.cuda.empty_cache()
     with torch.inference_mode():
         for i in tqdm(range(0, len(prompts), batch_size), desc=f"Worker {rank}", disable=(rank != 0)):
             batch = prompts[i:i+batch_size]
@@ -90,7 +89,6 @@ def worker(rank, prompts, labels, pipeline_name, result_queue):
                 batch,
                 max_new_tokens=config["token_limit"],
                 batch_size=batch_size,
-                num_workers=8
             )
             responses_raw.extend(out)
 
