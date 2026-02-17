@@ -1,6 +1,8 @@
 import argparse
 import json
 import multiprocessing as mp
+import os
+import time
 from collections import Counter
 import torch
 from datasets import load_dataset
@@ -31,9 +33,9 @@ def shard_data(prompts, labels, num_shards, rank):
     return prompts[start:end], labels[start:end]
 
 
-def run_worker(rank, prompts, labels, pipeline_name, result_queue):
+def run_worker(rank, prompts, labels, pipeline_name):
     from mp_chat_eval import worker
-    worker(rank, prompts, labels, pipeline_name, result_queue)
+    worker(rank, prompts, labels, pipeline_name)
 
 
 def compute_statistics(all_preds, all_labels, model_name):
@@ -113,7 +115,6 @@ def main():
 
     print(f"Total samples: {len(reduced_prompts)}")
 
-    result_queue = mp.Queue()
     processes = []
 
     print(f"Spawning {num_gpus} workers...")
@@ -122,20 +123,26 @@ def main():
 
         p = mp.Process(
             target=run_worker,
-            args=(rank, prompts_shard, labels_shard, args.model, result_queue)
+            args=(rank, prompts_shard, labels_shard, args.model)
         )
         p.start()
         processes.append(p)
 
-    print("Waiting for workers to complete...")
-    for p in processes:
-        p.join()
-
     print("Collecting results...")
     results_by_rank = {}
-    while not result_queue.empty():
-        rank, predictions, labels = result_queue.get()
-        results_by_rank[rank] = (predictions, labels)
+    for expected_rank in range(num_gpus):
+        file_path = f"shard-{expected_rank}.json"
+        poll_interval = 5
+        max_poll_interval = 60
+        
+        while not os.path.exists(file_path):
+            time.sleep(poll_interval)
+            poll_interval = min(poll_interval * 2, max_poll_interval)
+        
+        with open(file_path) as f:
+            result_data = json.load(f)
+        results_by_rank[expected_rank] = (result_data["predictions"], result_data["labels"])
+        print(f"Collected results from shard-{expected_rank}.json")
 
     all_preds = []
     all_labels = []

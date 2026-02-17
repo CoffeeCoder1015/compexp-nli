@@ -1,3 +1,4 @@
+import json
 import re
 import torch
 from transformers import pipeline, AutoTokenizer, AutoModelForCausalLM
@@ -50,7 +51,7 @@ pipeline_config = {
 }
 
 
-def worker(rank, prompts, labels, pipeline_name, result_queue):
+def worker(rank, prompts, labels, pipeline_name):
     config = pipeline_config[pipeline_name]
     model_id = config["model"]
     eval_fn = config["eval"]
@@ -97,6 +98,8 @@ def worker(rank, prompts, labels, pipeline_name, result_queue):
     responses = [resp[0]["generated_text"] for resp in responses_raw]
     predictions = [eval_fn(resp) for resp in responses]
 
-    result_queue.put((rank, predictions, labels))
-    print(f"Worker {rank} results queued.")
+    result_data = {"predictions": predictions, "labels": labels}
+    with open(f"shard-{rank}.json", "w") as f:
+        json.dump(result_data, f)
+    print(f"Worker {rank} results written to shard-{rank}.json")
 
