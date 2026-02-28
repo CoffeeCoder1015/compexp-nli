@@ -61,7 +61,7 @@ print(model.print_trainable_parameters())
 
 sft_config = SFTConfig(
     output_dir="SFT",
-    learning_rate=1e-4,
+    learning_rate=2e-4,
     per_device_train_batch_size=8,
     gradient_accumulation_steps=2,
     num_train_epochs=3,

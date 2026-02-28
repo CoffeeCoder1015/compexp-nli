@@ -3,6 +3,7 @@ import re
 from transformers import pipeline, AutoTokenizer
 from datasets import load_dataset
 from tqdm import tqdm
+import lora_loader
 
 # system prompt directive for the NLI task
 system_prompt = {
@@ -49,18 +50,20 @@ pipeline_qwen = {
     "model":"Qwen/Qwen3-1.7B",
     "eval":extract_classification,
     "token_limit":1000,
-    "batching_size":64
+    "batching_size":64,
+    "lora_path": None
 } 
 
 pipeline_liquid ={
     "model":"LiquidAI/LFM2.5-1.2B-Base",
     "eval":extract_first,
     "token_limit":300,
-    "batching_size":128
+    "batching_size":128,
+    "lora_path": "../finetune/SFT/checkpoint-1000"
 }
 
 # SELCT: model to run with its configs
-active_pipeline = pipeline_qwen
+active_pipeline = pipeline_liquid
 
 def build_NLI_prompt(example):
     test_example = f"Premise: {example["premise"]}\nHypothesis: {example["hypothesis"]}"
@@ -68,11 +71,11 @@ def build_NLI_prompt(example):
     example["prompt"] = prompt
     return example
 
-model = active_pipeline["model"]
-tokenizer = AutoTokenizer.from_pretrained(model)
-tokenizer.padding_side = "left" #for batched prompts so tokens are of the form [<pad> prompts] and not [prompt <pad>]
+model_id = active_pipeline["model"]
+lora_path = active_pipeline.get("lora_path")
+model, tokenizer = lora_loader.get_model_with_lora(model_id, lora_path=lora_path)
 
-pipe = pipeline("text-generation", model=model,tokenizer=tokenizer)
+pipe = pipeline("text-generation", model=model, tokenizer=tokenizer)
 dataset = load_dataset("snli", split="validation")
 SNLI_query = dataset.map(build_NLI_prompt)[:]
 
