@@ -140,3 +140,7 @@ data/*
 
 pred.txt
 .Rproj.user
+
+wandb/
+SFT/
+uv.lock
