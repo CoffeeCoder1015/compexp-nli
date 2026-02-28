@@ -59,7 +59,8 @@ pipeline_liquid ={
     "eval":extract_first,
     "token_limit":300,
     "batching_size":128,
-    "lora_path": "../finetune/SFT/checkpoint-1000"
+    # "lora_path": "../finetune/SFT/checkpoint-1000" # Load from training output
+    "lora_path": "../finetune/model/checkpoint-1000" # Load from saved output
 }
 
 # SELCT: model to run with its configs
