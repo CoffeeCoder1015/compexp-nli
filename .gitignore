@@ -144,3 +144,4 @@ pred.txt
 wandb/
 SFT/
 uv.lock
+launch.bat
