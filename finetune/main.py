@@ -61,7 +61,7 @@ print(model.print_trainable_parameters())
 
 sft_config = SFTConfig(
     output_dir="SFT",
-    learning_rate=2e-4,
+    learning_rate=2.5e-4,
     per_device_train_batch_size=8,
     gradient_accumulation_steps=2,
     num_train_epochs=3,
@@ -87,3 +87,4 @@ trainer.train()
 
 merged_model = trainer.model.merge_and_unload()
 merged_model.save_pretrained("./liquid_snli_sft")
+
