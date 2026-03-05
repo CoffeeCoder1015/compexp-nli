@@ -1,0 +1,16 @@
+[project]
+name = "analyze_llm"
+version = "0.1.0"
+description = "NLI reasoning with GRPO/SFT on LiquidAI LFM"
+requires-python = "==3.12"
+dependencies = [
+    "transformers>=4.40.0",
+    "peft>=0.10.0",
+    "datasets>=2.18.0",
+    "accelerate>=0.28.0",
+    "torch>=2.1.0",
+    "scipy",
+    "scikit-learn",
+    "pyparsing<3.0",
+    "spacy"
+]

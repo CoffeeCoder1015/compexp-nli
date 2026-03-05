@@ -74,6 +74,11 @@ def print_model_layers():
             layers_path = name
             break
     
+    import inspect
+    for name, module in model.named_modules():
+        print(f"Found at: {name}")
+        print(inspect.getsource(type(module).forward))
+
     if layers_container is None:
         # Fallback for some models
         if hasattr(model, 'model') and hasattr(model.model, 'layers'):
@@ -177,3 +182,4 @@ def print_model_layers():
 
 if __name__ == "__main__":
     print_model_layers()
+
