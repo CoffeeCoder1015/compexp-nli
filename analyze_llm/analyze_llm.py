@@ -440,7 +440,7 @@ def extract_first_tok(token_txt):
     mapping = {"ent": "entailment", "neut": "neutral", "contr": "contradiction"}
     return mapping.get(token_txt)
 
-def evaluate_first_token(logits, tokenizer, labels=None):
+def evaluate_first_token(logits, tokenizer):
     """
     Print top-k token predictions and extract NLI label from the argmax
     first token of the forward-pass logits.
@@ -450,15 +450,12 @@ def evaluate_first_token(logits, tokenizer, labels=None):
     topk_token_ids = topk_result.indices
     
     predictions = []
-    correct = 0
     for i in range(topk_token_ids.shape[0]):
         decoded = [tokenizer.decode(topk_token_ids[i, k], skip_special_tokens=True) for k in range(settings.TOP_K)]
         prediction = extract_first_tok(decoded[0])
         print(f"Top-{settings.TOP_K}: {decoded} | {prediction}")
         predictions.append(prediction)
-        if labels is not None and prediction is not None and prediction == labels[i]:
-            correct += 1
-    return predictions, correct
+    return predictions
 
 def pad_collate(batch, sort=True):
     src, src_feats, src_multifeats, src_len, idx = zip(*batch)
@@ -495,6 +492,11 @@ def pairs(x):
         return x.unsqueeze(2).view(x.shape[0], -1, 2, *x.shape[2:])
 
 def extract_features_llm(model,tokenizer,analysis_dataset,batch_size=32):
+    from datasets import load_dataset
+    LABEL_MAP = ["entailment", "neutral", "contradiction"]
+    hf_dataset = load_dataset("snli", split="validation")
+    hf_labels = [LABEL_MAP[i] for i in hf_dataset["label"]]
+    
     loader = DataLoader(
         analysis_dataset,
         shuffle=False,
@@ -513,6 +515,7 @@ def extract_features_llm(model,tokenizer,analysis_dataset,batch_size=32):
     all_feats = []
     all_multifeats = []
     all_idxs = []
+    all_predictions = []
     for src, src_feats, src_multifeats, src_lengths, idx in tqdm(loader, desc="Extracting LLM features"):
         src_one = src.squeeze(2)
         src_one_comb = pairs(src_one)
@@ -551,9 +554,7 @@ def extract_features_llm(model,tokenizer,analysis_dataset,batch_size=32):
         length = tokenized["input_ids"].shape[1]
 
         with torch.inference_mode():
-            out = model(**tokenized,output_hidden_states=True)
-            print(len(acts[settings.HOOKED_LAYER]))
-            print(list(map(lambda x: x.shape, out.hidden_states)))
+            out = model(**tokenized)
 
         hook_acts = acts[settings.HOOKED_LAYER]
         hook_acts_np = hook_acts.to(torch.float32).cpu().numpy()
@@ -569,6 +570,11 @@ def extract_features_llm(model,tokenizer,analysis_dataset,batch_size=32):
         )
         all_idxs.extend(list(pairs(idx).cpu().numpy()))
 
+        # Token evaluation
+        first_token_logits = out.logits[:, -1, :]
+        batch_predictions = evaluate_first_token(first_token_logits, tokenizer)
+        all_predictions.extend(batch_predictions)
+
     h.remove()
     print(f"Hook removed. Captured {len(all_states)} batches.")
     
@@ -576,7 +582,12 @@ def extract_features_llm(model,tokenizer,analysis_dataset,batch_size=32):
     states = np.concatenate(all_states, axis=0)
     
     print(f"States shape: {states.shape}")
-    # Token evaluation summary
+    
+    # Token evaluation summary - match predictions to labels using indices
+    correct = 0
+    for label, pred in zip(hf_labels, all_predictions):
+        correct += label == pred
+    
     total = len(all_predictions)
     valid = sum(1 for p in all_predictions if p is not None)
     rejected = total - valid
@@ -584,7 +595,7 @@ def extract_features_llm(model,tokenizer,analysis_dataset,batch_size=32):
     if total > 0:
         print(f"Token Eval -- Recognition rate: {valid / total * 100:.2f}%")
     if valid > 0:
-        print(f"Token Eval -- Accuracy: {all_correct / valid * 100:.2f}%")
+        print(f"Token Eval -- Accuracy: {correct / valid * 100:.2f}%")
     
     return all_srcs, states, all_feats, all_idxs, all_predictions
 
