@@ -9,6 +9,7 @@ from transformers import AutoModelForCausalLM, AutoTokenizer
 from torch.nn.utils.rnn import pack_padded_sequence, pad_sequence
 from peft import PeftModel 
 import analysis
+import hook
 
 system_prompt = {
     "role": "system",
@@ -102,6 +103,13 @@ def extract_features_llm(model,tokenizer,analysis_dataset,batch_size=32):
         batch_size=batch_size,
         collate_fn=lambda batch: pad_collate(batch, sort=False),
     )
+    layer = model.get_submodule(settings.HOOKED_LAYER)
+
+    acts = hook.activations
+    h = layer.register_forward_hook(hook.make_hook(settings.HOOKED_LAYER))
+    print("hooked layer on:",settings.HOOKED_LAYER,h)
+
+
     for src, src_feats, src_multifeats, src_lengths, idx in tqdm(loader, desc="Extracting LLM features"):
         src_one = src.squeeze(2)
         src_one_comb = pairs(src_one)
@@ -128,7 +136,6 @@ def extract_features_llm(model,tokenizer,analysis_dataset,batch_size=32):
             hyp = " ".join(hyp)
             prompt = f"Premise: {prem}\nHypothesis: {hyp}"
             prompts.append([system_prompt, {"role": "user", "content": prompt}])
-            print(prompt)
 
         # Inference 
         tokenized = tokenizer.apply_chat_template(
@@ -142,7 +149,11 @@ def extract_features_llm(model,tokenizer,analysis_dataset,batch_size=32):
 
         with torch.inference_mode():
             out = model(**tokenized,output_hidden_states=True)
-            print(out.hidden_states)
+            print(len(acts[settings.HOOKED_LAYER]))
+            print(list(map(lambda x: x.shape, out.hidden_states)))
+
+
+    h.remove()
 
     
 

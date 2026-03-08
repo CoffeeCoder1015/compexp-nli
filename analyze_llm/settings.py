@@ -4,6 +4,9 @@ Settings
 
 import os
 
+# LLM params
+HOOKED_LAYER = "base_model.embedding_norm"
+
 CUDA = True
 ALPHA = None  # Use "None" to use ReLU threshold (i.e., > 0)
 BEAM_SIZE = 10
