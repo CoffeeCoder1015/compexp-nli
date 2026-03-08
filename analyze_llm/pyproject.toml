@@ -12,5 +12,7 @@ dependencies = [
     "scipy",
     "scikit-learn",
     "pyparsing<3.0",
-    "spacy"
+    "spacy",
+    "matplotlib",
+    "matplotlib-inline"
 ]
