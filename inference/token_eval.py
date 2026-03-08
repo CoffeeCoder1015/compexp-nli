@@ -147,7 +147,7 @@ with torch.inference_mode():
                 ftk_probs = topk_probs[0,j,:]
                 probmass = ftk_probs.sum()
                 std = ftk_probs.std()
-                print(" Failed:",t3,ftkp,probmass,std)
+                print(" Failed:",t3,ftk_probs,probmass,std)
                 under_coverage_probmass.append(probmass)
                 under_coverage_std.append(std)
             elif gain == 3:
