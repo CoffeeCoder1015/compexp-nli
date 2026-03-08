@@ -110,6 +110,11 @@ def extract_features_llm(model,tokenizer,analysis_dataset,batch_size=32):
     print("hooked layer on:",settings.HOOKED_LAYER,h)
 
 
+    all_srcs = []
+    all_states = []
+    all_feats = []
+    all_multifeats = []
+    all_idxs = []
     for src, src_feats, src_multifeats, src_lengths, idx in tqdm(loader, desc="Extracting LLM features"):
         src_one = src.squeeze(2)
         src_one_comb = pairs(src_one)
@@ -152,8 +157,29 @@ def extract_features_llm(model,tokenizer,analysis_dataset,batch_size=32):
             print(len(acts[settings.HOOKED_LAYER]))
             print(list(map(lambda x: x.shape, out.hidden_states)))
 
+        hook_acts = acts[settings.HOOKED_LAYER]
+        hook_acts_np = hook_acts.to(torch.float32).cpu().numpy()
+        last_token_acts = hook_acts_np[:,- 1, :]
+        all_states.append(last_token_acts)
+        
+        all_srcs.extend(list(np.transpose(src_one_comb.cpu().numpy(), (1, 2, 0))))
+        all_feats.extend(
+            list(np.transpose(pairs(src_feats).cpu().numpy(), (1, 2, 0, 3)))
+        )
+        all_multifeats.extend(
+            list(np.transpose(pairs(src_multifeats).cpu().numpy(), (1, 2, 0, 3)))
+        )
+        all_idxs.extend(list(pairs(idx).cpu().numpy()))
 
     h.remove()
+    print(f"Hook removed. Captured {len(all_states)} batches.")
+    
+    all_feats = {"onehot": all_feats, "multi": all_multifeats}
+    states = np.concatenate(all_states, axis=0)
+    
+    print(f"States shape: {states.shape}")
+    
+    return all_srcs, states, all_feats, all_idxs
 
     
 
@@ -174,7 +200,11 @@ def main():
     print(f"Dataset size: {len(analysis_dataset)}")
 
     print("Extracting features with LLM hook...")
-    extract_features_llm(model,tokenizer,analysis_dataset)
+    toks, states, feats, idxs = extract_features_llm(model,tokenizer,analysis_dataset)
+    print(toks)
+    print(states)
+    print(feats)
+    print(idxs)
 
 if __name__ == "__main__":
     main()
