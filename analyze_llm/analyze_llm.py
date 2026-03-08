@@ -597,7 +597,7 @@ def extract_features_llm(model,tokenizer,analysis_dataset,batch_size=32):
     if valid > 0:
         print(f"Token Eval -- Accuracy: {correct / valid * 100:.2f}%")
     
-    return all_srcs, states, all_feats, all_idxs, all_predictions
+    return all_srcs, states, all_feats, all_idxs, all_predictions, hf_labels
 
     
 
@@ -618,7 +618,7 @@ def main():
     print(f"Dataset size: {len(analysis_dataset)}")
 
     print("Extracting features with LLM hook...")
-    toks, states, feats, idxs, all_predictions = extract_features_llm(model,tokenizer,analysis_dataset)
+    toks, states, feats, idxs, all_predictions, hf_labels = extract_features_llm(model,tokenizer,analysis_dataset)
 
     print("Computing quantiles...")
     acts = quantile_features(states)
@@ -636,8 +636,22 @@ def main():
     records = search_feats(acts, states, feats, weights, analysis_dataset)
 
     print("Saving predictions with activations...")
-    preds = pd.DataFrame({"pred": all_predictions})
+    preds = pd.DataFrame({"pred": all_predictions, "gt": hf_labels})
     save_with_acts(preds, acts, os.path.join(settings.RESULT, "preds_acts.csv"))
+
+    print("Visualizing features...")
+    from vis import sentence_report
+    sentence_report.make_html(
+        records,
+        toks,
+        states,
+        (tok_feats, tok_feats_vocab),
+        idxs,
+        preds,
+        weights,
+        analysis_dataset,
+        settings.RESULT,
+    )
 
     print("Analysis complete. Results saved to:", settings.RESULT)
 
