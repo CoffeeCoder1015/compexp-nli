@@ -48,9 +48,9 @@ CLASS_IDS_LIST = [CLASS_TOKEN_IDS[c] for c in CLASS_NAMES]
 # ─── Stats layer ──────────────────────────────────────────────────────────────
 
 def print_stats(df):
-    print("\n" + "=" * 60)
+    print("\n" + "=" * 80)
     print("NEURON STATS — adjust thresholds at top of ablate.py")
-    print("=" * 60)
+    print("=" * 80)
 
     print(f"\nTotal neurons:           {len(df)}")
     print(f"Zero IoU neurons:        {(df['iou'] == 0).sum()}")
@@ -71,48 +71,60 @@ def print_stats(df):
     good = df[~garbage_mask & (df["iou"] >= ABLATION_IOU_MIN)]
     bad  = df[garbage_mask | (df["iou"] < ABLATION_IOU_MIN)]
 
-    print(f"\nAfter filtering (IoU >= {ABLATION_IOU_MIN}, not garbage):")
-    print(f"  Good neurons:  {len(good)}")
-    print(f"  Bad neurons:   {len(bad)}")
+    # Full parallel statistics for good and bad neurons
+    print("\n" + "=" * 80)
+    print("GOOD NEURONS STATISTICS")
+    print("=" * 80)
+    print(f"\nCount: {len(good)}")
+    print(f"\nIoU distribution:")
+    print(good["iou"].describe().to_string())
+    
+    print(f"\nTop 10 most common features:")
+    print(good["feature"].value_counts().head(10).to_string())
+    
+    if all(col in good.columns for col in ["w_entail", "w_neutral", "w_contra"]):
+        print(f"\nWeight distributions:")
+        print(good[["w_entail", "w_neutral", "w_contra"]].describe().to_string())
 
+    print("\n" + "=" * 80)
+    print("BAD NEURONS STATISTICS")
+    print("=" * 80)
+    print(f"\nCount: {len(bad)}")
+    print(f"\nIoU distribution:")
+    print(bad["iou"].describe().to_string())
+    
+    print(f"\nTop 10 most common features:")
+    print(bad["feature"].value_counts().head(10).to_string())
+    
+    if all(col in bad.columns for col in ["w_entail", "w_neutral", "w_contra"]):
+        print(f"\nWeight distributions:")
+        print(bad[["w_entail", "w_neutral", "w_contra"]].describe().to_string())
+
+    # IoU band boundaries table
     if len(good) > 0:
-        print(f"\nIoU distribution (good neurons):")
-        print(good["iou"].describe().to_string())
-
-        # IoU band boundaries table
-        print(f"\nIoU band boundaries by percentile:")
         good_sorted = good.sort_values("iou", ascending=False).reset_index(drop=True)
-        band_info = []
-        prev_n = 0
+        band_records = []
         
         for pct in CUMULATIVE_PERCENTILES:
-            curr_n = max(1, int(np.ceil(len(good) * pct)))
-            band = good_sorted.iloc[prev_n:curr_n]
+            end_idx = max(1, int(np.ceil(len(good_sorted) * pct)))
+            band = good_sorted.iloc[:end_idx]
+            iou_min = band["iou"].min()
+            iou_max = band["iou"].max()
             
-            if len(band) > 0:
-                band_info.append({
-                    "Percentile": f"{int(pct*100)}%",
-                    "N_neurons": curr_n - prev_n,
-                    "Min_IoU": band["iou"].min(),
-                    "Max_IoU": band["iou"].max(),
-                })
-            prev_n = curr_n
+            band_records.append({
+                "Percentile": f"{int(pct*100)}%",
+                "N_neurons": len(band),
+                "IoU_min": iou_min,
+                "IoU_max": iou_max,
+            })
         
-        band_df = pd.DataFrame(band_info)
-        print(band_df.to_string())
+        band_df = pd.DataFrame(band_records)
+        print("\n" + "=" * 80)
+        print("IoU BAND BOUNDARIES (Good neurons, cumulative)")
+        print("=" * 80)
+        print(band_df.to_string(index=False))
 
-    # Zero-IoU neuron section
-    zero_iou = df[df['iou'] == 0]
-    if len(zero_iou) > 0:
-        print(f"\nZero-IoU neurons (n={len(zero_iou)}):")
-        print(zero_iou[['w_entail', 'w_neutral', 'w_contra']].describe().to_string())
-        
-        print(f"\nTop 5 zero-IoU neurons by max absolute weight:")
-        zero_iou['max_abs_weight'] = zero_iou[['w_entail', 'w_neutral', 'w_contra']].abs().max(axis=1)
-        top_zero = zero_iou.nlargest(5, 'max_abs_weight')[['neuron', 'feature', 'w_entail', 'w_neutral', 'w_contra']]
-        print(top_zero.to_string())
-
-    print("=" * 60 + "\n")
+    print("=" * 80 + "\n")
     return good, bad
 
 
@@ -245,32 +257,30 @@ def run_inference(model, tokenizer, dataset, ablate_neurons=None, batch_size=32,
     return all_predictions, all_logits, all_labels, accuracy
 
 
+# ─── Main ─────────────────────────────────────────────────────────────────────
+
 def print_band_examples(good_df, percentiles):
-    """Print sample neurons from each percentile band."""
-    print("\n" + "=" * 80)
-    print("PER-BAND NEURON EXAMPLES")
-    print("=" * 80)
+    """
+    Print per-band formula examples: sample min(5, band_size) neurons from each band.
+    good_df should be sorted by IoU descending.
+    """
+    if len(good_df) == 0:
+        return
     
     good_sorted = good_df.sort_values("iou", ascending=False).reset_index(drop=True)
-    prev_n = 0
-    
-    for pct in percentiles:
-        curr_n = max(1, int(np.ceil(len(good_df) * pct)))
-        band = good_sorted.iloc[prev_n:curr_n]
-        
-        # Sample up to 5 neurons from the band
-        sample_size = min(5, len(band))
-        sample = band.sample(n=sample_size, random_state=42)
-        
-        print(f"\nBand: {int(pct*100)}% ({prev_n}-{curr_n-1}, {len(band)} neurons) — Sample {sample_size}:")
-        print(sample[['neuron', 'feature', 'iou', 'w_entail', 'w_neutral', 'w_contra']].to_string())
-        
-        prev_n = curr_n
     
     print("\n" + "=" * 80)
+    print("PER-BAND NEURON EXAMPLES (Good neurons)")
+    print("=" * 80)
+    
+    for pct in percentiles:
+        end_idx = max(1, int(np.ceil(len(good_sorted) * pct)))
+        band = good_sorted.iloc[:end_idx]
+        sample_size = min(5, len(band))
+        
+        print(f"\n--- Top {int(pct*100)}% band ({len(band)} neurons total) ---")
+        print(band[["neuron", "feature", "iou"]].head(sample_size).to_string(index=False))
 
-
-# ─── Main ─────────────────────────────────────────────────────────────────────
 
 def run_ablation_group(group_name, ranked_neurons, model, tokenizer, dataset, base_preds, base_logits_mean, base_acc, output_path):
     print(f"\nRunning cumulative batch ablations for {group_name}...")
@@ -381,9 +391,8 @@ def run_ablation_pipeline():
     else:
         print("- Impact is comparable: layer works in superposition, or separation is noisy.")
 
-    # Print per-band examples
-    good_df_sorted = good_df.sort_values("iou", ascending=False).reset_index(drop=True)
-    print_band_examples(good_df_sorted, CUMULATIVE_PERCENTILES)
+    # ── 6. Per-band neuron examples ────────────────────────────────────────────
+    print_band_examples(good_df, CUMULATIVE_PERCENTILES)
 
     return good_path, bad_path
 
