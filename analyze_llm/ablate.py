@@ -463,7 +463,7 @@ def run_ablation_pipeline():
 
     # ── 2. Load model and dataset ─────────────────────────────────────────────
     model_id = "LiquidAI/LFM2.5-1.2B-Base"
-    lora_path = "../finetune/model/checkpoint-1000-lin"
+    lora_path = "../finetune/model/checkpoint-1000"
     print("Loading model...")
     model, tokenizer = get_model_with_lora(model_id, lora_path=lora_path)
     model = model.merge_and_unload()
