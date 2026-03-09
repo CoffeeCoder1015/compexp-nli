@@ -26,6 +26,7 @@ import settings
 # ─── Tunable thresholds ───────────────────────────────────────────────────────
 
 ABLATION_IOU_MIN = 0.05
+SIMULATED_MIN_ACTS = 500
 
 GARBAGE_FEATURES = {
     "pre:tok:in",
@@ -77,7 +78,7 @@ def compute_differential_bands(df_sorted, percentiles):
     return results
 
 
-def print_stats(df):
+def print_stats(df, result_path=None):
     print("\n" + "=" * 80)
     print("NEURON STATS — adjust thresholds at top of ablate.py")
     print("=" * 80)
@@ -92,7 +93,21 @@ def print_stats(df):
     print(f"\nTop 10 most common features:")
     print(df["feature"].value_counts().head(10).to_string())
 
-    garbage_mask = df["feature"].isin(GARBAGE_FEATURES)
+    low_acts_neurons = set()
+    if SIMULATED_MIN_ACTS > settings.MIN_ACTS and result_path is not None:
+        preds_acts_path = os.path.join(os.path.dirname(result_path), "preds_acts.csv")
+        if os.path.exists(preds_acts_path):
+            print(f"\nSimulated MIN_ACTS={SIMULATED_MIN_ACTS}: Computing activation counts from {preds_acts_path}...")
+            acts_df = pd.read_csv(preds_acts_path)
+            neuron_cols = [c for c in acts_df.columns if str(c).isdigit()]
+            act_counts = acts_df[neuron_cols].sum()
+            valid_neurons = set(act_counts[act_counts >= SIMULATED_MIN_ACTS].index.astype(int).tolist())
+            low_acts_neurons = set(df["neuron"].tolist()) - valid_neurons
+            print(f"Classifying {len(low_acts_neurons)} neurons with < {SIMULATED_MIN_ACTS} activations as bad.")
+        else:
+            print(f"Warning: SIMULATED_MIN_ACTS={SIMULATED_MIN_ACTS} set, but {preds_acts_path} not found.")
+
+    garbage_mask = df["feature"].isin(GARBAGE_FEATURES) | df["neuron"].isin(low_acts_neurons)
     print(f"\nGarbage features defined: {len(GARBAGE_FEATURES)}")
     for gf in GARBAGE_FEATURES:
         count = (df["feature"] == gf).sum()
@@ -431,7 +446,9 @@ def run_ablation_pipeline():
     # ── 1. Stats layer ────────────────────────────────────────────────────────
     print(f"Loading result.csv... {result_path}")
     df = pd.read_csv(result_path)
-    good_df, bad_df = print_stats(df)
+
+    # Simulated higher MIN_ACTS threshold - now handled inside print_stats
+    good_df, bad_df = print_stats(df, result_path=result_path)
 
     if len(good_df) == 0:
         print("No good neurons found after filtering. Adjust thresholds and rerun.")
