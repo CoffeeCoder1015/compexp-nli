@@ -606,6 +606,9 @@ def main():
 
     model_id = "LiquidAI/LFM2.5-1.2B-Base"
     lora_path = "../finetune/model/checkpoint-1000"
+    print(f"Hook layer: {settings.HOOKED_LAYER}")
+    print(f"MIN_ACTS: {settings.MIN_ACTS}")
+    print(f"Model: {lora_path}")
     print("Loading LLM model...")
     model, tokenizer = get_model_with_lora(model_id, lora_path=lora_path)
     model = model.merge_and_unload()
