@@ -47,6 +47,36 @@ CLASS_IDS_LIST = [CLASS_TOKEN_IDS[c] for c in CLASS_NAMES]
 
 # ─── Stats layer ──────────────────────────────────────────────────────────────
 
+def compute_differential_bands(df_sorted, percentiles):
+    """
+    Compute differential band slices from cumulative percentiles.
+    Input: DataFrame sorted by IoU descending, percentile array
+    Output: List of dicts with band info and indices
+    """
+    if len(df_sorted) == 0:
+        return []
+    
+    results = []
+    prev_end_idx = 0
+    
+    for i, pct in enumerate(percentiles):
+        end_idx = int(np.ceil(len(df_sorted) * pct))
+        band = df_sorted.iloc[prev_end_idx:end_idx]
+        start_pct = percentiles[i-1] if i > 0 else 0.0
+        
+        results.append({
+            "band_label": f"{int(start_pct*100)}–{int(pct*100)}%",
+            "start_idx": prev_end_idx,
+            "end_idx": end_idx,
+            "n_neurons": len(band),
+            "iou_min": band["iou"].min(),
+            "iou_max": band["iou"].max(),
+        })
+        prev_end_idx = end_idx
+    
+    return results
+
+
 def print_stats(df):
     print("\n" + "=" * 80)
     print("NEURON STATS — adjust thresholds at top of ablate.py")
@@ -100,31 +130,33 @@ def print_stats(df):
         print(f"\nWeight distributions:")
         print(bad[["w_entail", "w_neutral", "w_contra"]].describe().to_string())
 
-    # IoU band boundaries table
-    if len(good) > 0:
+    # IoU band boundaries table (differential bands for both groups)
+    if len(good) > 0 and len(bad) > 0:
         good_sorted = good.sort_values("iou", ascending=False).reset_index(drop=True)
-        band_records = []
+        bad_sorted = bad.sort_values("iou", ascending=False).reset_index(drop=True)
         
-        for pct in CUMULATIVE_PERCENTILES:
-            end_idx = max(1, int(np.ceil(len(good_sorted) * pct)))
-            band = good_sorted.iloc[:end_idx]
-            iou_min = band["iou"].min()
-            iou_max = band["iou"].max()
-            
-            band_records.append({
-                "Percentile": f"{int(pct*100)}%",
-                "N_neurons": len(band),
-                "IoU_min": iou_min,
-                "IoU_max": iou_max,
-            })
+        good_bands = compute_differential_bands(good_sorted, CUMULATIVE_PERCENTILES)
+        bad_bands = compute_differential_bands(bad_sorted, CUMULATIVE_PERCENTILES)
         
-        band_df = pd.DataFrame(band_records)
         print("\n" + "=" * 80)
-        print("IoU BAND BOUNDARIES (Good neurons, cumulative)")
+        print("IoU BAND BOUNDARIES (Differential Bands)")
         print("=" * 80)
-        print(band_df.to_string(index=False))
+        
+        print("\nGood Neurons:")
+        good_band_df = pd.DataFrame(good_bands)[["band_label", "n_neurons", "iou_min", "iou_max"]]
+        good_band_df.columns = ["Band", "N_neurons", "IoU_min", "IoU_max"]
+        print(good_band_df.to_string(index=False))
+        
+        print("\nBad Neurons:")
+        bad_band_df = pd.DataFrame(bad_bands)[["band_label", "n_neurons", "iou_min", "iou_max"]]
+        bad_band_df.columns = ["Band", "N_neurons", "IoU_min", "IoU_max"]
+        print(bad_band_df.to_string(index=False))
 
     print("=" * 80 + "\n")
+    
+    # ── Per-band neuron examples ────────────────────────────────────────────
+    print_band_examples(good, bad, CUMULATIVE_PERCENTILES)
+    
     return good, bad
 
 
@@ -204,7 +236,7 @@ def run_inference(model, tokenizer, dataset, ablate_neurons=None, batch_size=32,
     # Register ablation hook if needed
     h = None
     if ablate_neurons is not None and len(ablate_neurons) > 0:
-        layer = model.get_submodule("base_model.embedding_norm")
+        layer = model.get_submodule(settings.HOOKED_LAYER)
         h = layer.register_forward_hook(make_ablation_hook(ablate_neurons))
 
     all_predictions = []
@@ -259,27 +291,102 @@ def run_inference(model, tokenizer, dataset, ablate_neurons=None, batch_size=32,
 
 # ─── Main ─────────────────────────────────────────────────────────────────────
 
-def print_band_examples(good_df, percentiles):
+def print_band_examples(good_df, bad_df, percentiles):
     """
-    Print per-band formula examples: sample min(5, band_size) neurons from each band.
-    good_df should be sorted by IoU descending.
+    Print per-band formula examples using differential bands for both Good and Bad groups.
+    Each group is sorted by IoU descending, then differential bands are computed and examples printed.
     """
-    if len(good_df) == 0:
+    if len(good_df) == 0 and len(bad_df) == 0:
         return
     
-    good_sorted = good_df.sort_values("iou", ascending=False).reset_index(drop=True)
-    
     print("\n" + "=" * 80)
-    print("PER-BAND NEURON EXAMPLES (Good neurons)")
+    print("PER-BAND NEURON EXAMPLES (Differential Bands)")
     print("=" * 80)
     
-    for pct in percentiles:
-        end_idx = max(1, int(np.ceil(len(good_sorted) * pct)))
-        band = good_sorted.iloc[:end_idx]
-        sample_size = min(5, len(band))
-        
-        print(f"\n--- Top {int(pct*100)}% band ({len(band)} neurons total) ---")
-        print(band[["neuron", "feature", "iou"]].head(sample_size).to_string(index=False))
+    # Precompute bands
+    good_sorted = good_df.sort_values("iou", ascending=False).reset_index(drop=True)
+    bad_sorted = bad_df.sort_values("iou", ascending=False).reset_index(drop=True)
+    good_bands = compute_differential_bands(good_sorted, percentiles)
+    bad_bands = compute_differential_bands(bad_sorted, percentiles)
+
+    # ── Good Neurons ──────────────────────────────────────────────────────────
+    if len(good_df) > 0:
+        print("\n--- GOOD NEURONS ---")
+        for band_info in good_bands:
+            band_label = band_info["band_label"]
+            start_idx = band_info["start_idx"]
+            end_idx = band_info["end_idx"]
+            n_neurons = band_info["n_neurons"]
+            
+            differential_band = good_sorted.iloc[start_idx:end_idx]
+            sample = differential_band.nlargest(5, "iou")[["neuron", "feature", "iou"]]
+            
+            print(f"\nBand {band_label} ({n_neurons} neurons in slice):")
+            print(sample.to_string(index=False))
+    
+    # ── Bad Neurons ───────────────────────────────────────────────────────────
+    if len(bad_df) > 0:
+        print("\n--- BAD NEURONS ---")
+        for band_info in bad_bands:
+            band_label = band_info["band_label"]
+            start_idx = band_info["start_idx"]
+            end_idx = band_info["end_idx"]
+            n_neurons = band_info["n_neurons"]
+            
+            differential_band = bad_sorted.iloc[start_idx:end_idx]
+            sample = differential_band.nlargest(5, "iou")[["neuron", "feature", "iou"]]
+            
+            print(f"\nBand {band_label} ({n_neurons} neurons in slice):")
+            print(sample.to_string(index=False))
+
+
+def print_ablation_comparison_table(good_res, bad_res):
+    print("\n" + "=" * 80)
+    print("ABLATION RESULTS — Good vs Bad Neuron Impact")
+    print("=" * 80)
+    print(f"{'Percentile':<12} | {'Good (N)':<10} | {'Acc Δ':<8} | {'Bad (N)':<10} | {'Acc Δ':<8}")
+    print("-" * 80)
+    for i in range(len(good_res)):
+        g = good_res.iloc[i]
+        b = bad_res.iloc[i]
+        pct = int(g['percentile'] * 100)
+        print(f"{pct:>3d}%         | {int(g['n_neurons']):>8d} | {g['accuracy_delta']*100:>6.2f}% | {int(b['n_neurons']):>8d} | {b['accuracy_delta']*100:>6.2f}%")
+    
+    # Impact-per-neuron calculation
+    g_total_neurons = good_res.iloc[-1]['n_neurons']
+    b_total_neurons = bad_res.iloc[-1]['n_neurons']
+    g_impact = good_res.iloc[-1]['accuracy_delta'] / g_total_neurons
+    b_impact = bad_res.iloc[-1]['accuracy_delta'] / b_total_neurons
+    print("-" * 80)
+    print(f"Impact-per-neuron (at 100% ablation):")
+    print(f"  Good: {g_impact*100:+.4f}% accuracy drop per neuron")
+    print(f"  Bad:  {b_impact*100:+.4f}% accuracy drop per neuron")
+
+
+def generate_interpretation(good_res, bad_res):
+    # Get last row (100% ablation)
+    g = good_res.iloc[-1]
+    b = bad_res.iloc[-1]
+    
+    g_logits = [g['logit_entail_delta'], g['logit_neutral_delta'], g['logit_contra_delta']]
+    b_logits = [b['logit_entail_delta'], b['logit_neutral_delta'], b['logit_contra_delta']]
+    
+    # Identify largest impact (magnitude)
+    g_idx = np.argmax(np.abs(g_logits))
+    b_idx = np.argmax(np.abs(b_logits))
+    
+    print("\n" + "=" * 80)
+    print("INTERPRETATION & ANALYSIS")
+    print("=" * 80)
+    print(f"Overall Impact (at 100%):")
+    print(f"  Good neurons: {g['accuracy_delta']*100:+.2f}% cumulative accuracy drop")
+    print(f"  Bad neurons:  {b['accuracy_delta']*100:+.2f}% cumulative accuracy drop")
+    
+    print(f"\nPer-Class Logit Impact (at 100%):")
+    print(f"  Good ablation affects:")
+    print(f"    - {CLASS_NAMES[g_idx]}: {g_logits[g_idx]:.3f} (largest)")
+    print(f"  Bad ablation affects:")
+    print(f"    - {CLASS_NAMES[b_idx]}: {b_logits[b_idx]:.3f} (largest)")
 
 
 def run_ablation_group(group_name, ranked_neurons, model, tokenizer, dataset, base_preds, base_logits_mean, base_acc, output_path):
@@ -319,10 +426,10 @@ def run_ablation_group(group_name, ranked_neurons, model, tokenizer, dataset, ba
 def run_ablation_pipeline():
     result_dir = os.path.dirname(settings.RESULT)
     os.makedirs(result_dir, exist_ok=True)
-    result_path = os.path.join(result_dir,"snli_1.0_dev-6-sentence-5-norm-500", "result.csv")
+    result_path = os.path.join(result_dir,"snli_1.0_dev-6-sentence-5", "result.csv")
     
     # ── 1. Stats layer ────────────────────────────────────────────────────────
-    print("Loading result.csv...")
+    print(f"Loading result.csv... {result_path}")
     df = pd.read_csv(result_path)
     good_df, bad_df = print_stats(df)
 
@@ -330,16 +437,16 @@ def run_ablation_pipeline():
         print("No good neurons found after filtering. Adjust thresholds and rerun.")
         return
 
-    # Rank neurons by IoU descending
+    # Rank neurons by IoU descending for both groups
     good_df = good_df.sort_values("iou", ascending=False).reset_index(drop=True)
-    bad_df = bad_df.sort_values("iou", ascending=True).reset_index(drop=True) # Bad neurons ranked by "badness" (low IoU)
+    bad_df = bad_df.sort_values("iou", ascending=False).reset_index(drop=True)  # Bad neurons also ranked by IoU descending (same direction as good)
     
     ranked_good = good_df["neuron"].tolist()
     ranked_bad = bad_df["neuron"].tolist()
 
     # ── 2. Load model and dataset ─────────────────────────────────────────────
     model_id = "LiquidAI/LFM2.5-1.2B-Base"
-    lora_path = "../finetune/model/checkpoint-1000"
+    lora_path = "../finetune/model/checkpoint-1000-lin"
     print("Loading model...")
     model, tokenizer = get_model_with_lora(model_id, lora_path=lora_path)
     model = model.merge_and_unload()
@@ -358,6 +465,7 @@ def run_ablation_pipeline():
 
     base_logits_mean = base_logits.mean(axis=0)
 
+
     # ── 4. Cumulative batch ablations ─────────────────────────────────────────
     good_path = os.path.join(result_dir, "ablation_cumulative_good.csv")
     bad_path = os.path.join(result_dir, "ablation_cumulative_bad.csv")
@@ -366,33 +474,11 @@ def run_ablation_pipeline():
     bad_df_results = run_ablation_group("bad", ranked_bad, model, tokenizer, dataset, base_preds, base_logits_mean, base_acc, bad_path)
 
     # ── 5. Summary comparison ──────────────────────────────────────────────
-    print("\n" + "=" * 80)
-    print(f"{'Percentile':<12} | {'Good neurons (N)':<18} | {'acc delta':<10} | {'Bad neurons (N)':<18} | {'acc delta':<10}")
-    print("-" * 80)
-
-    for i in range(len(CUMULATIVE_PERCENTILES)):
-        g_row = good_df_results.iloc[i]
-        b_row = bad_df_results.iloc[i]
-        pct = int(g_row['percentile']*100)
-        
-        print(f"{pct:>3d}%         | {int(g_row['n_neurons']):>18d} | {g_row['accuracy_delta']*100:>9.2f}% | {int(b_row['n_neurons']):>18d} | {b_row['accuracy_delta']*100:>9.2f}%")
-
-    print("=" * 80)
+    print_ablation_comparison_table(good_df_results, bad_df_results)
     
-    # Simple interpretation hook
-    good_total_drop = good_df_results['accuracy_delta'].sum()
-    bad_total_drop = bad_df_results['accuracy_delta'].sum()
-    
-    print("\nInterpretation:")
-    if abs(bad_total_drop) > abs(good_total_drop) * 1.5:
-        print("- Bad neurons have significantly higher impact: degenerate features are likely load-bearing.")
-    elif abs(good_total_drop) > abs(bad_total_drop) * 1.5:
-        print("- Good neurons have significantly higher impact: good explanations are causally valid.")
-    else:
-        print("- Impact is comparable: layer works in superposition, or separation is noisy.")
+    # ── 6. Interpretation ──────────────────────────────────────────────────────
+    generate_interpretation(good_df_results, bad_df_results)
 
-    # ── 6. Per-band neuron examples ────────────────────────────────────────────
-    print_band_examples(good_df, CUMULATIVE_PERCENTILES)
 
     return good_path, bad_path
 
