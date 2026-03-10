@@ -9,7 +9,7 @@ HOOKED_LAYER = "base_model.embedding_norm"
 TOP_K = 3
 
 CUDA = True
-ALPHA = None  # Use "None" to use ReLU threshold (i.e., > 0)
+ALPHA = 0.055  # Use "None" to use ReLU threshold (i.e., > 0)
 BEAM_SIZE = 10
 MAX_FORMULA_LENGTH = 5
 COMPLEXITY_PENALTY = 1.00
