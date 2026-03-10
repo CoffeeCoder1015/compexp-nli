@@ -5,7 +5,7 @@ Settings
 import os
 
 CUDA = True
-ALPHA = None  # Use "None" to use ReLU threshold (i.e., > 0)
+ALPHA = 0.01  # Use "None" to use ReLU threshold (i.e., > 0)
 BEAM_SIZE = 10
 MAX_FORMULA_LENGTH = 5
 COMPLEXITY_PENALTY = 1.00
