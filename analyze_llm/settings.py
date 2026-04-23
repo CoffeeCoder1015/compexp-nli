@@ -37,7 +37,7 @@ MODEL_TYPE = "bowman"  # choices: bowman, minimal
 RANDOM_WEIGHTS = False  # Initialize weights randomly (equivalent to an untrained model)
 N_SENTENCE_FEATS = 2000  # how many of the most common sentence lemmas to keep
 
-DATA = "../data/analysis/snli_1.0_dev.feats"
+DATA = "data/analysis/snli_1.0_dev.feats"
 
 assert DATA.endswith(".feats")
 VECPATH = DATA.replace(".feats", ".vec")
