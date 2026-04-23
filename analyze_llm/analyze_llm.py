@@ -117,14 +117,17 @@ def get_mask(feats, f, dataset, feat_type):
     if isinstance(f, FM.And):
         masks_l = get_mask(feats, f.left, dataset, feat_type)
         masks_r = get_mask(feats, f.right, dataset, feat_type)
-        return masks_l & masks_r
+        f.mask = np.logical_and(masks_l, masks_r)
+        return f.mask
     elif isinstance(f, FM.Or):
         masks_l = get_mask(feats, f.left, dataset, feat_type)
         masks_r = get_mask(feats, f.right, dataset, feat_type)
-        return masks_l | masks_r
+        f.mask = np.logical_or(masks_l, masks_r)
+        return f.mask
     elif isinstance(f, FM.Not):
         masks_val = get_mask(feats, f.val, dataset, feat_type)
-        return 1 - masks_val
+        f.mask = np.logical_not(masks_val)
+        return f.mask
     elif isinstance(f, FM.Neighbors):
         if feat_type == "word":
             # Neighbors can only be called on Lemma Leafs. Can they be called on
@@ -179,10 +182,12 @@ def get_mask(feats, f, dataset, feat_type):
                 if word in dataset["stoi"]
             ]
             neighbor_idx.append(fval)
-            neighbor_idx = np.array(list(set(neighbor_idx)))
 
-            neighbors_mask = np.logical_or.reduce(feats[:, neighbor_idx], 1)
-            return neighbors_mask
+            # Fast distinct elements
+            neighbor_idx = np.unique(neighbor_idx)
+
+            f.mask = np.logical_or.reduce(feats[:, neighbor_idx], axis=1)
+            return f.mask
     elif isinstance(f, FM.Leaf):
         if feat_type == "word":
             # Get category
@@ -192,18 +197,19 @@ def get_mask(feats, f, dataset, feat_type):
                 # multi is in n-hot tensor shape, so we just return the column
                 # corresponding to the correct feature
                 midx = dataset.multi2idx[f.val]
-                return feats["multi"][:, midx]
+                f.mask = feats["multi"][:, midx]
             else:
-                return feats["onehot"][:, ci] == f.val
+                f.mask = feats["onehot"][:, ci] == f.val
         else:
-            return feats[:, f.val]
+            f.mask = feats[:, f.val]
+        return f.mask
     else:
         raise ValueError("Most be passed formula")
 
 
 def iou(a, b):
-    intersection = (a & b).sum()
-    union = (a | b).sum()
+    intersection = np.logical_and(a, b).sum()
+    union = np.logical_or(a, b).sum()
     return intersection / (union + np.finfo(np.float32).tiny)
 
 
@@ -300,25 +306,69 @@ def compute_best_sentence_iou(args):
 
     feats_to_search = list(range(feats.shape[1]))
     formulas = {}
-    for fval in feats_to_search:
-        formula = FM.Leaf(fval)
-        formulas[formula] = compute_iou(
-            formula, acts, feats, dataset, feat_type="sentence"
-        )
 
-        for op, negate in OPS["lemma"]:
-            new_formula = formula
-            if negate:
-                new_formula = FM.Not(new_formula)
-            new_formula = op(new_formula)
-            new_iou = compute_iou(
-                new_formula, acts, feats, dataset, feat_type="sentence"
+    # Vectorized initial leaf IOU computation
+    if isinstance(feats, dict):
+        # We handle word level feats dict fallback just in case, but usually this is sentence feats which is an array
+        pass
+    elif isinstance(feats, np.ndarray) and feats.ndim == 2:
+        acts_matrix = acts[:, np.newaxis]
+        intersections = np.logical_and(feats, acts_matrix).sum(axis=0)
+        unions = np.logical_or(feats, acts_matrix).sum(axis=0)
+        ious_vec = intersections / (unions + np.finfo(np.float32).tiny)
+
+        if settings.METRIC == "iou":
+            pass # ious_vec is already iou
+        elif settings.METRIC == "precision":
+            # precision = true positives / (true positives + false positives) = intersection / feats.sum()
+            feats_sum = feats.sum(axis=0)
+            ious_vec = intersections / (feats_sum + np.finfo(np.float32).tiny)
+        elif settings.METRIC == "recall":
+            # recall = true positives / (true positives + false negatives) = intersection / acts.sum()
+            acts_sum = acts.sum()
+            ious_vec = intersections / (acts_sum + np.finfo(np.float32).tiny)
+
+        for fval in feats_to_search:
+            formula = FM.Leaf(fval)
+            formula.mask = feats[:, fval] # cache the mask
+            formulas[formula] = ious_vec[fval]
+
+            # Keep original loop for the neighbors ops
+            for op, negate in OPS["lemma"]:
+                new_formula = formula
+                if negate:
+                    new_formula = FM.Not(new_formula)
+                new_formula = op(new_formula)
+                new_iou = compute_iou(
+                    new_formula, acts, feats, dataset, feat_type="sentence"
+                )
+                formulas[new_formula] = new_iou
+
+    else:
+        # Fallback to loop
+        for fval in feats_to_search:
+            formula = FM.Leaf(fval)
+            formulas[formula] = compute_iou(
+                formula, acts, feats, dataset, feat_type="sentence"
             )
-            formulas[new_formula] = new_iou
 
+            for op, negate in OPS["lemma"]:
+                new_formula = formula
+                if negate:
+                    new_formula = FM.Not(new_formula)
+                new_formula = op(new_formula)
+                new_iou = compute_iou(
+                    new_formula, acts, feats, dataset, feat_type="sentence"
+                )
+                formulas[new_formula] = new_iou
+
+    import heapq
+
+    # We must carefully ensure that if scores are equal, we preserve arbitrary ordering
+    # just as Counter.most_common did, though we are primarily concerned with the highest scores
     nonzero_iou = [k.val for k, v in formulas.items() if v > 0]
-    formulas = dict(Counter(formulas).most_common(settings.BEAM_SIZE))
-    best_noncomp = Counter(formulas).most_common(1)[0]
+    formulas = dict(heapq.nlargest(settings.BEAM_SIZE, formulas.items(), key=lambda item: item[1]))
+    best_noncomp = max(formulas.items(), key=lambda item: item[1])
 
     for i in range(settings.MAX_FORMULA_LENGTH - 1):
         new_formulas = {}
@@ -338,9 +388,9 @@ def compute_best_sentence_iou(args):
                     new_formulas[new_formula] = new_iou
 
         formulas.update(new_formulas)
-        formulas = dict(Counter(formulas).most_common(settings.BEAM_SIZE))
+        formulas = dict(heapq.nlargest(settings.BEAM_SIZE, formulas.items(), key=lambda item: item[1]))
 
-    best = Counter(formulas).most_common(1)[0]
+    best = max(formulas.items(), key=lambda item: item[1])
 
     return {
         "unit": unit,
